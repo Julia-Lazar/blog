@@ -50,25 +50,36 @@ export function TimelineItem({
   );
 
   return (
-    <div className="relative flex items-center">
+    <div className="relative flex flex-col md:flex-row md:items-center">
+      <div
+        className={`absolute left-[var(--timeline-x)] -translate-x-1/2 w-6 h-6 ${dotClass} rounded-full border-4 border-white shadow-lg z-10 hidden md:block`}
+      ></div>
       {side === "right" ? (
         <>
-          <div className="w-1/2 pr-8 text-right">
-            <span className={`text-lg font-bold ${styles.date}`}>{date}</span>
+          <div className="w-full md:w-1/2 md:pr-8 md:text-right min-w-0">
+            <span className={`hidden md:inline text-lg font-bold ${styles.date}`}>
+              {date}
+            </span>
           </div>
-          <div
-            className={`absolute left-1/2 transform -translate-x-1/2 w-6 h-6 ${dotClass} rounded-full border-4 border-white shadow-lg z-10`}
-          ></div>
-          <div className="w-1/2 pl-8">{card}</div>
+          <div className="w-full md:w-1/2 md:pl-8 min-w-0">
+            <span className={`md:hidden block mb-2 text-lg font-bold ${styles.date}`}>
+              {date}
+            </span>
+            {card}
+          </div>
         </>
       ) : (
         <>
-          <div className="w-1/2 pr-8 text-right">{card}</div>
-          <div
-            className={`absolute left-1/2 transform -translate-x-1/2 w-6 h-6 ${dotClass} rounded-full border-4 border-white shadow-lg z-10`}
-          ></div>
-          <div className="w-1/2 pl-8">
-            <span className={`text-lg font-bold ${styles.date}`}>{date}</span>
+          <div className="w-full md:w-1/2 md:pr-8 md:text-right min-w-0">
+            <span className={`md:hidden block mb-2 text-lg font-bold ${styles.date}`}>
+              {date}
+            </span>
+            {card}
+          </div>
+          <div className="w-full md:w-1/2 md:pl-8 min-w-0">
+            <span className={`hidden md:inline text-lg font-bold ${styles.date}`}>
+              {date}
+            </span>
           </div>
         </>
       )}
