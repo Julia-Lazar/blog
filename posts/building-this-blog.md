@@ -4,6 +4,7 @@ date: "2025-12-08"
 ---
 
 ![Wooden Mask](/images/woodenmask.jpg)
+[**GitHub Repository**](https://github.com/Julia-Lazar/blog)
 
 Hello! Today I'd like to share how this blog you're reading came to life. It was a great project for learning Next.js, and along the way, I learned many interesting things about React, TypeScript, and integrating external code.
 
@@ -23,8 +24,8 @@ The blog has a simple yet elegant structure:
 
 ```
 my-app/
-├── src/app/          # Application pages
-├── components/       # React components
+├── src/app/         # Application pages
+├── components/      # React components
 ├── lib/             # Utility functions
 ├── posts/           # Posts in Markdown
 └── public/images/   # Images
@@ -80,10 +81,7 @@ The integration process looked like this:
 
 ## Personalization - Deku and Jigglypuff
 
-I wanted to add some personality to the blog, so I placed my favorite characters in the corners:
-
-- **Deku (Wooden Mask)** in the bottom-left corner - with a gradient blend effect that makes it blend into the background
-- **Jigglypuff** in the bottom-right corner - my favorite Pokemon!
+I wanted to add some personality to the blog, so I placed my favorite character **Jigglypuff** in the corners:
 
 I used Next.js `Image` component for optimization:
 
