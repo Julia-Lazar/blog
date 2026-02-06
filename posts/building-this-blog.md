@@ -3,7 +3,6 @@ title: "How I Built This Blog - Next.js, Markdown, and Animated Background"
 date: "2025-12-08"
 ---
 
-![Wooden Mask](/images/woodenmask.jpg)
 [**GitHub Repository**](https://github.com/Julia-Lazar/blog)
 
 Hello! Today I'd like to share how this blog you're reading came to life. It was a great project for learning Next.js, and along the way, I learned many interesting things about React, TypeScript, and integrating external code.
@@ -86,7 +85,17 @@ I wanted to add some personality to the blog, so I placed my favorite character 
 I used Next.js `Image` component for optimization:
 
 ```tsx
-<Image src="/images/deku.png" alt="Wooden Mask" width={200} height={200} />
+<Image
+  src="/images/jiggly.png"
+  alt="Jigglypuff pokemon"
+  width={150}
+  height={150}
+  className="sm:w-[150px] sm:h-[150px] md:w-[200px] md:h-[200px]"
+  style={{
+    mixBlendMode: "normal",
+    background: "transparent",
+  }}
+/>
 ```
 
 ## Layout Component
