@@ -16,6 +16,61 @@ import {
 import { MdApi, MdGroups } from "react-icons/md";
 import { TbBrandMysql } from "react-icons/tb";
 import Image from "next/image";
+import { Timeline } from "@/../components/Timeline";
+import { TimelineItem, TimelineItemProps } from "@/../components/TimelineItem";
+
+const learningPathItems: Array<TimelineItemProps & { id: string }> = [
+  {
+    id: "first-steps",
+    side: "right",
+    date: "~2014",
+    title: "First Steps",
+    description:
+      "First encounter with writing algorithms on paper in school 📝",
+    tone: "purple",
+    dotClassName: "bg-purple-200",
+  },
+  {
+    id: "cs-studies",
+    side: "left",
+    date: "2018",
+    title: "Computer Science Studies",
+    description:
+      "First year of computer science studies - this was when I first took coding seriously 🤓",
+    tone: "pink",
+    dotClassName: "bg-pink-300",
+  },
+  {
+    id: "the-beginning",
+    side: "right",
+    date: "2022",
+    title: "The Beginning",
+    description:
+      "Started my coding journey with HTML, CSS, and JavaScript. Fell in love with creating interactive web experiences.",
+    tone: "purple",
+    dotClassName: "bg-purple-300",
+  },
+  {
+    id: "frontend-foundations",
+    side: "left",
+    date: "2023",
+    title: "Frontend Foundations",
+    description:
+      "Mastered React and component-based architecture. Learned about state management, hooks, and building responsive user interfaces.",
+    tone: "pink",
+    dotClassName: "bg-pink-400",
+  },
+  {
+    id: "advanced-web-dev",
+    side: "right",
+    date: "2024 - Present",
+    title: "Advanced Web Development",
+    description:
+      "Building full-stack applications with Next.js and exploring modern web technologies. Creating this blog to share my journey and help others learn.",
+    tone: "purple",
+    dotClassName: "bg-purple-400",
+  },
+];
 
 export default function LearningJourney() {
   return (
@@ -112,116 +167,11 @@ export default function LearningJourney() {
           <h2 className="text-2xl font-semibold mb-6 text-pink-100 text-center">
             🛣️ My Learning Path
           </h2>
-          <div className="relative max-w-4xl mx-auto">
-            {/* Vertical timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-400 via-pink-400 to-purple-400"></div>
-
-            {/* Timeline items */}
-            <div className="space-y-8">
-              {/* Right side item */}
-              <div className="relative flex items-center">
-                <div className="w-1/2 pr-8 text-right">
-                  <span className="text-lg font-bold text-purple-300">
-                    ~2014
-                  </span>
-                </div>
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-purple-200 rounded-full border-4 border-white shadow-lg z-10"></div>
-                <div className="w-1/2 pl-8">
-                  <div className="bg-gradient-to-br from-purple-500/30 to-pink-500/30 backdrop-blur-sm p-4 rounded-xl border border-purple-300/30 shadow-xl hover:scale-105 transition-transform duration-300">
-                    <h3 className="text-lg font-semibold mb-1 text-purple-200">
-                      First Steps
-                    </h3>
-                    <p className="text-sm text-white">
-                      First encounter with writing algorithms on paper in school
-                      📝
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Left side item */}
-              <div className="relative flex items-center">
-                <div className="w-1/2 pr-8 text-right">
-                  <div className="bg-gradient-to-br from-pink-500/30 to-purple-500/30 backdrop-blur-sm p-4 rounded-xl border border-pink-300/30 shadow-xl hover:scale-105 transition-transform duration-300">
-                    <h3 className="text-lg font-semibold mb-1 text-pink-200">
-                      Computer Science Studies
-                    </h3>
-                    <p className="text-sm text-white">
-                      First year of computer science studies - this was when I
-                      first took coding seriously 🤓
-                    </p>
-                  </div>
-                </div>
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-pink-300 rounded-full border-4 border-white shadow-lg z-10"></div>
-                <div className="w-1/2 pl-8">
-                  <span className="text-lg font-bold text-pink-300">2018</span>
-                </div>
-              </div>
-
-              {/* Right side item */}
-              <div className="relative flex items-center">
-                <div className="w-1/2 pr-8 text-right">
-                  <span className="text-lg font-bold text-purple-300">
-                    2022
-                  </span>
-                </div>
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-purple-300 rounded-full border-4 border-white shadow-lg z-10"></div>
-                <div className="w-1/2 pl-8">
-                  <div className="bg-gradient-to-br from-purple-500/30 to-pink-500/30 backdrop-blur-sm p-4 rounded-xl border border-purple-300/30 shadow-xl hover:scale-105 transition-transform duration-300">
-                    <h3 className="text-lg font-semibold mb-1 text-purple-200">
-                      The Beginning
-                    </h3>
-                    <p className="text-sm text-white">
-                      Started my coding journey with HTML, CSS, and JavaScript.
-                      Fell in love with creating interactive web experiences.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Left side item */}
-              <div className="relative flex items-center">
-                <div className="w-1/2 pr-8 text-right">
-                  <div className="bg-gradient-to-br from-pink-500/30 to-purple-500/30 backdrop-blur-sm p-4 rounded-xl border border-pink-300/30 shadow-xl hover:scale-105 transition-transform duration-300">
-                    <h3 className="text-lg font-semibold mb-1 text-pink-200">
-                      Frontend Foundations
-                    </h3>
-                    <p className="text-sm text-white">
-                      Mastered React and component-based architecture. Learned
-                      about state management, hooks, and building responsive
-                      user interfaces.
-                    </p>
-                  </div>
-                </div>
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-pink-400 rounded-full border-4 border-white shadow-lg z-10"></div>
-                <div className="w-1/2 pl-8">
-                  <span className="text-lg font-bold text-pink-300">2023</span>
-                </div>
-              </div>
-
-              {/* Right side item */}
-              <div className="relative flex items-center">
-                <div className="w-1/2 pr-8 text-right">
-                  <span className="text-lg font-bold text-purple-300">
-                    2024 - Present
-                  </span>
-                </div>
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-purple-400 rounded-full border-4 border-white shadow-lg z-10"></div>
-                <div className="w-1/2 pl-8">
-                  <div className="bg-gradient-to-br from-purple-500/30 to-pink-500/30 backdrop-blur-sm p-4 rounded-xl border border-purple-300/30 shadow-xl hover:scale-105 transition-transform duration-300">
-                    <h3 className="text-lg font-semibold mb-1 text-purple-200">
-                      Advanced Web Development
-                    </h3>
-                    <p className="text-sm text-white">
-                      Building full-stack applications with Next.js and
-                      exploring modern web technologies. Creating this blog to
-                      share my journey and help others learn.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Timeline>
+            {learningPathItems.map(({ id, ...item }) => (
+              <TimelineItem key={id} {...item} />
+            ))}
+          </Timeline>
         </section>
 
         <section className="mb-8 bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
