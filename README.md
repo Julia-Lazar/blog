@@ -1,21 +1,21 @@
 # 📝 Blog
 
-A minimalist blog built with **Next.js** and **TypeScript**, focused on clean content rendering, readability, and good developer experience.
+A minimalist, Markdown-first blog built with **Next.js** and **TypeScript**. It focuses on clean content rendering, readability, and a smooth developer experience.
 
-Posts are written in Markdown and rendered statically, with support for reading time estimation, comments, and a simple layout structure.
+Posts live in `posts/`, render statically, and include reading-time estimation plus a lightweight comments component. UI is composed from reusable components and styled with PostCSS.
 
 ---
 
 ## ✨ Features
 
-- ⚡ Built with **Next.js (App Router)**
-- 🧠 Written in **TypeScript**
-- 📰 Blog posts written in **Markdown**
-- ⏱️ Automatic reading time calculation
-- 💬 Comments component
-- 🧩 Reusable layout and UI components
-- 🧪 Component tests included
-- 🎨 Styled with PostCSS
+- ⚡ **Next.js App Router** foundation
+- 🧠 **TypeScript** throughout
+- 📰 **Markdown** content pipeline
+- ⏱️ **Automatic reading-time** calculation
+- 💬 **Comments** component
+- 🧩 **Reusable layouts & UI components**
+- 🧪 **Component tests**
+- 🎨 **PostCSS** styling
 
 ---
 
@@ -26,7 +26,7 @@ Posts are written in Markdown and rendered statically, with support for reading 
 - **TypeScript**
 - **Markdown**
 - **PostCSS**
-- **Jest / Testing Library** (for component tests)
+- **Vitest / Testing Library**
 
 ---
 
@@ -34,12 +34,12 @@ Posts are written in Markdown and rendered statically, with support for reading 
 
 ```
 .
-├── src/app/ # Next.js app router pages
-├── components/ # Reusable UI components
-├── lib/ # Helpers (posts, reading time, etc.)
-├── posts/ # Markdown blog posts
-├── public/ # Static assets
-├── TESTING.md # Testing documentation
+├── src/app/           # Next.js app router pages
+├── components/        # Reusable UI components
+├── lib/               # Helpers (posts, reading time, etc.)
+├── posts/             # Markdown blog posts
+├── public/            # Static assets
+├── TESTING.md         # Testing documentation
 └── README.md
 ```
 
@@ -51,11 +51,44 @@ Install dependencies:
 
 ```bash
 npm install
-
-npm run dev
-
 ```
 
-### Open your browser at:
+Run the dev server:
 
+```bash
+npm run dev
+```
+
+Open your browser at:
+
+```
 http://localhost:3000
+```
+
+---
+
+## 🧪 Testing
+
+See [TESTING.md](./TESTING.md) for the available test commands and expectations.
+
+---
+
+## 📦 Build
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+Start the production server:
+
+```bash
+npm run start
+```
+
+---
+
+## 📄 License
+
+This project is provided as-is for learning and customization.
