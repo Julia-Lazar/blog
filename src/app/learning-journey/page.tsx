@@ -221,10 +221,7 @@ export default function LearningJourney() {
               Currently diving deep into:
             </p>
             <ul className="space-y-2 ml-0 list-disc text-white">
-              <li>
-                I’m shifting my focus from learning Vue to specializing fully in
-                React.
-              </li>
+              <li>Specializing fully in React.</li>
               <li>
                 Server-side rendering and static site generation with Next.js
               </li>
