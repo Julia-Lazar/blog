@@ -3,7 +3,7 @@ title: "NextPizza Update #2: Storybook, Unit Tests, and more 🍕"
 date: "2026-01-29"
 ---
 
-![API](/images/api.webp)
+[**GitHub Repository**](https://github.com/Julia-Lazar/NextPizza)
 
 ## Backend integration, API, form validation, and more!
 
