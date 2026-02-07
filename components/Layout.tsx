@@ -1,12 +1,27 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const pathname = usePathname();
+  const navLinkClass = (href: string) => {
+    const isActive = pathname === href;
+    return [
+      "text-pink-200 font-semibold transition-all duration-300 no-underline",
+      "hover:text-white hover:underline hover:scale-105",
+      isActive ? "text-white underline scale-105" : "",
+    ]
+      .filter(Boolean)
+      .join(" ");
+  };
+
   return (
     <div className="min-h-screen text-white relative overflow-hidden">
       {/* Animated starry background */}
@@ -25,14 +40,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <nav className="mt-6 text-sm sm:text-base md:text-lg flex flex-wrap justify-center gap-2 sm:gap-0">
             <Link
               href="/"
-              className="mr-3 text-pink-200 hover:text-white font-semibold transition-all duration-300 no-underline hover:underline hover:scale-105"
+              className={`mr-3 ${navLinkClass("/")}`}
             >
               Projects
             </Link>
             <span className="text-purple-300 mx-3 sm:inline">|</span>
             <Link
               href="/learning-journey"
-              className="ml-3 text-pink-200 hover:text-white font-semibold transition-all duration-300 no-underline hover:underline hover:scale-105"
+              className={`ml-3 ${navLinkClass("/learning-journey")}`}
             >
               Learning Journey
             </Link>
