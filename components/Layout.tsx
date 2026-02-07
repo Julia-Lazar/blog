@@ -25,14 +25,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <nav className="mt-6 text-sm sm:text-base md:text-lg flex flex-wrap justify-center gap-2 sm:gap-0">
             <Link
               href="/"
-              className="text-pink-200 hover:text-white font-semibold transition-all duration-300 no-underline hover:underline hover:scale-105"
+              className="mr-3 text-pink-200 hover:text-white font-semibold transition-all duration-300 no-underline hover:underline hover:scale-105"
             >
               Projects
             </Link>
-            <span className="text-purple-300 mx-3 hidden sm:inline">•</span>
+            <span className="text-purple-300 mx-3 sm:inline">|</span>
             <Link
               href="/learning-journey"
-              className="text-pink-200 hover:text-white font-semibold transition-all duration-300 no-underline hover:underline hover:scale-105"
+              className="ml-3 text-pink-200 hover:text-white font-semibold transition-all duration-300 no-underline hover:underline hover:scale-105"
             >
               Learning Journey
             </Link>
