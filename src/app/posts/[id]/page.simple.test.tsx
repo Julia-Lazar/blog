@@ -3,7 +3,6 @@ import { render, screen } from "@testing-library/react";
 import Post, { generateStaticParams } from "./page";
 import { notFound } from "next/navigation";
 
-// Create fake post data for testing
 vi.mock("../../../../lib/posts", () => ({
   getPostData: vi.fn(),
   getSortedPostsData: vi.fn(() => [
@@ -12,7 +11,6 @@ vi.mock("../../../../lib/posts", () => ({
   ]),
 }));
 
-// Replace components with simple versions
 vi.mock("../../../../components/Layout", () => ({
   default: ({ children }: { children: React.ReactNode }) => (
     <div>{children}</div>
@@ -37,26 +35,22 @@ vi.mock("next/navigation", () => ({
   notFound: vi.fn(),
 }));
 
-// Get the mock function so we can control what it returns
 const mockGetPostData = vi.mocked(
   await import("../../../../lib/posts")
 ).getPostData;
 
 describe("Post Page", () => {
   beforeEach(() => {
-    // Reset mocks before each test
     vi.clearAllMocks();
   });
 
   it("generates params for all posts", () => {
-    // This function should return IDs of all posts
     const params = generateStaticParams();
 
     expect(params).toEqual([{ id: "post-1" }, { id: "post-2" }]);
   });
 
   it("shows post title and content", async () => {
-    // Create fake post data
     mockGetPostData.mockResolvedValue({
       id: "test-post",
       title: "My Amazing Post",
@@ -64,14 +58,12 @@ describe("Post Page", () => {
       contentHtml: "<p>Post content here</p>",
     });
 
-    // Render the post page
     const Component = await Post({
       params: Promise.resolve({ id: "test-post" }),
     });
 
     render(Component as React.ReactElement);
 
-    // Check if title appears
     expect(screen.getByText("My Amazing Post")).toBeInTheDocument();
   });
 
@@ -89,10 +81,8 @@ describe("Post Page", () => {
 
     render(Component as React.ReactElement);
 
-    // Find the back link
-    const backLink = screen.getByText(/Powrót/i).closest("a");
+    const backLink = screen.getByText(/Powrot|Powrót|Back/i).closest("a");
 
-    // Check if it goes to home page
     expect(backLink).toHaveAttribute("href", "/");
   });
 
@@ -110,19 +100,16 @@ describe("Post Page", () => {
 
     render(Component as React.ReactElement);
 
-    // Check if comments appear
     expect(screen.getByTestId("comments")).toBeInTheDocument();
   });
 
   it("shows 404 when post does not exist", async () => {
-    // Mock that post doesn't exist
-    mockGetPostData.mockResolvedValue(null as any);
+    mockGetPostData.mockResolvedValue(null as never);
 
     await Post({
       params: Promise.resolve({ id: "missing" }),
     });
 
-    // Check if notFound was called
     expect(notFound).toHaveBeenCalled();
   });
 });

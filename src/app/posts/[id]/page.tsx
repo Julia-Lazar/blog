@@ -24,56 +24,68 @@ export function generateStaticParams() {
 }
 
 export default async function Post({ params }: Params) {
+  const { id } = await params;
+
+  let post;
+
   try {
-    const { id } = await params; // await rozpakowanie Promise
-    const post = await getPostData(id);
-    if (!post) return notFound();
-
-    return (
-      <Layout>
-        <div className="w-full">
-          <nav className="mb-4">
-            <Link
-              href="/"
-              className="inline-block text-white hover:text-pink-100 font-medium bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg border border-pink-300/20 text-sm sm:text-base transition-all duration-300 hover:bg-white/20 no-underline"
-            >
-              ← Back
-            </Link>
-          </nav>
-
-          <article className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl max-w-none bg-gradient-to-br from-purple-900/30 to-pink-900/30 backdrop-blur-xl p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-2xl border border-pink-300/20 overflow-hidden">
-            <header className="mb-4 sm:mb-6">
-              <div className="inline-flex items-center gap-2 sm:gap-3 px-2 sm:px-4 py-2 flex-wrap">
-                <span className="text-xl sm:text-2xl">🎀</span>
-                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight break-words text-white">
-                  {post.title}
-                </h1>
-              </div>
-              <p className="mt-3 text-pink-200 text-xs sm:text-sm">
-                <span aria-hidden>📅</span>{" "}
-                <span className="font-medium">{formatDate(post.date)}</span>
-              </p>
-              <p className="mt-3 text-pink-200 text-xs sm:text-sm">
-                <span aria-hidden>⏰ {post.readTime}</span>{" "}
-              </p>
-            </header>
-
-            <div className="markdown break-words overflow-wrap-anywhere overflow-x-hidden prose-headings:text-pink-100 prose-p:text-white prose-strong:text-purple-200 prose-code:text-pink-100 prose-a:text-pink-200 hover:prose-a:text-pink-100 prose-li:text-white prose-ul:text-white prose-ol:text-white">
-              <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
-            </div>
-
-            <footer className="mt-6 sm:mt-8 text-center">
-              <p className="text-xs sm:text-sm text-pink-100">
-                ✨ Thank you for reading. ✨
-              </p>
-            </footer>
-          </article>
-
-          <Comments />
-        </div>
-      </Layout>
-    );
-  } catch (err) {
+    post = await getPostData(id);
+  } catch {
     return notFound();
   }
+
+  if (!post) return notFound();
+
+  return (
+    <Layout>
+      <div className="w-full">
+        <nav className="mb-6">
+          <Link
+            href="/"
+            className="jiggly-button inline-flex rounded-full px-4 py-3 text-sm font-semibold text-pink-50 no-underline sm:px-5"
+          >
+            Powrót
+          </Link>
+        </nav>
+
+        <article className="jiggly-card relative overflow-hidden rounded-[1.9rem] p-5 sm:p-8 md:p-10">
+          <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-pink-300/10 blur-3xl" />
+          <header className="relative mb-8 space-y-5">
+            <div className="flex flex-wrap gap-2">
+              <span className="jiggly-chip text-[11px] uppercase tracking-[0.22em]">
+                Notebook Entry
+              </span>
+              <span className="jiggly-chip text-sm">{formatDate(post.date)}</span>
+              <span className="jiggly-chip text-sm">
+                {post.readTime || "Quick read"}
+              </span>
+            </div>
+
+            <div className="space-y-4">
+              <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/80">
+                Article View
+              </p>
+              <h1 className="jiggly-section-title font-pixel text-lg leading-[1.9] sm:text-3xl sm:leading-[1.7] lg:text-[2.3rem] lg:leading-[1.55]">
+                {post.title}
+              </h1>
+              <p className="max-w-3xl text-sm leading-7 text-pink-50/82 sm:text-base">
+                A cozy write-up with build notes, lessons learned, and the
+                little details polished into the finished result.
+              </p>
+            </div>
+          </header>
+
+          <div className="markdown prose prose-sm sm:prose lg:prose-lg xl:prose-xl max-w-none break-words overflow-wrap-anywhere overflow-x-hidden">
+            <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+          </div>
+
+          <footer className="mt-8 border-t border-white/10 pt-6 text-center">
+            <p className="text-sm text-pink-100/75">Thank you for reading.</p>
+          </footer>
+        </article>
+
+        <Comments />
+      </div>
+    </Layout>
+  );
 }

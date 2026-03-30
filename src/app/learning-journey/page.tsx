@@ -26,7 +26,7 @@ const learningPathItems: Array<TimelineItemProps & { id: string }> = [
     date: "~2014",
     title: "First Steps",
     description:
-      "First encounter with writing algorithms on paper in school 📝",
+      "My first contact with algorithms at school, when writing logic on paper still felt like solving little puzzles.",
     tone: "purple",
     dotClassName: "bg-purple-200",
   },
@@ -36,7 +36,7 @@ const learningPathItems: Array<TimelineItemProps & { id: string }> = [
     date: "2018",
     title: "Computer Science Studies",
     description:
-      "First year of computer science studies - this was when I first took coding seriously 🤓",
+      "The year I started treating coding seriously and realized software could become more than just a class.",
     tone: "pink",
     dotClassName: "bg-pink-300",
   },
@@ -46,7 +46,7 @@ const learningPathItems: Array<TimelineItemProps & { id: string }> = [
     date: "2022",
     title: "The Beginning",
     description:
-      "Started my coding journey with HTML, CSS, and JavaScript. Fell in love with creating interactive web experiences.",
+      "A deeper start with HTML, CSS, and JavaScript, plus a growing love for interactive interfaces on the web.",
     tone: "purple",
     dotClassName: "bg-purple-300",
   },
@@ -56,7 +56,7 @@ const learningPathItems: Array<TimelineItemProps & { id: string }> = [
     date: "2023",
     title: "Frontend Foundations",
     description:
-      "Mastered React and component-based architecture. Learned about state management, hooks, and building responsive user interfaces.",
+      "A year of React practice, reusable components, hooks, and learning how structure improves both UI and developer flow.",
     tone: "pink",
     dotClassName: "bg-pink-400",
   },
@@ -66,107 +66,198 @@ const learningPathItems: Array<TimelineItemProps & { id: string }> = [
     date: "2024 - Present",
     title: "Advanced Web Development",
     description:
-      "Building full-stack applications with Next.js and exploring modern web technologies. Creating this blog to share my journey and help others learn.",
+      "Building full-stack work with Next.js, polishing frontend systems, and turning this blog into a place to share progress.",
     tone: "purple",
     dotClassName: "bg-purple-400",
   },
+];
+
+const coreTech = [
+  { name: "React", Icon: FaReact, color: "#61DAFB" },
+  { name: "Next.js", Icon: SiNextdotjs, color: "#FFFFFF" },
+  { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
+  { name: "Tailwind CSS", Icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "Node.js", Icon: FaNode, color: "#63B65A" },
+  { name: "Git", Icon: FaGitAlt, color: "#F05032" },
+];
+
+const workedWith = [
+  { name: "REST API", Icon: MdApi, color: "#FF8A5C" },
+  { name: "GraphQL", Icon: SiGraphql, color: "#E10098" },
+  { name: "MySQL", Icon: TbBrandMysql, color: "#6DA7D9" },
+  { name: "Bootstrap", Icon: FaBootstrap, color: "#9A70FF" },
+  { name: "Vue.js", Icon: FaVuejs, color: "#63D0A0" },
+  { name: "Scrum", Icon: MdGroups, color: "#4BC2E6" },
+];
+
+const currentGoals = [
+  "Build and maintain a technical blog to share knowledge.",
+  "Contribute to open-source projects.",
+  "Master advanced TypeScript patterns.",
+  "Explore backend development with Node.js and databases.",
+  "Build projects that solve real-world problems.",
+];
+
+const learningNow = [
+  "Specializing fully in React.",
+  "Server-side rendering and static site generation with Next.js.",
+  "Advanced CSS techniques and animation systems.",
+  "Writing clean, maintainable code.",
+  "Best practices in web performance optimization.",
 ];
 
 export default function LearningJourney() {
   return (
     <Layout>
       <div className="space-y-8">
-        <h1 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-pink-200 via-purple-200 to-pink-100 bg-clip-text text-transparent">
-          My Learning Journey
-        </h1>
-
-        <section className="mb-8 bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-semibold mb-4 text-pink-100">
-            About Me
-          </h2>
-          <div className="flex flex-col md:flex-row gap-6 items-start">
-            <div className="flex-1">
-              <p className="text-base leading-relaxed mb-4 text-white">
-                Hi! 👋 I'm a passionate developer on a continuous journey of
-                learning and growth. This blog is my digital garden 🌱 where I
-                document my experiences, discoveries, and the lessons I've
-                learned along the way in the world of web development.
-              </p>
-              <p className="text-base leading-relaxed mb-4 text-white">
-                I believe in learning by doing 💪, sharing knowledge with the
-                community 🤝, and constantly pushing the boundaries of what I
-                can create with code 💻.
-              </p>
-              <p className="text-base leading-relaxed text-white">
-                When I'm not coding, you'll find me immersed in video games 🎮
-                and board games 🎲, exploring the rich world of Japanese pop
-                culture 🇯🇵✨, or enjoying a good game of tennis 🎾.
-              </p>
-            </div>
-            <div className="md:w-64 w-full flex justify-center md:justify-end">
-              <Image
-                src="/images/the-night-garden-makka-pakka.gif"
-                alt="Makka Pakka"
-                className="rounded-xl shadow-lg border-2 border-pink-300/30 max-w-full h-auto"
-                width={400}
-                height={400}
-              />
+        <section className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="jiggly-card rounded-[1.8rem] p-6 sm:p-8">
+            <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/80 sm:text-xs">
+              Journey Log
+            </p>
+            <h1 className="jiggly-section-title mt-4 font-pixel text-lg leading-[1.9] sm:text-3xl sm:leading-[1.7]">
+              My Learning Journey
+            </h1>
+            <p className="mt-6 text-sm leading-7 text-pink-50/84 sm:text-base">
+              A snapshot of how I learned to build for the web, what I enjoy
+              most today, and the direction I am continuing to grow toward.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <span className="jiggly-chip text-sm">Frontend focus</span>
+              <span className="jiggly-chip text-sm">Continuous learning</span>
+              <span className="jiggly-chip text-sm">Cozy pink aesthetic</span>
             </div>
           </div>
+
+          <section className="jiggly-card rounded-[1.8rem] p-6 sm:p-8">
+            <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/80">
+              About Me
+            </p>
+            <h2 className="mt-4 text-2xl font-semibold text-white sm:text-3xl">
+              About Me
+            </h2>
+            <div className="mt-6 flex flex-col gap-6 md:flex-row md:items-start">
+              <div className="flex-1 space-y-4">
+                <p className="text-sm leading-7 text-pink-50/84 sm:text-base">
+                  Hi! I&apos;m a passionate developer on a continuous journey of
+                  learning and growth. This blog is my digital garden where I
+                  document experiences, discoveries, and lessons from web
+                  development.
+                </p>
+                <p className="text-sm leading-7 text-pink-50/84 sm:text-base">
+                  I believe in learning by doing, sharing knowledge with the
+                  community, and constantly improving the quality of the things
+                  I build.
+                </p>
+                <p className="text-sm leading-7 text-pink-50/84 sm:text-base">
+                  When I&apos;m not coding, you&apos;ll find me immersed in video
+                  games and board games, exploring Japanese pop culture, or
+                  enjoying a good game of tennis.
+                </p>
+              </div>
+
+              <div className="relative mx-auto w-full max-w-[220px] shrink-0">
+                <div className="absolute inset-4 rounded-full bg-pink-300/20 blur-3xl" />
+                <div className="relative rounded-[1.6rem] border border-white/10 bg-white/5 p-3">
+                  <Image
+                    src="/images/the-night-garden-makka-pakka.gif"
+                    alt="Makka Pakka"
+                    className="rounded-[1.2rem] shadow-lg"
+                    width={400}
+                    height={400}
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
         </section>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-pink-100">
-            🧰 My Core Tech Stack
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {[
-              { name: "React", Icon: FaReact, color: "#61DAFB" },
-              { name: "Next.js", Icon: SiNextdotjs, color: "#FFFFFF" },
-              { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
-              { name: "Tailwind CSS", Icon: SiTailwindcss, color: "#06B6D4" },
-              { name: "Node.js", Icon: FaNode, color: "#339933" },
-              { name: "Git", Icon: FaGitAlt, color: "#F05032" },
-            ].map((tech) => (
+        <section className="jiggly-card rounded-[1.8rem] p-6 sm:p-8">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/80">
+                Core Party
+              </p>
+              <h2 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
+                My Core Tech Stack
+              </h2>
+            </div>
+            <p className="max-w-xl text-sm leading-7 text-pink-50/74">
+              The tools I reach for most often when shaping polished frontend
+              experiences.
+            </p>
+          </div>
+
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {coreTech.map((tech) => (
               <div
                 key={tech.name}
-                className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur-sm p-4 rounded-lg text-center font-semibold shadow-lg hover:shadow-pink-500/30 transition-all duration-300 border border-pink-300/20 hover:scale-105 flex items-center justify-center gap-2"
+                className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4 shadow-lg transition-transform duration-200 hover:-translate-y-1"
               >
-                <tech.Icon className="text-2xl" style={{ color: tech.color }} />
-                <span style={{ color: tech.color }}>{tech.name}</span>
+                <div className="flex items-center gap-3">
+                  <tech.Icon className="text-3xl" style={{ color: tech.color }} />
+                  <div>
+                    <p className="text-[11px] uppercase tracking-[0.22em] text-pink-100/65">
+                      Favorite
+                    </p>
+                    <p className="mt-1 text-lg font-semibold" style={{ color: tech.color }}>
+                      {tech.name}
+                    </p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-pink-100">
-            🛠️ Technologies I've Worked With
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {[
-              { name: "REST API", Icon: MdApi, color: "#FF6C37" },
-              { name: "GraphQL", Icon: SiGraphql, color: "#E10098" },
-              { name: "MySQL", Icon: TbBrandMysql, color: "#4479A1" },
-              { name: "Bootstrap", Icon: FaBootstrap, color: "#7952B3" },
-              { name: "Vue.js", Icon: FaVuejs, color: "#4FC08D" },
-              { name: "Scrum", Icon: MdGroups, color: "#009FDA" },
-            ].map((tech) => (
+        <section className="jiggly-card rounded-[1.8rem] p-6 sm:p-8">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/80">
+                Expanded Toolkit
+              </p>
+              <h2 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
+                Technologies I&apos;ve Worked With
+              </h2>
+            </div>
+            <p className="max-w-xl text-sm leading-7 text-pink-50/74">
+              Technologies that shaped how I think about teams, APIs, styling,
+              and product delivery.
+            </p>
+          </div>
+
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {workedWith.map((tech) => (
               <div
                 key={tech.name}
-                className="bg-gradient-to-br from-pink-500/20 to-purple-500/20 backdrop-blur-sm p-4 rounded-lg text-center font-semibold shadow-lg hover:shadow-purple-500/30 transition-all duration-300 border border-purple-300/20 hover:scale-105 flex items-center justify-center gap-2"
+                className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4 shadow-lg transition-transform duration-200 hover:-translate-y-1"
               >
-                <tech.Icon className="text-2xl" style={{ color: tech.color }} />
-                <span style={{ color: tech.color }}>{tech.name}</span>
+                <div className="flex items-center gap-3">
+                  <tech.Icon className="text-3xl" style={{ color: tech.color }} />
+                  <div>
+                    <p className="text-[11px] uppercase tracking-[0.22em] text-pink-100/65">
+                      Worked With
+                    </p>
+                    <p className="mt-1 text-lg font-semibold" style={{ color: tech.color }}>
+                      {tech.name}
+                    </p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="mb-8 bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-semibold mb-6 text-pink-100 text-center">
-            🛣️ My Learning Path
-          </h2>
+        <section className="jiggly-card rounded-[1.8rem] p-6 sm:p-8">
+          <div className="mb-6 text-center">
+            <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/80">
+              Milestones
+            </p>
+            <h2 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
+              My Learning Path
+            </h2>
+          </div>
+
           <Timeline>
             {learningPathItems.map(({ id, ...item }) => (
               <TimelineItem key={id} {...item} />
@@ -174,73 +265,58 @@ export default function LearningJourney() {
           </Timeline>
         </section>
 
-        <section className="mb-8 bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-semibold mb-4 text-pink-100">
-            🎯 Current Goals
-          </h2>
-          <ul className="space-y-3 list-none pl-0">
-            <li className="flex items-start">
-              <span className="text-purple-200 mr-2">✓</span>
-              <span className="text-white">
-                Build and maintain a technical blog to share knowledge
-              </span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-200 mr-2">✓</span>
-              <span className="text-white">
-                Contribute to open-source projects
-              </span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-200 mr-2">✓</span>
-              <span className="text-white">
-                Master advanced TypeScript patterns
-              </span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-200 mr-2">✓</span>
-              <span className="text-white">
-                Explore backend development with Node.js and databases
-              </span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-200 mr-2">✓</span>
-              <span className="text-white">
-                Build projects that solve real-world problems
-              </span>
-            </li>
-          </ul>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-pink-100">
-            👩🏻‍💻 What I'm Learning Now 📓✍🏻💡
-          </h2>
-          <div className="bg-gradient-to-br from-purple-600/20 to-pink-600/20 backdrop-blur-sm p-6 rounded-xl shadow-xl border border-pink-300/20">
-            <p className="text-base mb-3 text-pink-100">
-              Currently diving deep into:
+        <section className="grid gap-4 lg:grid-cols-2">
+          <section className="jiggly-card rounded-[1.8rem] p-6 sm:p-8">
+            <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/80">
+              Current Goals
             </p>
-            <ul className="space-y-2 ml-0 list-disc text-white">
-              <li>Specializing fully in React.</li>
-              <li>
-                Server-side rendering and static site generation with Next.js
-              </li>
-              <li>Advanced CSS techniques and animations</li>
-              <li>Writing clean, maintainable code</li>
-              <li>Best practices in web performance optimization</li>
+            <h2 className="mt-4 text-2xl font-semibold text-white sm:text-3xl">
+              Current Goals
+            </h2>
+            <ul className="mt-6 space-y-3 list-none pl-0">
+              {currentGoals.map((goal) => (
+                <li
+                  key={goal}
+                  className="rounded-[1.2rem] border border-white/10 bg-white/5 px-4 py-3 text-sm leading-7 text-pink-50/82 sm:text-base"
+                >
+                  {goal}
+                </li>
+              ))}
             </ul>
-          </div>
+          </section>
+
+          <section className="jiggly-card rounded-[1.8rem] p-6 sm:p-8">
+            <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/80">
+              What I&apos;m Learning Now
+            </p>
+            <h2 className="mt-4 text-2xl font-semibold text-white sm:text-3xl">
+              What I&apos;m Learning Now
+            </h2>
+            <ul className="mt-6 space-y-3 list-none pl-0">
+              {learningNow.map((item) => (
+                <li
+                  key={item}
+                  className="rounded-[1.2rem] border border-white/10 bg-white/5 px-4 py-3 text-sm leading-7 text-pink-50/82 sm:text-base"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </section>
         </section>
 
-        <section className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-semibold mb-4 text-pink-100">
-            🤝Let's Connect
+        <section className="jiggly-card rounded-[1.8rem] p-6 sm:p-8">
+          <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/80">
+            Let&apos;s Connect
+          </p>
+          <h2 className="mt-4 text-2xl font-semibold text-white sm:text-3xl">
+            Let&apos;s Connect
           </h2>
-          <p className="text-base leading-relaxed text-white">
-            I'm always excited to connect with fellow developers and learners!
-            Whether you want to discuss web development, share ideas, or
-            collaborate on projects, feel free to reach out. Follow my blog for
-            regular updates on my learning journey and technical discoveries.
+          <p className="mt-6 max-w-3xl text-sm leading-7 text-pink-50/82 sm:text-base">
+            I&apos;m always excited to connect with fellow developers and
+            learners. If you want to talk about frontend work, exchange ideas,
+            or follow along with the journey, this blog is where I keep sharing
+            what I&apos;m learning.
           </p>
         </section>
       </div>

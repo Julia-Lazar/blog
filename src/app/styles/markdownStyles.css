@@ -4,33 +4,48 @@
 
 @reference "tailwindcss";
 
-/* Base typography for markdown container */
 .markdown {
-  @apply text-lg leading-relaxed text-purple-900;
+  @apply text-base leading-8 text-pink-50/90 sm:text-lg;
 }
 
-/* Paragraphs and common text blocks */
+.markdown > *:first-child {
+  margin-top: 0;
+}
+
 .markdown p,
 .markdown ul,
 .markdown ol,
-.markdown blockquote {
+.markdown blockquote,
+.markdown pre,
+.markdown table,
+.markdown hr {
   @apply my-6;
 }
 
-/* Headings */
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+  font-family: var(--font-geist-mono), "Lucida Console", monospace;
+  letter-spacing: 0.05em;
+  text-wrap: balance;
+  text-transform: uppercase;
+}
+
 .markdown h1 {
-  @apply text-4xl font-bold mt-14 mb-6 leading-tight text-pink-500;
+  @apply mt-12 mb-6 text-2xl text-pink-100 sm:text-4xl;
+  line-height: 1.7;
 }
 
 .markdown h2 {
-  @apply text-3xl font-semibold mt-12 mb-4 leading-snug text-pink-500;
+  @apply mt-12 mb-5 text-xl text-pink-100 sm:text-3xl;
+  line-height: 1.7;
 }
 
 .markdown h3 {
-  @apply text-2xl font-semibold mt-8 mb-4 leading-snug text-pink-500;
+  @apply mt-10 mb-4 text-lg text-pink-100 sm:text-2xl;
+  line-height: 1.75;
 }
 
-/* Lists */
 .markdown ul {
   @apply list-disc pl-6;
 }
@@ -39,49 +54,52 @@
   @apply list-decimal pl-6;
 }
 
-/* Blockquotes */
+.markdown li {
+  @apply mb-2;
+}
+
 .markdown blockquote {
-  @apply border-l-4 border-pink-300 pl-4 italic text-purple-700;
+  @apply rounded-r-[1.25rem] border-l-4 border-pink-300 px-5 py-3 italic text-pink-50/84;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 183, 223, 0.12),
+    rgba(255, 255, 255, 0.03)
+  );
 }
 
-/* Inline code */
 .markdown :not(pre) > code {
-  @apply px-1 py-0.5 rounded bg-pink-200 text-purple-800 text-sm font-mono;
+  @apply rounded-md border border-white/10 bg-white/8 px-1.5 py-1 text-sm text-pink-100;
+  font-family: var(--font-geist-mono), monospace;
 }
 
-/* Code blocks */
 .markdown pre {
-  @apply p-4 rounded-lg overflow-x-auto text-sm font-mono text-purple-900 border border-pink-200;
+  @apply rounded-[1.25rem] border border-white/10 p-4 text-sm text-pink-50 shadow-xl;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 22%),
+    rgba(9, 2, 14, 0.92);
 }
 
-/* Images */
-.markdown img {
-  @apply my-6 rounded-lg shadow-md mx-auto;
-  max-width: 400px;
-  height: auto;
-  display: block;
+.markdown pre code {
+  @apply bg-transparent p-0 text-inherit;
 }
 
-/* Links */
 .markdown a {
-  @apply text-pink-500 underline hover:text-pink-400 transition-colors duration-200;
+  @apply text-pink-200 underline decoration-pink-300 transition-colors duration-200 hover:text-white;
 }
 
-/* Tables */
 .markdown table {
-  @apply w-full table-auto border-collapse my-6;
+  @apply w-full table-auto border-collapse overflow-hidden rounded-[1rem];
 }
 
 .markdown th,
 .markdown td {
-  @apply border border-pink-200 px-4 py-2 text-left;
+  @apply border border-white/10 px-4 py-3 text-left;
 }
 
 .markdown th {
-  @apply bg-pink-100 font-semibold text-purple-900;
+  @apply bg-white/8 font-semibold text-pink-100;
 }
 
-/* Horizontal rules */
 .markdown hr {
-  @apply border-t border-pink-300 my-8;
+  @apply border-t border-white/10;
 }

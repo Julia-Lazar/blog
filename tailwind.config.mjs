@@ -1,5 +1,7 @@
+import typography from "@tailwindcss/typography";
+
 /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}", // all app folder files
     "./components/**/*.{js,ts,jsx,tsx}", // all components
@@ -22,7 +24,8 @@ export default {
     },
   },
   plugins: [
-    // optional: typography plugin if you want prose classes
-    require("@tailwindcss/typography"),
+    typography,
   ],
 };
+
+export default config;

@@ -9,100 +9,165 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
+const navItems = [
+  { href: "/", label: "Projects" },
+  { href: "/learning-journey", label: "Learning Journey" },
+];
+
+const heroBadges = ["Dreamy UI", "Pink Glow", "Retro Mood"];
+
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const pathname = usePathname();
+
   const navLinkClass = (href: string) => {
     const isActive = pathname === href;
+
     return [
-      "text-pink-200 font-semibold transition-all duration-300 no-underline",
-      "hover:text-white hover:underline hover:scale-105",
-      isActive ? "text-white underline scale-105" : "",
+      "jiggly-button rounded-full px-4 py-3 text-sm font-semibold text-pink-50 no-underline sm:px-5",
+      "hover:text-white",
+      isActive
+        ? "border-pink-100/40 bg-pink-200/15 text-white shadow-[0_14px_30px_rgba(22,0,30,0.28)]"
+        : "text-pink-100/90",
     ]
       .filter(Boolean)
       .join(" ");
   };
 
   return (
-    <div className="min-h-screen text-white relative overflow-hidden">
-      {/* Animated starry background */}
-      <div className="background-container">
-        <div className="stars"></div>
-        <div className="twinkling"></div>
+    <div className="relative min-h-screen text-white">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="jiggly-orb jiggly-orb-pink left-[-4rem] top-16 h-56 w-56 sm:h-72 sm:w-72" />
+        <div className="jiggly-orb jiggly-orb-purple right-[-3rem] top-40 h-44 w-44 sm:h-64 sm:w-64" />
+        <div className="jiggly-orb jiggly-orb-pink bottom-20 left-1/3 h-36 w-36 sm:h-48 sm:w-48" />
       </div>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10 relative z-10">
-        {/* Header */}
-        <header className="mb-8 sm:mb-12 text-center">
-          <div className="inline-block bg-white/10 backdrop-blur-lg rounded-3xl px-8 sm:px-12 py-5 sm:py-6 shadow-2xl mb-4 sm:mb-6 border-2 border-pink-300/30">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg">
-              ✨ Julia's Tech Blog ✨
-            </h1>
+
+      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 py-5 sm:px-6 sm:py-8 lg:px-8">
+        <header className="jiggly-shell jiggly-grid mb-6 rounded-[2rem] sm:mb-8 sm:rounded-[2.5rem]">
+          <div className="grid gap-6 p-5 sm:p-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+            <div className="space-y-6">
+              <div className="flex flex-wrap gap-2">
+                {heroBadges.map((badge) => (
+                  <span
+                    key={badge}
+                    className="jiggly-chip text-[11px] uppercase tracking-[0.22em] text-pink-100/90"
+                  >
+                    {badge}
+                  </span>
+                ))}
+              </div>
+
+              <div className="space-y-4">
+                <p className="font-pixel text-[10px] leading-[1.9] text-pink-100/85 sm:text-xs">
+                  Jigglypuff Mode On
+                </p>
+                <h1 className="jiggly-section-title font-pixel text-lg leading-[1.9] sm:text-3xl sm:leading-[1.75] lg:text-[2.55rem] lg:leading-[1.55]">
+                  Julia&apos;s Tech Blog
+                </h1>
+                <p className="max-w-2xl text-sm leading-7 text-pink-50/85 sm:text-base">
+                  A polished little corner for projects, notes, and learning
+                  milestones with the soft pink charm of Jigglypuff and a retro
+                  Pokemon-inspired vibe.
+                </p>
+              </div>
+
+              <nav className="flex flex-wrap gap-3">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    aria-current={pathname === item.href ? "page" : undefined}
+                    className={navLinkClass(item.href)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            <div className="jiggly-panel rounded-[1.8rem] p-4 sm:p-5">
+              <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_auto] lg:grid-cols-1">
+                <div className="space-y-4">
+                  <div className="rounded-[1.5rem] border border-white/10 bg-white/6 p-4">
+                    <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/85">
+                      Pokedex Entry
+                    </p>
+                    <p className="mt-3 text-sm leading-7 text-pink-50/85">
+                      Building frontend stories that feel warm, clear, and a bit
+                      playful without losing structure or readability.
+                    </p>
+                  </div>
+
+                  <div className="grid gap-3 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3">
+                    <div className="rounded-[1.3rem] border border-white/10 bg-white/6 p-3">
+                      <p className="text-[11px] uppercase tracking-[0.22em] text-pink-100/70">
+                        Palette
+                      </p>
+                      <p className="mt-2 font-medium text-white">Jiggly Pink</p>
+                    </div>
+                    <div className="rounded-[1.3rem] border border-white/10 bg-white/6 p-3">
+                      <p className="text-[11px] uppercase tracking-[0.22em] text-pink-100/70">
+                        Mood
+                      </p>
+                      <p className="mt-2 font-medium text-white">Cozy Retro</p>
+                    </div>
+                    <div className="rounded-[1.3rem] border border-white/10 bg-white/6 p-3">
+                      <p className="text-[11px] uppercase tracking-[0.22em] text-pink-100/70">
+                        Energy
+                      </p>
+                      <p className="mt-2 font-medium text-white">Soft Glow</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative mx-auto flex w-full max-w-[230px] items-center justify-center">
+                  <div className="absolute inset-6 rounded-full bg-pink-300/25 blur-3xl" />
+                  <div className="relative rounded-full border border-white/12 bg-white/6 p-4 shadow-[0_20px_44px_rgba(11,0,16,0.3)]">
+                    <Image
+                      src="/images/jiggly.png"
+                      alt="Jigglypuff"
+                      width={240}
+                      height={240}
+                      priority
+                      className="h-auto w-full drop-shadow-[0_20px_28px_rgba(0,0,0,0.35)]"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <nav className="mt-6 text-sm sm:text-base md:text-lg flex flex-wrap justify-center gap-2 sm:gap-0">
-            <Link
-              href="/"
-              className={`mr-3 ${navLinkClass("/")}`}
-            >
-              Projects
-            </Link>
-            <span className="text-purple-300 mx-3 sm:inline">|</span>
-            <Link
-              href="/learning-journey"
-              className={`ml-3 ${navLinkClass("/learning-journey")}`}
-            >
-              Learning Journey
-            </Link>
-          </nav>
         </header>
 
-        {/* Main content */}
-        <main className="bg-white/10 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8 mb-8 border border-white/20">
-          {children}
+        <main className="jiggly-panel relative flex-1 rounded-[2rem] p-4 sm:rounded-[2.5rem] sm:p-6 md:p-8 lg:p-10">
+          <div className="absolute right-4 top-4 hidden h-24 w-24 rounded-full bg-pink-200/10 blur-3xl sm:block" />
+          <div className="relative z-10">{children}</div>
         </main>
 
-        {/* Footer */}
-        <footer className="mt-16 pt-8 border-t-2 border-pink-400/30 text-center">
-          <p className="text-base text-white font-medium mb-2">
-            Contact:{" "}
-            <a
-              href="mailto:JuliaLazar42@gmail.com"
-              className="text-pink-200 hover:text-white transition-colors underline"
-            >
-              JuliaLazar42@gmail.com
-            </a>
-          </p>
-          <p className="text-sm text-pink-100 font-medium">
-            © {new Date().getFullYear()} Julia Lazar ✨
-          </p>
+        <footer className="relative mt-6 px-2 pb-4 pt-2 text-center">
+          <div className="mx-auto max-w-3xl border-t border-white/10 pt-6 text-pink-100/82">
+            <p className="text-sm sm:text-base">
+              Contact:{" "}
+              <a
+                href="mailto:JuliaLazar42@gmail.com"
+                className="text-pink-100 hover:text-white"
+              >
+                JuliaLazar42@gmail.com
+              </a>
+            </p>
+            <p className="mt-2 text-xs uppercase tracking-[0.24em] text-pink-100/60 sm:text-sm">
+              Copyright {new Date().getFullYear()} Julia Lazar
+            </p>
+          </div>
+
+          <div className="pointer-events-none absolute -bottom-4 right-0 hidden opacity-75 lg:block">
+            <Image
+              src="/images/jiggly.png"
+              alt="Decorative Jigglypuff"
+              width={170}
+              height={170}
+              className="h-auto w-[170px] rotate-[-8deg]"
+            />
+          </div>
         </footer>
-      </div>
-
-      {/* Jigglypuff images at bottom corners of screen */}
-      <div className="absolute bottom-0 left-0 z-10 pointer-events-none hidden sm:block">
-        <Image
-          src="/images/jigglypuff2.png"
-          alt="Jigglypuff 2"
-          width={150}
-          height={150}
-          className="sm:w-[150px] sm:h-[150px] md:w-[200px] md:h-[200px]"
-          style={{
-            mixBlendMode: "normal",
-            background: "transparent",
-          }}
-        />
-      </div>
-
-      <div className="absolute bottom-0 right-0 z-10 pointer-events-none hidden sm:block">
-        <Image
-          src="/images/jiggly.png"
-          alt="Jigglypuff"
-          width={150}
-          height={150}
-          className="sm:w-[150px] sm:h-[150px] md:w-[200px] md:h-[200px]"
-          style={{
-            mixBlendMode: "normal",
-            background: "transparent",
-          }}
-        />
       </div>
     </div>
   );
