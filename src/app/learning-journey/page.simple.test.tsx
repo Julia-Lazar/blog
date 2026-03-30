@@ -21,7 +21,9 @@ describe("Learning Journey Page", () => {
     render(<LearningJourney />);
 
     // Check for section heading and some content
-    expect(screen.getByText("About Me")).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "About Me", level: 2 })
+    ).toBeInTheDocument();
     expect(screen.getByText(/passionate developer/i)).toBeInTheDocument();
   });
 

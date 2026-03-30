@@ -59,3 +59,21 @@ npm run dev
 ### Open your browser at:
 
 http://localhost:3000
+
+## Giscus comments
+
+The blog comments widget is powered by Giscus and can be configured with
+public runtime variables:
+
+```bash
+NEXT_PUBLIC_GISCUS_REPO=Julia-Lazar/blog
+NEXT_PUBLIC_GISCUS_REPO_ID=R_kgDORGyF4w
+NEXT_PUBLIC_GISCUS_CATEGORY=General
+# NEXT_PUBLIC_GISCUS_CATEGORY_ID=
+NEXT_PUBLIC_GISCUS_MAPPING=pathname
+NEXT_PUBLIC_GISCUS_THEME=preferred_color_scheme
+NEXT_PUBLIC_GISCUS_LANG=pl
+```
+
+You can copy the values from `.env.example` and override them in `.env.local`
+if the GitHub Discussions setup changes.
