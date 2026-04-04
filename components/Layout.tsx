@@ -10,8 +10,12 @@ interface LayoutProps {
 }
 
 const navItems = [
-  { href: "/", label: "Projects" },
-  { href: "/learning-journey", label: "Learning Journey" },
+  { href: "/#projects", activePath: "/", label: "Projects" },
+  {
+    href: "/learning-journey#about",
+    activePath: "/learning-journey",
+    label: "Learning Journey",
+  },
 ];
 
 const heroBadges = ["Dreamy UI", "Pink Glow", "Retro Mood"];
@@ -19,8 +23,8 @@ const heroBadges = ["Dreamy UI", "Pink Glow", "Retro Mood"];
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const pathname = usePathname();
 
-  const navLinkClass = (href: string) => {
-    const isActive = pathname === href;
+  const navLinkClass = (activePath: string) => {
+    const isActive = pathname === activePath;
 
     return [
       "jiggly-button rounded-full px-4 py-3 text-sm font-semibold text-pink-50 no-underline sm:px-5",
@@ -37,7 +41,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className="relative min-h-screen text-white">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="jiggly-orb jiggly-orb-pink left-[-4rem] top-16 h-56 w-56 sm:h-72 sm:w-72" />
-        <div className="jiggly-orb jiggly-orb-purple right-[-3rem] top-40 h-44 w-44 sm:h-64 sm:w-64" />
+        <div className="jiggly-orb jiggly-orb-blush right-[-3rem] top-40 h-44 w-44 sm:h-64 sm:w-64" />
         <div className="jiggly-orb jiggly-orb-pink bottom-20 left-1/3 h-36 w-36 sm:h-48 sm:w-48" />
       </div>
 
@@ -75,8 +79,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   <Link
                     key={item.href}
                     href={item.href}
-                    aria-current={pathname === item.href ? "page" : undefined}
-                    className={navLinkClass(item.href)}
+                    aria-current={
+                      pathname === item.activePath ? "page" : undefined
+                    }
+                    className={navLinkClass(item.activePath)}
                   >
                     {item.label}
                   </Link>
