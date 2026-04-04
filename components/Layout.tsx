@@ -127,7 +127,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
                 <div className="relative mx-auto flex w-full max-w-[230px] items-center justify-center">
                   <div className="absolute inset-6 rounded-full bg-pink-300/25 blur-3xl" />
-                  <div className="relative rounded-full border border-white/12 bg-white/6 p-4 shadow-[0_20px_44px_rgba(11,0,16,0.3)]">
+                  <div className="relative">
                     <Image
                       src="/images/jiggly.png"
                       alt="Jigglypuff"

@@ -20,60 +20,15 @@ export default function Home() {
   return (
     <Layout>
       <div className="space-y-8">
-        <section className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="jiggly-card rounded-[1.8rem] p-6 sm:p-8">
-            <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/80 sm:text-xs">
-              Dreamy Dispatch
-            </p>
-            <h2 className="jiggly-section-title mt-4 font-pixel text-lg leading-[1.9] sm:text-3xl sm:leading-[1.7]">
-              Latest Posts
-            </h2>
-            <p className="mt-6 max-w-2xl text-sm leading-7 text-pink-50/82 sm:text-base">
-              Fresh notes from the blog, wrapped in a cleaner Jigglypuff-inspired
-              layout with softer glow, better hierarchy, and easier-to-scan post
-              cards.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+        <section className="rounded-[1.8rem] bg-white/5 px-4 py-3 sm:px-6 sm:py-4">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="jiggly-chip text-sm">Total posts: {posts.length}</span>
+            {newestPost ? (
               <span className="jiggly-chip text-sm">
-                Total posts: {posts.length}
+                Newest drop: {formatDate(newestPost.date)}
               </span>
-              {newestPost ? (
-                <span className="jiggly-chip text-sm">
-                  Newest drop: {formatDate(newestPost.date)}
-                </span>
-              ) : null}
-            </div>
+            ) : null}
           </div>
-
-          <aside className="jiggly-card rounded-[1.8rem] p-5 sm:p-6">
-            <div className="grid gap-5 sm:grid-cols-[auto_1fr] lg:grid-cols-1">
-              <div className="relative mx-auto flex w-full max-w-[180px] items-center justify-center">
-                <div className="absolute inset-4 rounded-full bg-pink-300/20 blur-3xl" />
-                <Image
-                  src="/images/jiggly.png"
-                  alt="Jigglypuff singing"
-                  width={190}
-                  height={190}
-                  className="relative h-auto w-full drop-shadow-[0_18px_24px_rgba(0,0,0,0.35)]"
-                />
-              </div>
-
-              <div className="space-y-3">
-                <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/82">
-                  Current Vibe
-                </p>
-                <p className="text-sm leading-7 text-pink-50/82">
-                  Cozy frontend notes, retro-inspired typography, and candy-pink
-                  highlights that make the blog feel more intentional.
-                </p>
-                <div className="rounded-[1.35rem] border border-white/10 bg-white/5 p-4 text-sm leading-7 text-pink-50/78">
-                  Pixel headings for the Pokemon mood, brighter cards for better
-                  contrast, and calmer spacing so each post has more room to
-                  breathe.
-                </div>
-              </div>
-            </div>
-          </aside>
         </section>
 
         {posts.length === 0 ? (

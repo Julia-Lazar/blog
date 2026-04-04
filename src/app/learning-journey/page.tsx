@@ -127,6 +127,19 @@ export default function LearningJourney() {
               <span className="jiggly-chip text-sm">Continuous learning</span>
               <span className="jiggly-chip text-sm">Cozy pink aesthetic</span>
             </div>
+
+            <div className="relative mt-6 mx-auto w-full max-w-[240px] overflow-hidden rounded-[1.6rem]">
+              <div className="absolute inset-4 rounded-full bg-pink-300/20 blur-3xl" />
+              <div className="relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5 p-3">
+                <Image
+                  src="/images/JigglyCake.jpg"
+                  alt="Jigglypuff cake"
+                  className="block h-auto w-full rounded-[1.2rem] object-contain shadow-lg"
+                  width={400}
+                  height={400}
+                />
+              </div>
+            </div>
           </div>
 
           <section
@@ -195,15 +208,12 @@ export default function LearningJourney() {
             {coreTech.map((tech) => (
               <div
                 key={tech.name}
-                className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4 shadow-lg transition-transform duration-200 hover:-translate-y-1"
+                className="flex min-h-[76px] items-center justify-center rounded-[1.5rem] border border-white/10 bg-white/5 p-3 shadow-lg transition-transform duration-200 hover:-translate-y-1"
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center gap-3 text-center">
                   <tech.Icon className="text-3xl" style={{ color: tech.color }} />
-                  <div>
-                    <p className="text-[11px] uppercase tracking-[0.22em] text-pink-100/65">
-                      Favorite
-                    </p>
-                    <p className="mt-1 text-lg font-semibold" style={{ color: tech.color }}>
+                  <div className="text-center">
+                    <p className="text-lg font-semibold" style={{ color: tech.color }}>
                       {tech.name}
                     </p>
                   </div>
@@ -233,15 +243,12 @@ export default function LearningJourney() {
             {workedWith.map((tech) => (
               <div
                 key={tech.name}
-                className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4 shadow-lg transition-transform duration-200 hover:-translate-y-1"
+                className="flex min-h-[76px] items-center justify-center rounded-[1.5rem] border border-white/10 bg-white/5 p-3 shadow-lg transition-transform duration-200 hover:-translate-y-1"
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center gap-3 text-center">
                   <tech.Icon className="text-3xl" style={{ color: tech.color }} />
-                  <div>
-                    <p className="text-[11px] uppercase tracking-[0.22em] text-pink-100/65">
-                      Worked With
-                    </p>
-                    <p className="mt-1 text-lg font-semibold" style={{ color: tech.color }}>
+                  <div className="text-center">
+                    <p className="text-lg font-semibold" style={{ color: tech.color }}>
                       {tech.name}
                     </p>
                   </div>
