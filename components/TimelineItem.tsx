@@ -1,7 +1,7 @@
 import React from "react";
 
 type TimelineSide = "left" | "right";
-type TimelineTone = "purple" | "pink";
+type TimelineTone = "rose" | "pink";
 
 export type TimelineItemProps = {
   side: TimelineSide;
@@ -21,12 +21,12 @@ export function TimelineItem({
   dotClassName,
 }: TimelineItemProps) {
   const toneStyles = {
-    purple: {
-      date: "text-purple-100/80",
-      title: "text-purple-100",
+    rose: {
+      date: "text-rose-100/80",
+      title: "text-rose-50",
       card:
-        "border-purple-200/15 bg-[linear-gradient(145deg,rgba(209,177,255,0.12),rgba(53,17,65,0.78))]",
-      dot: "bg-purple-200",
+        "border-rose-200/15 bg-[linear-gradient(145deg,rgba(255,205,226,0.16),rgba(83,24,48,0.78))]",
+      dot: "bg-rose-200",
     },
     pink: {
       date: "text-pink-100/80",

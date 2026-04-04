@@ -27,8 +27,8 @@ const learningPathItems: Array<TimelineItemProps & { id: string }> = [
     title: "First Steps",
     description:
       "My first contact with algorithms at school, when writing logic on paper still felt like solving little puzzles.",
-    tone: "purple",
-    dotClassName: "bg-purple-200",
+    tone: "rose",
+    dotClassName: "bg-rose-200",
   },
   {
     id: "cs-studies",
@@ -47,8 +47,8 @@ const learningPathItems: Array<TimelineItemProps & { id: string }> = [
     title: "The Beginning",
     description:
       "A deeper start with HTML, CSS, and JavaScript, plus a growing love for interactive interfaces on the web.",
-    tone: "purple",
-    dotClassName: "bg-purple-300",
+    tone: "rose",
+    dotClassName: "bg-rose-300",
   },
   {
     id: "frontend-foundations",
@@ -67,8 +67,8 @@ const learningPathItems: Array<TimelineItemProps & { id: string }> = [
     title: "Advanced Web Development",
     description:
       "Building full-stack work with Next.js, polishing frontend systems, and turning this blog into a place to share progress.",
-    tone: "purple",
-    dotClassName: "bg-purple-400",
+    tone: "rose",
+    dotClassName: "bg-rose-400",
   },
 ];
 
@@ -129,15 +129,18 @@ export default function LearningJourney() {
             </div>
           </div>
 
-          <section className="jiggly-card rounded-[1.8rem] p-6 sm:p-8">
+          <section
+            id="about"
+            className="jiggly-card scroll-mt-6 rounded-[1.8rem] p-6 sm:scroll-mt-8 sm:p-8"
+          >
             <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/80">
               About Me
             </p>
             <h2 className="mt-4 text-2xl font-semibold text-white sm:text-3xl">
               About Me
             </h2>
-            <div className="mt-6 flex flex-col gap-6 md:flex-row md:items-start">
-              <div className="flex-1 space-y-4">
+            <div className="mt-6 space-y-6">
+              <div className="space-y-4">
                 <p className="text-sm leading-7 text-pink-50/84 sm:text-base">
                   Hi! I&apos;m a passionate developer on a continuous journey of
                   learning and growth. This blog is my digital garden where I
@@ -156,13 +159,13 @@ export default function LearningJourney() {
                 </p>
               </div>
 
-              <div className="relative mx-auto w-full max-w-[220px] shrink-0">
+              <div className="relative mx-auto w-full max-w-[220px] overflow-hidden rounded-[1.6rem]">
                 <div className="absolute inset-4 rounded-full bg-pink-300/20 blur-3xl" />
-                <div className="relative rounded-[1.6rem] border border-white/10 bg-white/5 p-3">
+                <div className="relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5 p-3">
                   <Image
                     src="/images/the-night-garden-makka-pakka.gif"
                     alt="Makka Pakka"
-                    className="rounded-[1.2rem] shadow-lg"
+                    className="block h-auto w-full rounded-[1.2rem] object-contain shadow-lg"
                     width={400}
                     height={400}
                   />

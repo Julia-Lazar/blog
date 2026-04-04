@@ -12,7 +12,7 @@ export function Timeline({ children, className }: TimelineProps) {
         className ?? ""
       }`.trim()}
     >
-      <div className="absolute left-[var(--timeline-x)] hidden h-full w-px -translate-x-1/2 bg-gradient-to-b from-pink-200/20 via-pink-200/70 to-purple-200/20 md:block" />
+      <div className="absolute left-[var(--timeline-x)] hidden h-full w-px -translate-x-1/2 bg-gradient-to-b from-pink-200/20 via-pink-300/70 to-rose-200/20 md:block" />
       <div className="space-y-5 md:space-y-6">{children}</div>
     </div>
   );

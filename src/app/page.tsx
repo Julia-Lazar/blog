@@ -77,11 +77,17 @@ export default function Home() {
         </section>
 
         {posts.length === 0 ? (
-          <div className="jiggly-card rounded-[1.8rem] p-6 text-sm text-pink-50/80 sm:p-8 sm:text-base">
+          <div
+            id="projects"
+            className="jiggly-card scroll-mt-6 rounded-[1.8rem] p-6 text-sm text-pink-50/80 sm:scroll-mt-8 sm:p-8 sm:text-base"
+          >
             No posts yet. This dreamy notebook is waiting for the next entry.
           </div>
         ) : (
-          <ul className="space-y-4 list-none pl-0">
+          <ul
+            id="projects"
+            className="space-y-4 list-none scroll-mt-6 pl-0 sm:scroll-mt-8"
+          >
             {posts.map((post, index) => {
               const isFeatured = index === 0 || post.id === "boredom";
               const postTitle =
