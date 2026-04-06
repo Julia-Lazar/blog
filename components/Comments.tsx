@@ -1,18 +1,27 @@
 "use client";
 
 import Giscus from "@giscus/react";
-import type { AvailableLanguage, Mapping, Theme } from "@giscus/react";
+import type {
+  AvailableLanguage,
+  Mapping,
+  Repo,
+  Theme,
+} from "@giscus/react";
 
-const DEFAULT_GISCUS_REPO = "Julia-Lazar/blog";
+const DEFAULT_GISCUS_REPO: Repo = "Julia-Lazar/blog";
 const DEFAULT_GISCUS_REPO_ID = "R_kgDORGyF4w";
 const DEFAULT_GISCUS_CATEGORY = "General";
 const DEFAULT_GISCUS_MAPPING: Mapping = "pathname";
 const DEFAULT_GISCUS_THEME: Theme = "preferred_color_scheme";
 const DEFAULT_GISCUS_LANGUAGE: AvailableLanguage = "pl";
 
+function isRepo(value: string | undefined): value is Repo {
+  return Boolean(value && value.includes("/"));
+}
+
 export default function Comments() {
-  const repo =
-    process.env.NEXT_PUBLIC_GISCUS_REPO?.trim() || DEFAULT_GISCUS_REPO;
+  const repoEnv = process.env.NEXT_PUBLIC_GISCUS_REPO?.trim();
+  const repo = isRepo(repoEnv) ? repoEnv : DEFAULT_GISCUS_REPO;
   const repoId =
     process.env.NEXT_PUBLIC_GISCUS_REPO_ID?.trim() || DEFAULT_GISCUS_REPO_ID;
   const category =
