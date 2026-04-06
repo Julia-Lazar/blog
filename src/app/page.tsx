@@ -53,7 +53,7 @@ export default function Home() {
               return (
                 <li key={post.id}>
                   <Link href={`/posts/${post.id}`} className="block no-underline">
-                    <article className="jiggly-card group rounded-[1.7rem] p-5 sm:p-6">
+                    <article className="jiggly-card jiggly-card-interactive group rounded-[1.7rem] p-5 sm:p-6">
                       <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
                         <div className="min-w-0 space-y-4">
                           <div className="flex flex-wrap gap-2">

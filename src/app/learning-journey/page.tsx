@@ -63,12 +63,22 @@ const learningPathItems: Array<TimelineItemProps & { id: string }> = [
   {
     id: "advanced-web-dev",
     side: "right",
-    date: "2024 - Present",
+    date: "2024 - 2026",
     title: "Advanced Web Development",
     description:
       "Building full-stack work with Next.js, polishing frontend systems, and turning this blog into a place to share progress.",
     tone: "rose",
     dotClassName: "bg-rose-400",
+  },
+  {
+    id: "qa-engineer-internship",
+    side: "left",
+    date: "2026",
+    title: "QA Engineer Internship",
+    description:
+      "A new chapter focused on quality, testing, and learning how to build more reliable products by thinking carefully about edge cases, bugs, and user experience.",
+    tone: "pink",
+    dotClassName: "bg-pink-400",
   },
 ];
 
@@ -96,6 +106,7 @@ const currentGoals = [
   "Master advanced TypeScript patterns.",
   "Explore backend development with Node.js and databases.",
   "Build projects that solve real-world problems.",
+  "Become a great QA engineer.",
 ];
 
 const learningNow = [
@@ -104,6 +115,7 @@ const learningNow = [
   "Advanced CSS techniques and animation systems.",
   "Writing clean, maintainable code.",
   "Best practices in web performance optimization.",
+  "QA engineering.",
 ];
 
 export default function LearningJourney() {
@@ -166,9 +178,9 @@ export default function LearningJourney() {
                   I build.
                 </p>
                 <p className="text-sm leading-7 text-pink-50/84 sm:text-base">
-                  When I&apos;m not coding, you&apos;ll find me immersed in video
-                  games and board games, exploring Japanese pop culture, or
-                  enjoying a good game of tennis.
+                  When I&apos;m not coding, you&apos;ll find me immersed in
+                  video games and board games, exploring Japanese pop culture,
+                  or enjoying a good game of tennis.
                 </p>
               </div>
 
@@ -208,12 +220,18 @@ export default function LearningJourney() {
             {coreTech.map((tech) => (
               <div
                 key={tech.name}
-                className="flex min-h-[76px] items-center justify-center rounded-[1.5rem] border border-white/10 bg-white/5 p-3 shadow-lg transition-transform duration-200 hover:-translate-y-1"
+                className="flex min-h-[76px] items-center justify-center rounded-[1.5rem] border border-white/10 bg-white/5 p-3 shadow-lg"
               >
                 <div className="flex items-center justify-center gap-3 text-center">
-                  <tech.Icon className="text-3xl" style={{ color: tech.color }} />
+                  <tech.Icon
+                    className="text-3xl"
+                    style={{ color: tech.color }}
+                  />
                   <div className="text-center">
-                    <p className="text-lg font-semibold" style={{ color: tech.color }}>
+                    <p
+                      className="text-lg font-semibold"
+                      style={{ color: tech.color }}
+                    >
                       {tech.name}
                     </p>
                   </div>
@@ -243,12 +261,18 @@ export default function LearningJourney() {
             {workedWith.map((tech) => (
               <div
                 key={tech.name}
-                className="flex min-h-[76px] items-center justify-center rounded-[1.5rem] border border-white/10 bg-white/5 p-3 shadow-lg transition-transform duration-200 hover:-translate-y-1"
+                className="flex min-h-[76px] items-center justify-center rounded-[1.5rem] border border-white/10 bg-white/5 p-3 shadow-lg"
               >
                 <div className="flex items-center justify-center gap-3 text-center">
-                  <tech.Icon className="text-3xl" style={{ color: tech.color }} />
+                  <tech.Icon
+                    className="text-3xl"
+                    style={{ color: tech.color }}
+                  />
                   <div className="text-center">
-                    <p className="text-lg font-semibold" style={{ color: tech.color }}>
+                    <p
+                      className="text-lg font-semibold"
+                      style={{ color: tech.color }}
+                    >
                       {tech.name}
                     </p>
                   </div>
