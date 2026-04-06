@@ -166,7 +166,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
           <div className="pointer-events-none absolute -bottom-4 right-0 hidden opacity-75 lg:block">
             <Image
-              src="/images/jiggly.png"
+              src="/images/jigglypuff2.png"
               alt="Decorative Jigglypuff"
               width={170}
               height={170}
