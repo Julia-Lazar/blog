@@ -103,6 +103,12 @@ a {
   text-underline-offset: 0.2em;
 }
 
+a[href],
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]) {
+  cursor: pointer;
+}
+
 ::selection {
   background: rgba(255, 102, 179, 0.5);
   color: #fff;
