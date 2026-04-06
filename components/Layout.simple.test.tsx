@@ -20,7 +20,9 @@ describe("Layout Component", () => {
       </Layout>,
     );
 
-    expect(screen.getByText(/Julia's Tech Blog/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Julia Lazar's miscellaneous blog/i),
+    ).toBeInTheDocument();
   });
 
   it("shows navigation menu", () => {

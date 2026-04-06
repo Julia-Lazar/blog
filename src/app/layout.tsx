@@ -4,7 +4,7 @@ import "./styles/markdownStyles.css";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  title: "Julia's Tech Blog",
+  title: "Julia Lazar's miscellaneous blog",
   description:
     "Cozy notes about web development, projects, and learning journeys in a Jigglypuff-inspired pink universe.",
 };

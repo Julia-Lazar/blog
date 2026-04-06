@@ -65,7 +65,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   Jigglypuff Mode On
                 </p>
                 <h1 className="jiggly-section-title font-pixel text-lg leading-[1.9] sm:text-3xl sm:leading-[1.75] lg:text-[2.55rem] lg:leading-[1.55]">
-                  Julia&apos;s Tech Blog
+                  Julia Lazar&apos;s miscellaneous blog
                 </h1>
                 <p className="max-w-2xl text-sm leading-7 text-pink-50/85 sm:text-base">
                   A polished little corner for projects, notes, and learning
