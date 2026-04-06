@@ -200,7 +200,10 @@ export default function LearningJourney() {
           </section>
         </section>
 
-        <section className="jiggly-card rounded-[1.8rem] p-6 sm:p-8">
+        <section
+          id="tech-stack"
+          className="jiggly-card scroll-mt-6 rounded-[1.8rem] p-6 sm:scroll-mt-8 sm:p-8"
+        >
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/80">
