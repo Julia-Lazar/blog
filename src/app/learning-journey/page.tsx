@@ -128,15 +128,15 @@ export default function LearningJourney() {
               <span className="jiggly-chip text-sm">Cozy pink aesthetic</span>
             </div>
 
-            <div className="relative mt-6 mx-auto w-full max-w-[240px] overflow-hidden rounded-[1.6rem]">
+            <div className="relative mt-6 mx-auto w-full max-w-[320px] overflow-hidden rounded-[1.6rem]">
               <div className="absolute inset-4 rounded-full bg-pink-300/20 blur-3xl" />
               <div className="relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5 p-3">
                 <Image
-                  src="/images/JigglyCake.jpg"
-                  alt="Jigglypuff cake"
-                  className="block h-auto w-full rounded-[1.2rem] object-contain shadow-lg"
-                  width={400}
-                  height={400}
+                  src="/images/JigglyStudy.jpg"
+                  alt="JigglyStudy"
+                  className="block h-auto w-full rounded-[1.2rem] object-contain shadow-lg [transform:scaleX(-1)]"
+                  width={520}
+                  height={520}
                 />
               </div>
             </div>
