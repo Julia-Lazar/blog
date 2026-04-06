@@ -93,7 +93,7 @@ export default function PostsDirectory({ posts }: { posts: PostMeta[] }) {
 
   return (
     <div id="projects" className="space-y-6 scroll-mt-6 sm:scroll-mt-8">
-      <section className="jiggly-card rounded-[1.8rem] p-6 sm:p-8">
+      <section className="jiggly-card rounded-[1.8rem] border-pink-200/35 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),transparent_28%),linear-gradient(145deg,rgba(255,152,210,0.34),rgba(117,24,77,0.9))] shadow-[0_22px_54px_rgba(32,0,36,0.34)] p-6 sm:p-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-3">
             <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/80">
