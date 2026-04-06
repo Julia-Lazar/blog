@@ -10,6 +10,7 @@ export interface PostMeta {
   title: string;
   date: string;
   readTime: string;
+  readTimeMinutes: number;
 }
 
 const postsDirectory = path.join(process.cwd(), "posts");
@@ -42,6 +43,7 @@ export function getSortedPostsData(): PostMeta[] {
       title: String(data.title ?? ""),
       date: String(data.date ?? ""),
       readTime: readTime.text,
+      readTimeMinutes: readTime.minutes,
     };
   });
 
