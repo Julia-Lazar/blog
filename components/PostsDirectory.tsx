@@ -92,19 +92,18 @@ export default function PostsDirectory({ posts }: { posts: PostMeta[] }) {
   });
 
   return (
-    <div id="projects" className="space-y-6 scroll-mt-6 sm:scroll-mt-8">
+    <div id="posts" className="space-y-6 scroll-mt-6 sm:scroll-mt-8">
       <section className="jiggly-card rounded-[1.8rem] border-pink-200/35 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),transparent_28%),linear-gradient(145deg,rgba(255,152,210,0.34),rgba(117,24,77,0.9))] shadow-[0_22px_54px_rgba(32,0,36,0.34)] p-6 sm:p-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-3">
             <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/80">
-              Explore Posts
+              Posts
             </p>
             <h2 className="text-2xl font-semibold text-white sm:text-3xl">
-              Browse the notebook your way
+              Sort through the posts
             </h2>
             <p className="max-w-2xl text-sm leading-7 text-pink-50/78 sm:text-base">
-              Reorder entries by date or reading time, then narrow the list to
-              featured notes or notebook entries when you want a cleaner view.
+              Sort by date or reading time, or filter the posts.
             </p>
           </div>
         </div>
@@ -152,73 +151,70 @@ export default function PostsDirectory({ posts }: { posts: PostMeta[] }) {
 
       {sortedPosts.length === 0 ? (
         <section className="jiggly-card rounded-[1.8rem] p-6 text-sm leading-7 text-pink-50/80 sm:p-8 sm:text-base">
-          No posts match the current filter yet.
+          Nothing matches this filter yet.
         </section>
       ) : (
         <ul className="space-y-4 list-none pl-0">
-        {sortedPosts.map((post, index) => {
-          const isFeatured = isFeaturedPost(post);
-          const postTitle =
-            post.id === "boredom"
-              ? "How to deal with a little boredom and lack of motivation?"
-              : post.title;
+          {sortedPosts.map((post, index) => {
+            const isFeatured = isFeaturedPost(post);
+            const postTitle =
+              post.id === "boredom"
+                ? "How to deal with a little boredom and lack of motivation?"
+                : post.title;
 
-          return (
-            <li key={post.id}>
-              <Link href={`/posts/${post.id}`} className="block no-underline">
-                <article className="jiggly-card jiggly-card-interactive group rounded-[1.7rem] p-5 sm:p-6">
-                  <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-                    <div className="min-w-0 space-y-4">
-                      <div className="flex flex-wrap gap-2">
-                        <span className="jiggly-chip text-[11px] uppercase tracking-[0.22em]">
-                          {isFeatured ? "Featured Note" : "Notebook Entry"}
-                        </span>
-                        <span className="jiggly-chip text-sm">
-                          {formatDate(post.date)}
-                        </span>
-                        <span className="jiggly-chip text-sm">
-                          {post.readTime || "Quick read"}
-                        </span>
-                      </div>
+            return (
+              <li key={post.id}>
+                <Link href={`/posts/${post.id}`} className="block no-underline">
+                  <article className="jiggly-card jiggly-card-interactive group rounded-[1.7rem] p-5 sm:p-6">
+                    <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+                      <div className="min-w-0 space-y-4">
+                        <div className="flex flex-wrap gap-2">
+                          <span className="jiggly-chip text-[11px] uppercase tracking-[0.22em]">
+                            {isFeatured ? "Featured Note" : "Notebook Entry"}
+                          </span>
+                          <span className="jiggly-chip text-sm">
+                            {formatDate(post.date)}
+                          </span>
+                          <span className="jiggly-chip text-sm">
+                            {post.readTime || "Quick read"}
+                          </span>
+                        </div>
 
-                      <div className="flex items-start gap-4">
-                        {post.id === "boredom" ? (
-                          <Image
-                            src="/images/skype-mad.gif"
-                            alt="Decorative mood icon"
-                            width={68}
-                            height={68}
-                            className="hidden rounded-2xl border border-white/10 shadow-lg sm:block"
-                          />
-                        ) : null}
+                        <div className="flex items-start gap-4">
+                          {post.id === "boredom" ? (
+                            <Image
+                              src="/images/skype-mad.gif"
+                              alt="Decorative mood icon"
+                              width={68}
+                              height={68}
+                              className="hidden rounded-2xl border border-white/10 shadow-lg sm:block"
+                            />
+                          ) : null}
 
-                        <div className="min-w-0">
-                          <h3 className="text-xl font-semibold tracking-tight text-white transition-colors duration-200 group-hover:text-pink-50 sm:text-2xl">
-                            {postTitle}
-                          </h3>
-                          <p className="mt-3 max-w-2xl text-sm leading-7 text-pink-100/78 sm:text-base">
-                            {post.id === "boredom"
-                              ? "A softer reset note about motivation, energy, and getting back into motion without forcing it."
-                              : "Open the entry for project notes, lessons learned, and the small details polished into each build."}
-                          </p>
+                          <div className="min-w-0">
+                            <h3 className="text-xl font-semibold tracking-tight text-white transition-colors duration-200 group-hover:text-pink-50 sm:text-2xl">
+                              {postTitle}
+                            </h3>
+                            <p className="mt-3 max-w-2xl text-sm leading-7 text-pink-100/78 sm:text-base">
+                              {post.id === "boredom"
+                                ? "A very honest post about feeling sick of the screen and trying to get my motivation back without forcing it."
+                                : "Build notes, small lessons, and the parts I know I will want to remember later."}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div className="flex items-center gap-3 sm:flex-col sm:items-end">
-                      <span className="font-pixel text-[10px] leading-[1.8] text-pink-100/75 sm:text-xs">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-pink-50">
-                        Open Post
-                      </span>
+                      <div className="flex items-center gap-3 sm:items-end">
+                        <span className="font-pixel text-[10px] leading-[1.8] text-pink-100/75 sm:text-xs">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                </article>
-              </Link>
-            </li>
-          );
-        })}
+                  </article>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>

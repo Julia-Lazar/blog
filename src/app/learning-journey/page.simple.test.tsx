@@ -24,13 +24,13 @@ describe("Learning Journey Page", () => {
     expect(
       screen.getByRole("heading", { name: "About Me", level: 2 })
     ).toBeInTheDocument();
-    expect(screen.getByText(/passionate developer/i)).toBeInTheDocument();
+    expect(screen.getByText(/I mostly write about frontend/i)).toBeInTheDocument();
   });
 
   it("shows all technologies", () => {
     render(<LearningJourney />);
 
-    expect(screen.getByText("My Core Tech Stack")).toBeInTheDocument();
+    expect(screen.getByText("The stack I use the most")).toBeInTheDocument();
     expect(screen.getByText("React")).toBeInTheDocument();
     expect(screen.getByText("TypeScript")).toBeInTheDocument();
   });
@@ -39,7 +39,8 @@ describe("Learning Journey Page", () => {
     render(<LearningJourney />);
 
     // Check for timeline entries
-    expect(screen.getByText(/2024 - Present/i)).toBeInTheDocument();
+    expect(screen.getByText(/2024 - now/i)).toBeInTheDocument();
+    expect(screen.getByText(/2021: Clean Code Principles/i)).toBeInTheDocument();
     expect(
       screen.getByText(/2018: Computer Science Studies/i)
     ).toBeInTheDocument();

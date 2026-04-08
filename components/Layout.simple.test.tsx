@@ -48,7 +48,7 @@ describe("Layout Component", () => {
       screen.queryByText(/Julia Lazar's miscellaneous blog/i),
     ).not.toBeInTheDocument();
     expect(screen.getByText("Home")).toBeInTheDocument();
-    expect(screen.getByText("Projects")).toBeInTheDocument();
+    expect(screen.getByText("Posts")).toBeInTheDocument();
     expect(screen.getByText("Learning Journey")).toBeInTheDocument();
     expect(screen.getByText("Tech Stack")).toBeInTheDocument();
   });

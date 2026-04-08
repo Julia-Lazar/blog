@@ -12,8 +12,12 @@ interface LayoutProps {
 
 const navItems: NavItem[] = [
   { href: "/", activePath: "/", label: "Home" },
-  { href: "/#projects", label: "Projects" },
-  { href: "/learning-journey", activePath: "/learning-journey", label: "Learning Journey" },
+  { href: "/#posts", label: "Posts" },
+  {
+    href: "/learning-journey",
+    activePath: "/learning-journey",
+    label: "Learning Journey",
+  },
   { href: "/learning-journey#tech-stack", label: "Tech Stack" },
 ];
 

@@ -63,14 +63,14 @@ export default async function Post({ params }: Params) {
 
             <div className="space-y-4">
               <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/80">
-                Article View
+                Post View
               </p>
               <h1 className="jiggly-section-title font-pixel text-lg leading-[1.9] sm:text-3xl sm:leading-[1.7] lg:text-[2.3rem] lg:leading-[1.55]">
                 {post.title}
               </h1>
               <p className="max-w-3xl text-sm leading-7 text-pink-50/82 sm:text-base">
-                A cozy write-up with build notes, lessons learned, and the
-                little details polished into the finished result.
+                Usually a mix of build notes, mistakes, and the things I want
+                to remember next time.
               </p>
             </div>
           </header>
@@ -80,7 +80,7 @@ export default async function Post({ params }: Params) {
           </div>
 
           <footer className="mt-8 border-t border-white/10 pt-6 text-center">
-            <p className="text-sm text-pink-100/75">Thank you for reading.</p>
+            <p className="text-sm text-pink-100/75">Thanks for reading.</p>
           </footer>
         </article>
 

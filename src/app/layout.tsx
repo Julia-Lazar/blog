@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/next";
 export const metadata: Metadata = {
   title: "Julia Lazar's miscellaneous blog",
   description:
-    "Cozy notes about web development, projects, and learning journeys in a Jigglypuff-inspired pink universe.",
+    "Personal notes on frontend, QA, projects, and whatever I am learning lately, all in a very pink corner of the internet.",
 };
 
 export default function RootLayout({

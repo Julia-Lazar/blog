@@ -6,7 +6,7 @@ interface SiteHeaderProps {
   navItems: NavItem[];
 }
 
-const heroBadges = ["Dreamy UI", "Pink Glow", "Retro Mood"];
+const heroBadges = ["Frontend notes", "Project posts", "Jigglypuff energy"];
 
 export default function SiteHeader({
   pathname,
@@ -35,9 +35,8 @@ export default function SiteHeader({
               Julia Lazar&apos;s miscellaneous blog
             </h1>
             <p className="max-w-2xl text-sm leading-7 text-pink-50/85 sm:text-base">
-              A polished little corner for projects, notes, and learning
-              milestones with the soft pink charm of Jigglypuff and a retro
-              Pokemon-inspired vibe.
+              My pink little corner of the internet for project notes, things
+              I&apos;m learning, and whatever else feels worth writing down.
             </p>
           </div>
 
@@ -52,8 +51,9 @@ export default function SiteHeader({
                   Pokedex Entry
                 </p>
                 <p className="mt-3 text-sm leading-7 text-pink-50/85">
-                  Building frontend stories that feel warm, clear, and a bit
-                  playful without losing structure or readability.
+                  Mostly frontend, a bit of QA, and a lot of learning by
+                  building things, breaking them, fixing them, and writing down
+                  what helped.
                 </p>
               </div>
 
@@ -62,19 +62,23 @@ export default function SiteHeader({
                   <p className="text-[11px] uppercase tracking-[0.22em] text-pink-100/70">
                     Palette
                   </p>
-                  <p className="mt-2 font-medium text-white">Jiggly Pink</p>
+                  <p className="mt-2 font-medium text-white">Too Much Pink</p>
                 </div>
                 <div className="rounded-[1.3rem] border border-white/10 bg-white/6 p-3">
                   <p className="text-[11px] uppercase tracking-[0.22em] text-pink-100/70">
                     Mood
                   </p>
-                  <p className="mt-2 font-medium text-white">Cozy Retro</p>
+                  <p className="mt-2 font-medium text-white">
+                    Cozy and game-ish
+                  </p>
                 </div>
                 <div className="rounded-[1.3rem] border border-white/10 bg-white/6 p-3">
                   <p className="text-[11px] uppercase tracking-[0.22em] text-pink-100/70">
                     Energy
                   </p>
-                  <p className="mt-2 font-medium text-white">Soft Glow</p>
+                  <p className="mt-2 font-medium text-white">
+                    Calm until the build breaks
+                  </p>
                 </div>
               </div>
             </div>

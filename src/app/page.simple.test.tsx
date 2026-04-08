@@ -51,7 +51,7 @@ describe("Home Page", () => {
   it("shows sorting and filtering options", () => {
     render(<Home />);
 
-    expect(screen.getByText("Browse the notebook your way")).toBeInTheDocument();
+    expect(screen.getByText("Sort through the posts")).toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: "Newest First" }),
     ).toBeInTheDocument();

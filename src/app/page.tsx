@@ -24,7 +24,7 @@ export default function Home() {
             <span className="jiggly-chip text-sm">Total posts: {posts.length}</span>
             {newestPost ? (
               <span className="jiggly-chip text-sm">
-                Newest drop: {formatDate(newestPost.date)}
+                Latest post: {formatDate(newestPost.date)}
               </span>
             ) : null}
           </div>
@@ -32,10 +32,10 @@ export default function Home() {
 
         {posts.length === 0 ? (
           <div
-            id="projects"
+            id="posts"
             className="jiggly-card scroll-mt-6 rounded-[1.8rem] p-6 text-sm text-pink-50/80 sm:scroll-mt-8 sm:p-8 sm:text-base"
           >
-            No posts yet. This dreamy notebook is waiting for the next entry.
+            No posts yet. I still need to stop overthinking and publish one.
           </div>
         ) : (
           <PostsDirectory posts={posts} />
