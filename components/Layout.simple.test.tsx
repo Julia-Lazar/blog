@@ -49,7 +49,10 @@ describe("Layout Component", () => {
     ).not.toBeInTheDocument();
     expect(screen.getByText("Home")).toBeInTheDocument();
     expect(screen.getByText("Posts")).toBeInTheDocument();
-    expect(screen.getByText("Learning Journey")).toBeInTheDocument();
+    const activeLink = screen.getByText("Learning Journey");
+    expect(activeLink).toBeInTheDocument();
+    expect(activeLink).toHaveAttribute("aria-current", "page");
+    expect(activeLink.className).toContain("ring-2");
     expect(screen.getByText("Tech Stack")).toBeInTheDocument();
   });
 

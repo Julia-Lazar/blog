@@ -44,7 +44,7 @@ export default async function Post({ params }: Params) {
             href="/"
             className="jiggly-button inline-flex rounded-full px-4 py-3 text-sm font-semibold text-pink-50 no-underline sm:px-5"
           >
-            Powrót
+            Back
           </Link>
         </nav>
 

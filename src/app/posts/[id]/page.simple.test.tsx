@@ -81,7 +81,7 @@ describe("Post Page", () => {
 
     render(Component as React.ReactElement);
 
-    const backLink = screen.getByText(/Powrot|Powrót|Back/i).closest("a");
+    const backLink = screen.getByText("Back").closest("a");
 
     expect(backLink).toHaveAttribute("href", "/");
   });
