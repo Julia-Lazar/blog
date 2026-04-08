@@ -66,6 +66,24 @@ describe("Home Page", () => {
     ).toBeInTheDocument();
   });
 
+  it("makes the active sort and filter buttons stand out", () => {
+    render(<Home />);
+
+    const activeSortButton = screen.getByRole("button", { name: "Newest First" });
+    const activeFilterButton = screen.getByRole("button", { name: "All Entries" });
+
+    expect(activeSortButton).toHaveAttribute("aria-pressed", "true");
+    expect(activeFilterButton).toHaveAttribute("aria-pressed", "true");
+    expect(activeSortButton.className).toContain("ring-2");
+    expect(activeFilterButton.className).toContain("ring-2");
+
+    fireEvent.click(screen.getByRole("button", { name: "Longest Read" }));
+    fireEvent.click(screen.getByRole("button", { name: "Featured Notes" }));
+
+    expect(screen.getByRole("button", { name: "Longest Read" }).className).toContain("ring-2");
+    expect(screen.getByRole("button", { name: "Featured Notes" }).className).toContain("ring-2");
+  });
+
   it("shows all posts", () => {
     render(<Home />);
 

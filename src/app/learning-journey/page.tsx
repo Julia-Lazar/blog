@@ -46,7 +46,7 @@ const learningPathItems: Array<TimelineItemProps & { id: string }> = [
     date: "2021",
     title: "Clean Code Principles",
     description:
-      "I also try to follow good coding practices like SOLID, DRY, and the FIRST principles in testing, because clean code matters a lot.",
+      "Learning SOLID principles, DRY, and the FIRST principles in testing showed me how much clean code matters.",
     tone: "rose",
     dotClassName: "bg-rose-300",
   },
