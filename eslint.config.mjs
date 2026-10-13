@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // three.js + the QA Quest 3D engine, copied as-is
+    "public/vendor/**",
   ]),
 ]);
 

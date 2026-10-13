@@ -1,0 +1,184 @@
+"use client";
+
+import { useCallback, useEffect, useRef, useState } from "react";
+import Avatar3D from "./three/Avatar3D";
+
+const MSGS = [
+  "motivation.exe is not responding",
+  "Coffee not found (404)",
+  "Flaky test detected",
+  "Assertion failed: you're not hired YET",
+  "undefined is not a function",
+  "Too many tabs open",
+  "Brain cache expired",
+  "Element not visible: focus",
+  "Merge conflict: nap vs. study",
+  "Timeout: 30000ms exceeded",
+  "NullPointerException in Monday",
+  "Unexpected token: procrastination",
+];
+
+const SEEN_KEY = "julka-splash-seen";
+
+function greeting(hour: number) {
+  if (hour >= 5 && hour < 11)
+    return { jp: ["おはよう！", "わたしはユルカです。"], romaji: "Ohayou, watashi wa Julka desu", en: "Good morning, I'm Julka" };
+  if (hour >= 11 && hour < 18)
+    return { jp: ["こんにちは、", "わたしはユルカです。"], romaji: "Konnichiwa, watashi wa Julka desu", en: "Hello, I'm Julka" };
+  return { jp: ["こんばんは、", "わたしはユルカです。"], romaji: "Konbanwa, watashi wa Julka desu", en: "Good evening, I'm Julka" };
+}
+
+interface Win {
+  id: number;
+  left: number;
+  top: number;
+  msg: string;
+}
+
+/** QA Quest's error pop-up intro, minus the "Let's level up" screen, plus a bow. */
+export default function Splash({ spec }: { spec: Record<string, unknown> }) {
+  const [phase, setPhase] = useState<"off" | "popups" | "main" | "closing" | "out">("off");
+  const [wins, setWins] = useState<Win[]>([]);
+  const [gone, setGone] = useState(0);
+  const [greet, setGreet] = useState(() => greeting(12));
+  const timers = useRef<number[]>([]);
+  const okRef = useRef<HTMLButtonElement>(null);
+
+  const later = (fn: () => void, ms: number) => {
+    timers.current.push(window.setTimeout(fn, ms));
+  };
+
+  const close = useCallback(() => {
+    try {
+      sessionStorage.setItem(SEEN_KEY, "1");
+    } catch {
+      // nothing to remember then
+    }
+    setPhase((p) => {
+      if (p !== "popups" && p !== "main") return p;
+      timers.current.forEach(clearTimeout);
+      timers.current = [];
+      return "closing";
+    });
+  }, []);
+
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem(SEEN_KEY)) return;
+    } catch {
+      // private mode: just show it
+    }
+    setWins([]);
+    setGreet(greeting(new Date().getHours()));
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    const n = reduce ? 0 : 16;
+    const W = window.innerWidth;
+    const H = window.innerHeight;
+    setPhase("popups");
+    for (let i = 0; i < n; i++) {
+      later(() => {
+        const cluster = i > 6;
+        const x = cluster
+          ? W * 0.5 - 150 + (Math.random() - 0.5) * Math.min(420, W * 0.6)
+          : Math.random() * (W - 220);
+        const y = cluster
+          ? H * 0.5 - 40 + (Math.random() - 0.5) * Math.min(300, H * 0.4)
+          : Math.random() * (H - 110);
+        setWins((w) => [
+          ...w,
+          {
+            id: i,
+            left: Math.max(4, Math.min(W - 214, x)),
+            top: Math.max(4, Math.min(H - 104, y)),
+            msg: MSGS[i % MSGS.length],
+          },
+        ]);
+      }, i * 75);
+    }
+    later(() => setPhase("main"), n * 75 + 250);
+    later(close, n * 75 + 7500);
+    const t = timers.current;
+    return () => t.forEach(clearTimeout);
+  }, [close]);
+
+  useEffect(() => {
+    if (phase === "main") okRef.current?.focus();
+    if (phase !== "closing") return;
+    const total = wins.length + 1;
+    const ids: number[] = [];
+    for (let i = 1; i <= total; i++) ids.push(window.setTimeout(() => setGone(i), i * 35));
+    ids.push(window.setTimeout(() => setPhase("out"), total * 35 + 250));
+    ids.push(window.setTimeout(() => setPhase("off"), total * 35 + 700));
+    return () => ids.forEach(clearTimeout);
+  }, [phase, wins.length]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" || e.key === "Enter") close();
+    };
+    if (phase === "popups" || phase === "main") window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [phase, close]);
+
+  if (phase === "off") return null;
+
+  // windows disappear newest-first, the big one before them
+  const mainGone = gone >= 1;
+  const winGone = (i: number) => gone >= 1 + (wins.length - i);
+
+  return (
+    <div id="splash" className={phase === "out" ? "out" : ""} role="dialog" aria-modal="true" aria-label="Welcome">
+      <div aria-hidden="true">
+        {wins.map((w, i) => (
+          <div key={w.id} className={"sp-win" + (winGone(i) ? " gone" : "")} style={{ left: w.left, top: w.top }}>
+            <div className="sp-tb">
+              <span>Error</span>
+              <i>✕</i>
+            </div>
+            <div className="sp-body">
+              <span className="sp-x">✕</span>
+              <span>{w.msg}</span>
+            </div>
+            <div className="sp-btn">OK</div>
+          </div>
+        ))}
+      </div>
+      {phase !== "popups" ? (
+        <div className={"sp-win sp-main" + (mainGone ? " gone" : "")}>
+          <div className="sp-tb">
+            <span>Julka.exe</span>
+            <i>✕</i>
+          </div>
+          <div className="sp-body">
+            <div className="sp-bow">
+              <Avatar3D
+                spec={spec}
+                label="Julka's character bowing"
+                seq={[
+                  ["bow", 2.4, 2.4],
+                  ["wave", 2.1, 0.7],
+                ]}
+              />
+            </div>
+            <div>
+              <p className="sp-jp" lang="ja">
+                {greet.jp.map((part) => (
+                  <span key={part} style={{ display: "inline-block" }}>
+                    {part}
+                  </span>
+                ))}
+              </p>
+              <p className="sp-romaji">{greet.romaji}</p>
+              <p>
+                <small>({greet.en})</small>
+              </p>
+            </div>
+          </div>
+          <button ref={okRef} type="button" className="sp-btn sp-fix" onClick={close}>
+            はい OK
+          </button>
+        </div>
+      ) : null}
+    </div>
+  );
+}

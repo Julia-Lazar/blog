@@ -11,7 +11,12 @@ export interface PostMeta {
   date: string;
   readTime: string;
   readTimeMinutes: number;
+  /** 3D picture for the post card, e.g. "prop:ピザ" or "pose:read:1" */
+  icon?: string;
+  excerpt?: string;
 }
+
+type FrontMatter = { title?: string; date?: string; icon?: string; excerpt?: string };
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
@@ -35,7 +40,7 @@ export function getSortedPostsData(): PostMeta[] {
     const fileContents = fs.readFileSync(fullPath, "utf8");
 
     const matterResult = matter(fileContents);
-    const data = matterResult.data as { title?: string; date?: string };
+    const data = matterResult.data as FrontMatter;
     const readTime = readingTime(matterResult.content);
 
     return {
@@ -44,6 +49,8 @@ export function getSortedPostsData(): PostMeta[] {
       date: String(data.date ?? ""),
       readTime: readTime.text,
       readTimeMinutes: readTime.minutes,
+      ...(data.icon ? { icon: String(data.icon) } : {}),
+      ...(data.excerpt ? { excerpt: String(data.excerpt) } : {}),
     };
   });
 
@@ -59,7 +66,7 @@ export async function getPostData(id: string) {
 
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const matterResult = matter(fileContents);
-  const data = matterResult.data as { title?: string; date?: string };
+  const data = matterResult.data as FrontMatter;
 
   const processed = await remark().use(html).process(matterResult.content);
   const contentHtml = processed.toString();
@@ -70,5 +77,6 @@ export async function getPostData(id: string) {
     title: String(data.title ?? ""),
     date: String(data.date ?? ""),
     readTime: readingTime(matterResult.content).text,
-  };
+    ...(data.icon ? { icon: String(data.icon) } : {}),
+  } as { id: string; contentHtml: string; title: string; date: string; readTime: string; icon?: string };
 }

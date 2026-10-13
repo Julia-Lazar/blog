@@ -1,15 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import type { PostMeta } from "@/../lib/posts";
+import Snap3D from "./three/Snap3D";
 
-type SortOption =
-  | "date-desc"
-  | "date-asc"
-  | "read-asc"
-  | "read-desc";
+type SortOption = "date-desc" | "date-asc" | "read-asc" | "read-desc";
 
 type FilterOption = "all" | "featured" | "notebook";
 
@@ -29,7 +25,7 @@ const filterOptions: Array<{ id: FilterOption; label: string }> = [
 function formatDate(dateString: string) {
   const d = new Date(dateString);
   if (isNaN(d.getTime())) return dateString;
-  return d.toLocaleDateString("pl-PL", {
+  return d.toLocaleDateString("en-GB", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -41,19 +37,18 @@ function getPostDateValue(post: Pick<PostMeta, "date">) {
   return Number.isNaN(time) ? 0 : time;
 }
 
-function sortButtonClass(isActive: boolean) {
-  return [
-    "jiggly-button rounded-full px-4 py-3 text-sm font-semibold text-pink-50",
-    "transition-all duration-200",
-    isActive
-      ? "translate-y-[-2px] scale-[1.03] border-pink-50/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.26),transparent_55%),linear-gradient(135deg,rgba(255,188,222,0.76),rgba(176,51,111,0.98))] text-white shadow-[0_18px_36px_rgba(28,0,36,0.42)] ring-2 ring-pink-100/45"
-      : "text-pink-100/90 hover:scale-[1.01]",
-  ]
-    .filter(Boolean)
-    .join(" ");
+function pillClass(isActive: boolean) {
+  return "pill-btn" + (isActive ? " is-active" : "");
 }
 
-export default function PostsDirectory({ posts }: { posts: PostMeta[] }) {
+export default function PostsDirectory({
+  posts,
+  spec,
+}: {
+  posts: PostMeta[];
+  /** the character, for posts whose picture is a pose */
+  spec?: Record<string, unknown>;
+}) {
   const [sortOption, setSortOption] = useState<SortOption>("date-desc");
   const [filterOption, setFilterOption] = useState<FilterOption>("all");
 
@@ -92,69 +87,49 @@ export default function PostsDirectory({ posts }: { posts: PostMeta[] }) {
   });
 
   return (
-    <div id="posts" className="space-y-6 scroll-mt-6 sm:scroll-mt-8">
-      <section className="jiggly-card rounded-[1.8rem] border-pink-200/35 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),transparent_28%),linear-gradient(145deg,rgba(255,152,210,0.34),rgba(117,24,77,0.9))] shadow-[0_22px_54px_rgba(32,0,36,0.34)] p-6 sm:p-8">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-          <div className="space-y-3">
-            <p className="font-pixel text-[10px] leading-[1.8] text-pink-100/80">
-              Posts
-            </p>
-            <h2 className="text-2xl font-semibold text-white sm:text-3xl">
-              Sort through the posts
-            </h2>
-            <p className="max-w-2xl text-sm leading-7 text-pink-50/78 sm:text-base">
-              Sort by date or reading time, or filter the posts.
-            </p>
-          </div>
-        </div>
+    <section id="posts" className="panel" style={{ scrollMarginTop: 16 }} aria-label="Posts">
+      <div className="panel-head">
+        <h2>
+          <Snap3D icon="prop:ほん" alt="" size={36} /> Sort through the posts
+        </h2>
+        <span className="label">quest log · {posts.length} entries</span>
+      </div>
 
-        <div className="mt-6 space-y-4">
-          <div className="space-y-3">
-            <p className="text-[11px] uppercase tracking-[0.22em] text-pink-100/70">
-              Sort
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {sortOptions.map((option) => (
-                <button
-                  key={option.id}
-                  type="button"
-                  aria-pressed={sortOption === option.id}
-                  className={sortButtonClass(sortOption === option.id)}
-                  onClick={() => setSortOption(option.id)}
-                >
-                  {option.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-3">
-            <p className="text-[11px] uppercase tracking-[0.22em] text-pink-100/70">
-              Filter
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {filterOptions.map((option) => (
-                <button
-                  key={option.id}
-                  type="button"
-                  aria-pressed={filterOption === option.id}
-                  className={sortButtonClass(filterOption === option.id)}
-                  onClick={() => setFilterOption(option.id)}
-                >
-                  {option.label}
-                </button>
-              ))}
-            </div>
-          </div>
+      <div style={{ marginBottom: 16 }}>
+        <div className="control-row">
+          <span className="label">Sort</span>
+          {sortOptions.map((option) => (
+            <button
+              key={option.id}
+              type="button"
+              aria-pressed={sortOption === option.id}
+              className={pillClass(sortOption === option.id)}
+              onClick={() => setSortOption(option.id)}
+            >
+              {option.label}
+            </button>
+          ))}
         </div>
-      </section>
+        <div className="control-row">
+          <span className="label">Filter</span>
+          {filterOptions.map((option) => (
+            <button
+              key={option.id}
+              type="button"
+              aria-pressed={filterOption === option.id}
+              className={pillClass(filterOption === option.id)}
+              onClick={() => setFilterOption(option.id)}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+      </div>
 
       {sortedPosts.length === 0 ? (
-        <section className="jiggly-card rounded-[1.8rem] p-6 text-sm leading-7 text-pink-50/80 sm:p-8 sm:text-base">
-          Nothing matches this filter yet.
-        </section>
+        <p className="empty-note">Nothing matches this filter yet.</p>
       ) : (
-        <ul className="space-y-4 list-none pl-0">
+        <ul className="post-list">
           {sortedPosts.map((post, index) => {
             const isFeatured = isFeaturedPost(post);
             const postTitle =
@@ -164,59 +139,26 @@ export default function PostsDirectory({ posts }: { posts: PostMeta[] }) {
 
             return (
               <li key={post.id}>
-                <Link href={`/posts/${post.id}`} className="block no-underline">
-                  <article className="jiggly-card jiggly-card-interactive group rounded-[1.7rem] p-5 sm:p-6">
-                    <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-                      <div className="min-w-0 space-y-4">
-                        <div className="flex flex-wrap gap-2">
-                          <span className="jiggly-chip text-[11px] uppercase tracking-[0.22em]">
-                            {isFeatured ? "Featured Note" : "Notebook Entry"}
-                          </span>
-                          <span className="jiggly-chip text-sm">
-                            {formatDate(post.date)}
-                          </span>
-                          <span className="jiggly-chip text-sm">
-                            {post.readTime || "Quick read"}
-                          </span>
-                        </div>
-
-                        <div className="flex items-start gap-4">
-                          {post.id === "boredom" ? (
-                            <Image
-                              src="/images/skype-mad.gif"
-                              alt="Decorative mood icon"
-                              width={68}
-                              height={68}
-                              className="hidden rounded-2xl border border-white/10 shadow-lg sm:block"
-                            />
-                          ) : null}
-
-                          <div className="min-w-0">
-                            <h3 className="text-xl font-semibold tracking-tight text-white transition-colors duration-200 group-hover:text-pink-50 sm:text-2xl">
-                              {postTitle}
-                            </h3>
-                            <p className="mt-3 max-w-2xl text-sm leading-7 text-pink-100/78 sm:text-base">
-                              {post.id === "boredom"
-                                ? "A very honest post about feeling sick of the screen and trying to get my motivation back without forcing it."
-                                : "Build notes, small lessons, and the parts I know I will want to remember later."}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-3 sm:items-end">
-                        <span className="font-pixel text-[10px] leading-[1.8] text-pink-100/75 sm:text-xs">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                      </div>
+                <Link href={`/posts/${post.id}`} className="post-card">
+                  <Snap3D icon={post.icon || "prop:ノート"} spec={spec} alt="" size={72} />
+                  <div style={{ minWidth: 0 }}>
+                    <div className="post-meta">
+                      <span className={"chip" + (isFeatured ? " neon" : "")}>
+                        {isFeatured ? "Featured Note" : "Notebook Entry"}
+                      </span>
+                      <span className="chip">{formatDate(post.date)}</span>
+                      <span className="chip">{post.readTime || "Quick read"}</span>
                     </div>
-                  </article>
+                    <h3>{postTitle}</h3>
+                    <p>{post.excerpt || "Build notes, small lessons, and the parts I know I will want to remember later."}</p>
+                  </div>
+                  <span className="num">{String(index + 1).padStart(2, "0")}</span>
                 </Link>
               </li>
             );
           })}
         </ul>
       )}
-    </div>
+    </section>
   );
 }

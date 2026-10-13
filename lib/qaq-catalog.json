@@ -1,0 +1,1112 @@
+{
+ "tiers": {
+  "c": {
+   "n": "Common",
+   "p": 1,
+   "w": 55,
+   "lv": 1,
+   "xp": 3,
+   "dust": 2
+  },
+  "u": {
+   "n": "Uncommon",
+   "p": 2,
+   "w": 28,
+   "lv": 2,
+   "xp": 5,
+   "dust": 3
+  },
+  "r": {
+   "n": "Rare",
+   "p": 4,
+   "w": 12,
+   "lv": 4,
+   "xp": 10,
+   "dust": 5
+  },
+  "e": {
+   "n": "Epic",
+   "p": 8,
+   "w": 5,
+   "lv": 6,
+   "xp": 20,
+   "dust": 10
+  },
+  "l": {
+   "n": "Legendary",
+   "p": 15,
+   "xp": 50
+  },
+  "m": {
+   "n": "Mythic",
+   "p": 30,
+   "xp": 100
+  }
+ },
+ "slots": [
+  {
+   "id": "head",
+   "e": "🎩",
+   "n": "Head"
+  },
+  {
+   "id": "face",
+   "e": "👓",
+   "n": "Face"
+  },
+  {
+   "id": "body",
+   "e": "👕",
+   "n": "Body"
+  },
+  {
+   "id": "legs",
+   "e": "👖",
+   "n": "Legs"
+  },
+  {
+   "id": "feet",
+   "e": "👟",
+   "n": "Feet"
+  },
+  {
+   "id": "weapon",
+   "e": "⚔️",
+   "n": "Weapon"
+  },
+  {
+   "id": "relic",
+   "e": "🏺",
+   "n": "Relic"
+  }
+ ],
+ "items": [
+  {
+   "id": "h1",
+   "s": "head",
+   "t": "c",
+   "e": "🍄",
+   "n": "Mushroom Hat of Mild Confusion",
+   "fx": "+2 Vibes · -1 Clarity"
+  },
+  {
+   "id": "h2",
+   "s": "head",
+   "t": "c",
+   "e": "🧢",
+   "n": "Backwards Cap of Fake Confidence",
+   "fx": "+3 Confidence (fake)"
+  },
+  {
+   "id": "h3",
+   "s": "head",
+   "t": "c",
+   "e": "🎀",
+   "n": "Kawaii Bow of Distraction",
+   "fx": "+5 Cute · -2 Focus",
+   "pos": [
+    138,
+    44,
+    36
+   ]
+  },
+  {
+   "id": "h4",
+   "s": "head",
+   "t": "u",
+   "e": "🎓",
+   "n": "Graduation Cap (Unpaid Intern Edition)",
+   "fx": "+2 Knowledge · -5 Salary"
+  },
+  {
+   "id": "h5",
+   "s": "head",
+   "t": "u",
+   "e": "🎩",
+   "n": "Top Hat of Corporate Small Talk",
+   "fx": "+4 Networking"
+  },
+  {
+   "id": "h6",
+   "s": "head",
+   "t": "r",
+   "e": "🪖",
+   "n": "Helmet of Flaky Test Protection",
+   "fx": "+6 Stability"
+  },
+  {
+   "id": "h7",
+   "s": "head",
+   "t": "r",
+   "e": "🐱",
+   "n": "Cat Ears of Infinite Curiosity",
+   "fx": "+5 Exploratory Testing",
+   "kind": "ears"
+  },
+  {
+   "id": "h8",
+   "s": "head",
+   "t": "e",
+   "e": "👑",
+   "n": "Crown of Green Builds",
+   "fx": "+10 Swag · builds stay green"
+  },
+  {
+   "id": "hq1",
+   "s": "head",
+   "t": "l",
+   "e": "🍃",
+   "n": "Konoha Headband",
+   "fx": "+7 Ninja Way · officially a tester-nin",
+   "kind": "band",
+   "req": "Pass the Genin Exam"
+  },
+  {
+   "id": "hl1",
+   "s": "head",
+   "t": "l",
+   "e": "👒",
+   "n": "Luffy's Straw Hat",
+   "fx": "+20 Freedom · King of the Testers",
+   "kind": "straw",
+   "req": "Defeat the Final Boss (30 questions) in Boss Rush"
+  },
+  {
+   "id": "hm1",
+   "s": "head",
+   "t": "m",
+   "e": "🔥",
+   "n": "Hokage Hat of QA",
+   "fx": "+30 Leadership · the whole village trusts your tests",
+   "kind": "kasa",
+   "req": "Complete the entire 7-day plan"
+  },
+  {
+   "id": "hq2",
+   "s": "legs",
+   "t": "l",
+   "e": "🧡",
+   "n": "Ankle Weights of Youthful Studying",
+   "fx": "+10 Guts · take them off and you study twice as fast",
+   "col": "#F97316",
+   "req": "Complete Academy Day 1"
+  },
+  {
+   "id": "f1",
+   "s": "face",
+   "t": "c",
+   "e": "🕶️",
+   "n": "Sunglasses of Pretending to Know",
+   "fx": "+3 Cool · -3 Vision",
+   "kind": "shades"
+  },
+  {
+   "id": "f2",
+   "s": "face",
+   "t": "c",
+   "e": "🥸",
+   "n": "Disguise Kit (for Skipping Stand-ups)",
+   "fx": "+4 Stealth",
+   "kind": "disguise"
+  },
+  {
+   "id": "f3",
+   "s": "face",
+   "t": "u",
+   "e": "👓",
+   "n": "Nerd Glasses of +2 Reading",
+   "fx": "+4 Reading Speed",
+   "kind": "round",
+   "col": "#2B2B3A"
+  },
+  {
+   "id": "f4",
+   "s": "face",
+   "t": "u",
+   "e": "🥽",
+   "n": "Deep-Dive Goggles",
+   "fx": "+5 Root Cause Analysis",
+   "kind": "goggles",
+   "col": "#3FD0FF"
+  },
+  {
+   "id": "f5",
+   "s": "face",
+   "t": "r",
+   "e": "😷",
+   "n": "Copy Ninja Mask of Mystery",
+   "fx": "+6 Mystery · reads flashcards in public",
+   "kind": "mask",
+   "col": "#2B3A67"
+  },
+  {
+   "id": "f6",
+   "s": "face",
+   "t": "r",
+   "e": "🧐",
+   "n": "Monocle of Code Review",
+   "fx": "+6 Pickiness",
+   "kind": "mono"
+  },
+  {
+   "id": "f7",
+   "s": "face",
+   "t": "e",
+   "e": "🔴",
+   "n": "Sharingan Contact Lenses",
+   "fx": "+10 Bug Prediction",
+   "kind": "sharingan"
+  },
+  {
+   "id": "fl1",
+   "s": "face",
+   "t": "l",
+   "e": "⚪",
+   "n": "Byakugan of Total Coverage",
+   "fx": "+15 Coverage · sees every edge case",
+   "kind": "byakugan",
+   "req": "Master 25 flashcards (box 5)"
+  },
+  {
+   "id": "b0",
+   "s": "body",
+   "t": "c",
+   "e": "🌀",
+   "n": "Tie-Dye Shirt of Good Vibes",
+   "fx": "+5 Vibes · +3 Creativity",
+   "col": "#FF4FA3",
+   "trim": "#FFE14D"
+  },
+  {
+   "id": "b1",
+   "s": "body",
+   "t": "c",
+   "e": "👕",
+   "n": "Plain Tee of Junior Energy",
+   "fx": "+1 Humility",
+   "col": "#E9EEF6",
+   "trim": "#9AA9C7"
+  },
+  {
+   "id": "b2",
+   "s": "body",
+   "t": "c",
+   "e": "🧥",
+   "n": "Hot Goblin Hoodie",
+   "fx": "+4 Chaos · +2 Snacks",
+   "col": "#3BAA4A",
+   "trim": "#1F6B2A",
+   "badge": "👺"
+  },
+  {
+   "id": "b3",
+   "s": "body",
+   "t": "c",
+   "e": "🧥",
+   "n": "Antisocial Socialist Hoodie",
+   "fx": "+5 Opinions · -5 Small Talk",
+   "col": "#C8323A",
+   "trim": "#7E1C22",
+   "badge": "🙅‍♀️"
+  },
+  {
+   "id": "b4",
+   "s": "body",
+   "t": "u",
+   "e": "👘",
+   "n": "Comfy Kimono of Procrastination",
+   "fx": "+6 Comfort · -3 Urgency",
+   "col": "#F48FB1",
+   "trim": "#C2185B",
+   "badge": "🌸"
+  },
+  {
+   "id": "b5",
+   "s": "body",
+   "t": "u",
+   "e": "🥋",
+   "n": "Dojo Gi of Discipline",
+   "fx": "+5 Discipline",
+   "col": "#F4F4F4",
+   "trim": "#1F1F1F"
+  },
+  {
+   "id": "b6",
+   "s": "body",
+   "t": "r",
+   "e": "🦺",
+   "n": "Chunin Flak Vest",
+   "fx": "+7 Responsibility · many pockets for scrolls",
+   "col": "#5E7D3A",
+   "trim": "#3B5225",
+   "pattern": "vest"
+  },
+  {
+   "id": "b7",
+   "s": "body",
+   "t": "r",
+   "e": "🧶",
+   "n": "Ugly Sweater of Debugging",
+   "fx": "+6 Coziness · +2 Bug Bait",
+   "col": "#2E7D32",
+   "trim": "#C62828",
+   "pattern": "stripes",
+   "badge": "🐛"
+  },
+  {
+   "id": "b8",
+   "s": "body",
+   "t": "e",
+   "e": "🥼",
+   "n": "Lab Coat of Test Science",
+   "fx": "+10 Scientific Method",
+   "col": "#FFFFFF",
+   "trim": "#3FD0FF",
+   "badge": "🧪"
+  },
+  {
+   "id": "b9",
+   "s": "body",
+   "t": "e",
+   "e": "🛡️",
+   "n": "Full Plate Armor of No Regressions",
+   "fx": "+12 Defense vs. regressions",
+   "col": "#B8C2CC",
+   "trim": "#6B7785",
+   "pattern": "plate"
+  },
+  {
+   "id": "bq1",
+   "s": "body",
+   "t": "l",
+   "e": "🏀",
+   "n": "Seirin #11 Jersey of Invisible Bugs",
+   "fx": "+15 Teamwork · bugs never see you coming",
+   "col": "#FFFFFF",
+   "trim": "#D32F2F",
+   "pattern": "num11",
+   "req": "Finish Day 6, the interview simulation"
+  },
+  {
+   "id": "bl1",
+   "s": "body",
+   "t": "l",
+   "e": "🎾",
+   "n": "Seigaku Regular Jacket",
+   "fx": "+15 Mada Mada Dane",
+   "col": "#1E3A8A",
+   "trim": "#DC2626",
+   "badge": "🎾",
+   "req": "Master 10 flashcards (box 5)"
+  },
+  {
+   "id": "bq2",
+   "s": "body",
+   "t": "l",
+   "e": "🦺",
+   "n": "Golden Chunin Vest",
+   "fx": "+20 Leadership · can lead a squad of tests",
+   "col": "#C9A227",
+   "trim": "#6B5A12",
+   "pattern": "vest",
+   "req": "Pass the Chunin Exam"
+  },
+  {
+   "id": "bm1",
+   "s": "body",
+   "t": "m",
+   "e": "🦢",
+   "n": "Okama Swan Coat of Friendship",
+   "fx": "+30 Friendship · the Okama Way never abandons a friend",
+   "col": "#FFFFFF",
+   "trim": "#FF5CA8",
+   "badge": "🦢",
+   "req": "Win 3 Boss Rushes"
+  },
+  {
+   "id": "l0",
+   "s": "legs",
+   "t": "c",
+   "e": "👖",
+   "n": "Loose Track Pants (Two-Stripe Edition)",
+   "fx": "+5 Comfort · +2 Squat Power",
+   "col": "#111827"
+  },
+  {
+   "id": "l1",
+   "s": "legs",
+   "t": "c",
+   "e": "👖",
+   "n": "Sweatpants of Working From Home",
+   "fx": "+4 Comfort · -2 Video Calls",
+   "col": "#6B7280"
+  },
+  {
+   "id": "l2",
+   "s": "legs",
+   "t": "c",
+   "e": "🩳",
+   "n": "Cargo Shorts of Infinite Pockets",
+   "fx": "+3 Storage",
+   "col": "#A3894E",
+   "kind": "shorts"
+  },
+  {
+   "id": "l3",
+   "s": "legs",
+   "t": "u",
+   "e": "🌌",
+   "n": "Galaxy Leggings",
+   "fx": "+6 Cosmic Energy",
+   "kind": "galaxy"
+  },
+  {
+   "id": "l4",
+   "s": "legs",
+   "t": "u",
+   "e": "🎾",
+   "n": "Tennis Skirt of Mada Mada",
+   "fx": "+5 Agility",
+   "col": "#FFFFFF",
+   "kind": "skirt"
+  },
+  {
+   "id": "l5",
+   "s": "legs",
+   "t": "r",
+   "e": "🥷",
+   "n": "Ninja Pants of Silent Merges",
+   "fx": "+7 Stealth Deploys",
+   "col": "#111827"
+  },
+  {
+   "id": "l6",
+   "s": "legs",
+   "t": "e",
+   "e": "🌈",
+   "n": "Rainbow Tights of Passing Pipelines",
+   "fx": "+10 Pride in Green Builds",
+   "kind": "rainbow"
+  },
+  {
+   "id": "ll1",
+   "s": "legs",
+   "t": "l",
+   "e": "⛓️",
+   "n": "Chastity Belt of Zero Distractions",
+   "fx": "+20 Focus · no fun allowed until the sprint ends",
+   "kind": "belt",
+   "req": "Finish 5 focus sprints"
+  },
+  {
+   "id": "s0",
+   "s": "feet",
+   "t": "c",
+   "e": "👟",
+   "n": "Classic Canvas Sneakers",
+   "fx": "+4 Everyday Speed",
+   "col": "#F8FAFC"
+  },
+  {
+   "id": "s1",
+   "s": "feet",
+   "t": "c",
+   "e": "🩴",
+   "n": "Flip-Flops of Unpreparedness",
+   "fx": "+2 Chill · -4 Speed",
+   "col": "#FBBF24"
+  },
+  {
+   "id": "s2",
+   "s": "feet",
+   "t": "c",
+   "e": "🧦",
+   "n": "Socks with Sandals (Bold Choice)",
+   "fx": "+5 Audacity",
+   "col": "#F5F5F5"
+  },
+  {
+   "id": "s3",
+   "s": "feet",
+   "t": "u",
+   "e": "👟",
+   "n": "Sprint Sneakers",
+   "fx": "+5 Focus Sprint Speed",
+   "col": "#39FF14"
+  },
+  {
+   "id": "s4",
+   "s": "feet",
+   "t": "u",
+   "e": "🥿",
+   "n": "Ballet Flats of Graceful Failure",
+   "fx": "+4 Elegance When Tests Fail",
+   "col": "#F9A8D4"
+  },
+  {
+   "id": "s5",
+   "s": "feet",
+   "t": "r",
+   "e": "🥷",
+   "n": "Ninja Sandals of Stealth Deploys",
+   "fx": "+6 Silence",
+   "col": "#334155"
+  },
+  {
+   "id": "s6",
+   "s": "feet",
+   "t": "r",
+   "e": "👢",
+   "n": "Boots of Walking Through Legacy Code",
+   "fx": "+7 Endurance",
+   "col": "#7C4A2D"
+  },
+  {
+   "id": "s7",
+   "s": "feet",
+   "t": "e",
+   "e": "🚀",
+   "n": "Rocket Boots of Continuous Delivery",
+   "fx": "+10 Deploy Speed",
+   "col": "#EF4444",
+   "kind": "rocket"
+  },
+  {
+   "id": "sl1",
+   "s": "feet",
+   "t": "l",
+   "e": "🔥",
+   "n": "Air Kagami Sneakers",
+   "fx": "+15 Jump · dunk on bugs",
+   "col": "#DC2626",
+   "kind": "rocket",
+   "req": "Reach Level 10"
+  },
+  {
+   "id": "w1",
+   "s": "weapon",
+   "t": "c",
+   "e": "🥄",
+   "n": "Spoon of Mild Intimidation",
+   "fx": "+1 Attack (emotionally)"
+  },
+  {
+   "id": "w2",
+   "s": "weapon",
+   "t": "c",
+   "e": "🖊️",
+   "n": "Pen of Endless Test Cases",
+   "fx": "+3 Documentation"
+  },
+  {
+   "id": "w3",
+   "s": "weapon",
+   "t": "c",
+   "e": "🪥",
+   "n": "Toothbrush of Clean Code",
+   "fx": "+3 Hygiene"
+  },
+  {
+   "id": "w4",
+   "s": "weapon",
+   "t": "u",
+   "e": "🔨",
+   "n": "Debug Hammer",
+   "fx": "+5 Brute Force Debugging"
+  },
+  {
+   "id": "w5",
+   "s": "weapon",
+   "t": "u",
+   "e": "🏸",
+   "n": "Racket of Twist Serves",
+   "fx": "+5 Spin"
+  },
+  {
+   "id": "w6",
+   "s": "weapon",
+   "t": "u",
+   "e": "🏀",
+   "n": "Basketball of Misdirection",
+   "fx": "+5 Ignite Pass"
+  },
+  {
+   "id": "w7",
+   "s": "weapon",
+   "t": "r",
+   "e": "🗡️",
+   "n": "Kunai of Quick Assertions",
+   "fx": "+7 expect().toBe()"
+  },
+  {
+   "id": "w8",
+   "s": "weapon",
+   "t": "r",
+   "e": "🪄",
+   "n": "Magic Staff of Mocking",
+   "fx": "+7 Mock Data · +3 Sass"
+  },
+  {
+   "id": "w9",
+   "s": "weapon",
+   "t": "e",
+   "e": "⚔️",
+   "n": "Three-Sword Style Kit (one goes in the mouth)",
+   "fx": "+12 Multitasking"
+  },
+  {
+   "id": "w10",
+   "s": "weapon",
+   "t": "e",
+   "e": "🎻",
+   "n": "Soul King's Violin of Yohoho",
+   "fx": "+12 Soul · plays a sad song for every failed test"
+  },
+  {
+   "id": "wq1",
+   "s": "weapon",
+   "t": "l",
+   "e": "🥒",
+   "n": "Gherkin Sword of BDD",
+   "fx": "+15 Given/When/Then · slightly pickled",
+   "req": "Complete Day 4 (BDD + CI/CD)"
+  },
+  {
+   "id": "wq2",
+   "s": "weapon",
+   "t": "l",
+   "e": "🧹",
+   "n": "Broom of Brutal Code Review",
+   "fx": "+15 Nitpicking · sweeps away bad naming",
+   "req": "Complete Day 5 (code quality)"
+  },
+  {
+   "id": "wm2",
+   "s": "weapon",
+   "t": "m",
+   "e": "⚡",
+   "n": "Chidori Blade of Edge Cases",
+   "fx": "+40 Precision · one thousand birds, zero bugs",
+   "req": "Pass the Jonin Exam"
+  },
+  {
+   "id": "wm1",
+   "s": "weapon",
+   "t": "m",
+   "e": "🍆",
+   "n": "Purple Dildo of Destiny",
+   "fx": "+69 Confidence · wobbles menacingly at bugs",
+   "req": "Reach a 7-day study streak"
+  },
+  {
+   "id": "r1",
+   "s": "relic",
+   "t": "c",
+   "e": "🍙",
+   "n": "Emergency Onigiri",
+   "fx": "+3 Stamina"
+  },
+  {
+   "id": "r2",
+   "s": "relic",
+   "t": "c",
+   "e": "🧃",
+   "n": "Juice Box of Hydration Reminders",
+   "fx": "+3 Hydration"
+  },
+  {
+   "id": "r3",
+   "s": "relic",
+   "t": "u",
+   "e": "🍜",
+   "n": "Ichiraku Ramen Bowl",
+   "fx": "+6 Happiness · extra pork"
+  },
+  {
+   "id": "r4",
+   "s": "relic",
+   "t": "u",
+   "e": "🧭",
+   "n": "Compass That Always Points to Prod",
+   "fx": "+5 Direction (unlike a certain swordsman)"
+  },
+  {
+   "id": "r5",
+   "s": "relic",
+   "t": "r",
+   "e": "📜",
+   "n": "Forbidden Scroll of Regression Tests",
+   "fx": "+8 Forbidden Knowledge"
+  },
+  {
+   "id": "r6",
+   "s": "relic",
+   "t": "r",
+   "e": "🍖",
+   "n": "Meat on the Bone (Captain-approved)",
+   "fx": "+8 Stretchy Motivation"
+  },
+  {
+   "id": "r7",
+   "s": "relic",
+   "t": "e",
+   "e": "🔮",
+   "n": "Crystal Ball of Flaky Test Prediction",
+   "fx": "+10 Foresight"
+  },
+  {
+   "id": "r8",
+   "s": "relic",
+   "t": "e",
+   "e": "🥤",
+   "n": "Raw Egg Shake of the Training Montage",
+   "fx": "+10 Grit · tastes terrible, works great"
+  },
+  {
+   "id": "rq1",
+   "s": "relic",
+   "t": "l",
+   "e": "🐸",
+   "n": "Gama-chan Wallet (it's finally full)",
+   "fx": "+15 Savings · Tibet fund secured",
+   "req": "Complete Day 2 (JS + test runner)"
+  },
+  {
+   "id": "rq2",
+   "s": "relic",
+   "t": "l",
+   "e": "📨",
+   "n": "Golden Envelope of 200 OK",
+   "fx": "+15 API Mastery",
+   "req": "Complete Day 3 (API testing)"
+  },
+  {
+   "id": "rm1",
+   "s": "relic",
+   "t": "m",
+   "e": "🏆",
+   "n": "Holy Grail of Hireability",
+   "fx": "+100 Hireability · interviewers bow",
+   "req": "Pass the final 30-question mock interview (Day 7 boss)"
+  }
+ ],
+ "senseiLines": [
+  {
+   "c": "Naruto",
+   "s": "naruto",
+   "t": "Hokage? Nah. Hokage of QA! One more flashcard, dattebayo! 🍥"
+  },
+  {
+   "c": "Naruto",
+   "s": "naruto",
+   "t": "Everyone said I'd never make it. So I trained MORE. Your turn, test-nin! 🦊"
+  },
+  {
+   "c": "Rock Lee",
+   "s": "naruto",
+   "t": "If you can't recall it after 5 reviews, do 50! Spaced repetition is the springtime of youth! 🔥"
+  },
+  {
+   "c": "Might Guy",
+   "s": "naruto",
+   "t": "Open the Eighth Gate… of focus sprints! 25 minutes, FULL POWER! 💪"
+  },
+  {
+   "c": "Kakashi",
+   "s": "naruto",
+   "t": "Sorry I'm late. I got lost on the road of reviewing box 5 cards 📖"
+  },
+  {
+   "c": "Shikamaru",
+   "s": "naruto",
+   "t": "What a drag… but being unemployed is a bigger drag. 5 minutes. Let's go ☁️"
+  },
+  {
+   "c": "Sakura",
+   "s": "naruto",
+   "t": "CHA! Punch that bug into next week! 👊🌸"
+  },
+  {
+   "c": "Jiraiya",
+   "s": "naruto",
+   "t": "A ninja's real strength is studying when nobody's watching 📜"
+  },
+  {
+   "c": "Itachi",
+   "s": "naruto",
+   "t": "You lack… flashcards. Do three more 🌙"
+  },
+  {
+   "c": "Luffy",
+   "s": "onepiece",
+   "t": "I'm gonna be King of the Testers! 🍖 Now gimme the next question!"
+  },
+  {
+   "c": "Luffy",
+   "s": "onepiece",
+   "t": "Your dream fund is your crew. Don't abandon your crew! 🏴‍☠️"
+  },
+  {
+   "c": "Zoro",
+   "s": "onepiece",
+   "t": "I wasn't lost. I was exploring the test environment. Now TRAIN ⚔️"
+  },
+  {
+   "c": "Nami",
+   "s": "onepiece",
+   "t": "Tibet costs money. Money comes from a job. Job comes from studying. Simple math 💰🍊"
+  },
+  {
+   "c": "Sanji",
+   "s": "onepiece",
+   "t": "A real tester never leaves a bug on the plate! 🍳"
+  },
+  {
+   "c": "Usopp",
+   "s": "onepiece",
+   "t": "I have a terrible disease called can't-study-itis… but a brave warrior studies anyway! 🎯"
+  },
+  {
+   "c": "Chopper",
+   "s": "onepiece",
+   "t": "Studying doesn't make me happy, you jerk! …okay, it kinda does 🦌💕"
+  },
+  {
+   "c": "Brook",
+   "s": "onepiece",
+   "t": "Yohohoho! I studied so hard my eyes popped out! …Oh wait, I don't have eyes. Skull joke! 💀🎻"
+  },
+  {
+   "c": "Brook",
+   "s": "onepiece",
+   "t": "I waited 50 lonely years for my crew. You can wait 25 minutes for a focus sprint 💀"
+  },
+  {
+   "c": "Brook",
+   "s": "onepiece",
+   "t": "Excuse me, young lady, may I see… your test coverage report? Yohohoho! 🎩"
+  },
+  {
+   "c": "Bon Clay",
+   "s": "onepiece",
+   "t": "A true friend never abandons a friend… and YOU will not abandon your flashcards! That's the Okama Way! 🦢"
+  },
+  {
+   "c": "Bon Clay",
+   "s": "onepiece",
+   "t": "Swan Arabesque! Kick that bug straight into the Grand Line! 🦢🩰"
+  },
+  {
+   "c": "Rocky",
+   "s": "rocky",
+   "t": "Yo! It's not about how hard the interview hits you. It's about getting back up and answering the next question 🥊"
+  },
+  {
+   "c": "Rocky",
+   "s": "rocky",
+   "t": "ADRIAAAN! I finished my focus sprint! 🥚🥊"
+  },
+  {
+   "c": "Mickey",
+   "s": "rocky",
+   "t": "Get up, ya bum! Box 1 ain't gonna review itself! 🥊"
+  },
+  {
+   "c": "Apollo Creed",
+   "s": "rocky",
+   "t": "You wanna be the champ? Champs don't skip review day. Flashcards. Now. 🥊"
+  },
+  {
+   "c": "Apollo Creed",
+   "s": "rocky",
+   "t": "I'm the master of disaster… and you're about to be the master of assertions 🇺🇸"
+  },
+  {
+   "c": "Apollo Creed",
+   "s": "rocky",
+   "t": "Float like a flaky test? No! Float like a butterfly, assert like a bee 🐝"
+  },
+  {
+   "c": "Apollo Creed",
+   "s": "rocky",
+   "t": "There's no tomorrow… for that bug. Hit it with a regression test today! ⭐"
+  },
+  {
+   "c": "Elliot",
+   "s": "mrrobot",
+   "t": "Hello, friend. The system wants you to quit. Don't give it the satisfaction 💻"
+  },
+  {
+   "c": "Mr. Robot",
+   "s": "mrrobot",
+   "t": "Control is an illusion. Your study streak isn't. Protect it 🕶️"
+  },
+  {
+   "c": "Grace",
+   "s": "grace",
+   "t": "FUCK IT. Open the flashcards 🍸"
+  },
+  {
+   "c": "Grace",
+   "s": "grace",
+   "t": "Fuck it! Life's too short to be scared of a technical interview 💅🍸"
+  },
+  {
+   "c": "Grace",
+   "s": "grace",
+   "t": "I stopped caring what people think. Fuck it, I'm learning CI/CD 🍸"
+  },
+  {
+   "c": "Frankie",
+   "s": "grace",
+   "t": "Breathe in the sage, breathe out the \"I guess\". Namaste, tester 🌿"
+  },
+  {
+   "c": "Fletcher",
+   "s": "whiplash",
+   "t": "Not quite my tempo. Answer that flashcard again. FASTER 🥁"
+  },
+  {
+   "c": "Fletcher",
+   "s": "whiplash",
+   "t": "\"Good job\" is the most dangerous phrase there is. So: one more card 🥁"
+  },
+  {
+   "c": "Tyrion",
+   "s": "got",
+   "t": "I drink and I know things. You study, and you'll know things too 🍷"
+  },
+  {
+   "c": "Daenerys",
+   "s": "got",
+   "t": "I will take what is mine: the job offer. With fire and flashcards 🐉"
+  },
+  {
+   "c": "Jon Snow",
+   "s": "got",
+   "t": "You know nothing… yet. Box 1 is where knowing starts ❄️"
+  },
+  {
+   "c": "Ned Stark",
+   "s": "got",
+   "t": "Winter is coming. So is the interview. Prepare ❄️"
+  },
+  {
+   "c": "Ryoma",
+   "s": "pot",
+   "t": "Mada mada dane. You can answer that faster 🎾"
+  },
+  {
+   "c": "Tezuka",
+   "s": "pot",
+   "t": "Don't let your guard down. Review box 1 today 🎾"
+  },
+  {
+   "c": "Fuji",
+   "s": "pot",
+   "t": "Every bug has a counter. You just have to find it 😊🎾"
+  },
+  {
+   "c": "Eiji",
+   "s": "pot",
+   "t": "Nya! Acrobatic flashcard combo, let's go! 🐱🎾"
+  },
+  {
+   "c": "Kuroko",
+   "s": "kuroko",
+   "t": "I'm the shadow. Your knowledge is the light. Here's my pass: the next question 🏀"
+  },
+  {
+   "c": "Kagami",
+   "s": "kuroko",
+   "t": "I'm gonna crush this interview! I'm going to the top! 🔥🏀"
+  },
+  {
+   "c": "Aomine",
+   "s": "kuroko",
+   "t": "The only one who can beat you… is you skipping today's cards 😤"
+  },
+  {
+   "c": "Midorima",
+   "s": "kuroko",
+   "t": "I always do my flashcards. That's why I never miss 🎯"
+  },
+  {
+   "c": "Murasakibara",
+   "s": "kuroko",
+   "t": "Studying is such a pain… snacks after, okay? 🍬"
+  }
+ ],
+ "series": {
+  "naruto": {
+   "n": "Naruto",
+   "e": "🍥"
+  },
+  "onepiece": {
+   "n": "One Piece",
+   "e": "🏴‍☠️"
+  },
+  "pot": {
+   "n": "The Prince of Tennis",
+   "e": "🎾"
+  },
+  "kuroko": {
+   "n": "Kuroko's Basketball",
+   "e": "🏀"
+  },
+  "rocky": {
+   "n": "Rocky",
+   "e": "🥊"
+  },
+  "mrrobot": {
+   "n": "Mr. Robot",
+   "e": "💻"
+  },
+  "grace": {
+   "n": "Grace and Frankie",
+   "e": "🍸"
+  },
+  "whiplash": {
+   "n": "Whiplash",
+   "e": "🥁"
+  },
+  "got": {
+   "n": "Game of Thrones",
+   "e": "🐉"
+  }
+ },
+ "hairs": [
+  [
+   "#1E1B3A",
+   "Midnight"
+  ],
+  [
+   "#F2C14E",
+   "Blonde"
+  ],
+  [
+   "#F48FB1",
+   "Sakura pink"
+  ],
+  [
+   "#6D4C9F",
+   "Violet"
+  ],
+  [
+   "#C9D1DC",
+   "Silver"
+  ],
+  [
+   "#39FF14",
+   "Neon"
+  ],
+  [
+   "#7A3E1D",
+   "Chestnut"
+  ],
+  [
+   "#E53935",
+   "Red"
+  ]
+ ]
+}

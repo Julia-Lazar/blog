@@ -17,41 +17,52 @@ describe("Learning Journey Page", () => {
     expect(screen.getByText("My Learning Journey")).toBeInTheDocument();
   });
 
-  it("shows About Me section", () => {
-    render(<LearningJourney />);
-
-    // Check for section heading and some content
-    expect(
-      screen.getByRole("heading", { name: "About Me", level: 2 })
-    ).toBeInTheDocument();
-    expect(screen.getByText(/I mostly write about frontend/i)).toBeInTheDocument();
-  });
-
   it("shows all technologies", () => {
     render(<LearningJourney />);
 
-    expect(screen.getByText("The stack I use the most")).toBeInTheDocument();
+    expect(
+      screen.getByText("The stack I use the most in test automation"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("Stuff I've worked with related to testing software"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("The stack I use the most in frontend"),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Playwright")).toBeInTheDocument();
+    expect(screen.getByText("Cucumber")).toBeInTheDocument();
     expect(screen.getByText("React")).toBeInTheDocument();
-    expect(screen.getByText("TypeScript")).toBeInTheDocument();
+    expect(screen.getAllByText("TypeScript")).toHaveLength(2);
   });
 
   it("shows learning timeline", () => {
     render(<LearningJourney />);
 
-    // Check for timeline entries
-    expect(screen.getByText(/2024 - now/i)).toBeInTheDocument();
-    expect(screen.getByText(/2021: Clean Code Principles/i)).toBeInTheDocument();
+    // every stop shows its year and title, the internship is the current one
+    expect(screen.getByText("~2014")).toBeInTheDocument();
+    expect(screen.getByText("First Steps")).toBeInTheDocument();
+    expect(screen.getByText("Computer Science Studies")).toBeInTheDocument();
+    expect(screen.getByText("Clean Code Principles")).toBeInTheDocument();
     expect(
-      screen.getByText(/2018: Computer Science Studies/i)
+      screen.getByText("9-Month Software Testing Internship"),
     ).toBeInTheDocument();
-    expect(screen.getByText(/~2014: First Steps/i)).toBeInTheDocument();
+    expect(screen.getByText("Now playing")).toBeInTheDocument();
+    expect(
+      screen.queryByText(/Advanced Web Development/i),
+    ).not.toBeInTheDocument();
   });
 
-  it("mentions hobbies", () => {
+  it("lists what I'm learning now, testing first", () => {
     render(<LearningJourney />);
 
-    // Check if hobbies are mentioned
-    expect(screen.getByText(/video games/i)).toBeInTheDocument();
-    expect(screen.getByText(/tennis/i)).toBeInTheDocument();
+    expect(screen.getByText(/CI\/CD: pipelines/)).toBeInTheDocument();
+    expect(screen.getByText(/Advanced testing techniques/)).toBeInTheDocument();
+    expect(screen.getByText(/do with AI/)).toBeInTheDocument();
+  });
+
+  it("no longer has the About Me section", () => {
+    render(<LearningJourney />);
+
+    expect(screen.queryByText("About Me")).not.toBeInTheDocument();
   });
 });

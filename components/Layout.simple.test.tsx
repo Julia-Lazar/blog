@@ -52,7 +52,7 @@ describe("Layout Component", () => {
     const activeLink = screen.getByText("Learning Journey");
     expect(activeLink).toBeInTheDocument();
     expect(activeLink).toHaveAttribute("aria-current", "page");
-    expect(activeLink.className).toContain("ring-2");
+    expect(activeLink.className).toContain("is-active");
     expect(screen.getByText("Tech Stack")).toBeInTheDocument();
   });
 

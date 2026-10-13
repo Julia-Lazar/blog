@@ -74,14 +74,14 @@ describe("Home Page", () => {
 
     expect(activeSortButton).toHaveAttribute("aria-pressed", "true");
     expect(activeFilterButton).toHaveAttribute("aria-pressed", "true");
-    expect(activeSortButton.className).toContain("ring-2");
-    expect(activeFilterButton.className).toContain("ring-2");
+    expect(activeSortButton.className).toContain("is-active");
+    expect(activeFilterButton.className).toContain("is-active");
 
     fireEvent.click(screen.getByRole("button", { name: "Longest Read" }));
     fireEvent.click(screen.getByRole("button", { name: "Featured Notes" }));
 
-    expect(screen.getByRole("button", { name: "Longest Read" }).className).toContain("ring-2");
-    expect(screen.getByRole("button", { name: "Featured Notes" }).className).toContain("ring-2");
+    expect(screen.getByRole("button", { name: "Longest Read" }).className).toContain("is-active");
+    expect(screen.getByRole("button", { name: "Featured Notes" }).className).toContain("is-active");
   });
 
   it("shows all posts", () => {

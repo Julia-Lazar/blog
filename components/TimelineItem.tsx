@@ -1,77 +1,39 @@
 import React from "react";
+import Pic from "./Pic";
 
 type TimelineSide = "left" | "right";
-type TimelineTone = "rose" | "pink";
 
 export type TimelineItemProps = {
   side: TimelineSide;
   date: string;
   title: string;
   description: string;
-  tone: TimelineTone;
-  dotClassName?: string;
+  /** picture, see Pic: "prop:…", "item:…", "head" (my character), "anim:lift"… */
+  icon: string;
+  /** my character, for icons that show her */
+  spec?: Record<string, unknown>;
+  /** some pictures have a lot of empty space around them (the falling baby) */
+  iconSize?: number;
+  /** the chapter I'm in right now */
+  current?: boolean;
 };
 
-export function TimelineItem({
-  side,
-  date,
-  title,
-  description,
-  tone,
-  dotClassName,
-}: TimelineItemProps) {
-  const toneStyles = {
-    rose: {
-      date: "text-rose-100/80",
-      title: "text-rose-50",
-      card:
-        "border-rose-200/15 bg-[linear-gradient(145deg,rgba(255,205,226,0.16),rgba(83,24,48,0.78))]",
-      dot: "bg-rose-200",
-    },
-    pink: {
-      date: "text-pink-100/80",
-      title: "text-pink-50",
-      card:
-        "border-pink-200/15 bg-[linear-gradient(145deg,rgba(255,178,223,0.14),rgba(58,17,61,0.8))]",
-      dot: "bg-pink-300",
-    },
-  } as const;
-
-  const styles = toneStyles[tone];
-  const dotClass = dotClassName ?? styles.dot;
-
-  const card = (
-    <div
-      className={`jiggly-card rounded-[1.55rem] border p-5 sm:p-6 ${styles.card}`}
-    >
-      <p className={`font-pixel text-[10px] leading-[1.8] ${styles.date}`}>
-        {date}: {title}
-      </p>
-      <h3 className={`mt-4 text-xl font-semibold ${styles.title}`}>{title}</h3>
-      <p className="mt-3 text-sm leading-7 text-pink-50/82">{description}</p>
-    </div>
-  );
-
+/** One stop on the quest line: a diamond on the line and a card on one side. */
+export function TimelineItem({ side, date, title, description, icon, spec, iconSize, current = false }: TimelineItemProps) {
   return (
-    <div className="relative flex flex-col md:flex-row md:items-stretch">
-      <div
-        className={`absolute left-[var(--timeline-x)] top-8 z-10 hidden h-5 w-5 -translate-x-1/2 rounded-full border-4 border-[rgba(30,10,35,0.95)] shadow-lg md:block ${dotClass}`}
-      />
-      {side === "right" ? (
-        <>
-          <div className="hidden w-full md:block md:w-1/2 md:pr-10" />
-          <div className="w-full min-w-0 md:w-1/2 md:pl-10">
-            {card}
+    <li className={`quest-step is-${side}${current ? " is-current" : ""}`}>
+      <span className="quest-node" aria-hidden="true" />
+      <article className="quest-card">
+        <header className="quest-card-head">
+          <Pic icon={icon} spec={spec} size={iconSize ?? (icon.startsWith("anim:") ? 72 : 56)} />
+          <div>
+            <p className="quest-date">{date}</p>
+            <h3 className="quest-title">{title}</h3>
           </div>
-        </>
-      ) : (
-        <>
-          <div className="w-full min-w-0 md:w-1/2 md:pr-10">
-            {card}
-          </div>
-          <div className="hidden w-full md:block md:w-1/2 md:pl-10" />
-        </>
-      )}
-    </div>
+        </header>
+        <p className="quest-text">{description}</p>
+        {current ? <span className="quest-now">Now playing</span> : null}
+      </article>
+    </li>
   );
 }

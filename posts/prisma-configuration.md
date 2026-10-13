@@ -1,6 +1,8 @@
 ---
 title: "Integrating Prisma with Next.js and MySQL"
 date: "2025-12-25"
+icon: "prop:でんき"
+excerpt: "Prisma + Next.js + MySQL: the adapter, one shared client and prisma.config.ts."
 ---
 
 # Integrating Prisma with Next.js and MySQL

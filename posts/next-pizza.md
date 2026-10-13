@@ -1,6 +1,8 @@
 ---
 title: "Building Next Pizza: My Journey with Next.js and React 🍕"
 date: "2025-12-11"
+icon: "prop:ピザ"
+excerpt: "Next Pizza, my pizza ordering app: what works, what doesn't yet, and my doubts along the way."
 ---
 
 ---

@@ -1,6 +1,8 @@
 ---
 title: "How to deal with a little boredom and lack of motivation?"
 date: "2026-01-28"
+icon: "prop:コーヒー"
+excerpt: "A very honest post about feeling sick of the screen and trying to get my motivation back without forcing it."
 ---
 
 ![API](/images/boredom.jpg)

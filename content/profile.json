@@ -1,0 +1,315 @@
+{
+  "name": "Julka",
+  "level": 27,
+  "rank": "Genin Tester",
+  "hair": "#39FF14",
+  "equip": {
+    "head": "h1",
+    "face": "f2",
+    "body": "b3",
+    "legs": "l3",
+    "feet": "sl1",
+    "weapon": "wq1",
+    "relic": "r1"
+  },
+  "owned": [
+    "s2",
+    "l2",
+    "b1",
+    "w1",
+    "ll1",
+    "b0",
+    "l0",
+    "s0",
+    "s1",
+    "f7",
+    "f4",
+    "w2",
+    "sl1",
+    "rq1",
+    "h3",
+    "h6",
+    "w3",
+    "s7",
+    "wq1",
+    "r2",
+    "s5",
+    "r1",
+    "b3",
+    "hq1",
+    "b2",
+    "h7",
+    "h1",
+    "l3",
+    "f2",
+    "r6",
+    "l1",
+    "r3",
+    "b4",
+    "h4"
+  ],
+  "skills": [
+    {
+      "id": "git",
+      "name": "Git",
+      "pct": 76,
+      "icon": "brand:git"
+    },
+    {
+      "id": "pom",
+      "name": "Page Object Model",
+      "pct": 80,
+      "icon": "prop:いえ"
+    },
+    {
+      "id": "js",
+      "name": "JavaScript basics",
+      "pct": 94,
+      "icon": "brand:javascript"
+    },
+    {
+      "id": "sql",
+      "name": "SQL",
+      "pct": 42,
+      "icon": "brand:mysql"
+    },
+    {
+      "id": "closures",
+      "name": "JS closures",
+      "pct": 69,
+      "icon": "prop:プレゼント"
+    },
+    {
+      "id": "comm",
+      "name": "Interview communication",
+      "pct": 62,
+      "icon": "item:f3"
+    },
+    {
+      "id": "api",
+      "name": "API testing",
+      "pct": 50,
+      "icon": "item:rq2"
+    },
+    {
+      "id": "cicd",
+      "name": "CI/CD",
+      "pct": 42,
+      "icon": "prop:じんじゃ"
+    },
+    {
+      "id": "sdlc",
+      "name": "SDLC, Scrum & Kanban",
+      "pct": 67,
+      "icon": "prop:とけい"
+    },
+    {
+      "id": "playwright",
+      "name": "Playwright",
+      "pct": 67,
+      "icon": "brand:playwright"
+    },
+    {
+      "id": "runner",
+      "name": "Test runners & hooks",
+      "pct": 60,
+      "icon": "anim:run"
+    },
+    {
+      "id": "testing",
+      "name": "Testing fundamentals",
+      "pct": 69,
+      "icon": "prop:duck"
+    },
+    {
+      "id": "ts",
+      "name": "TypeScript",
+      "pct": 70,
+      "icon": "brand:typescript"
+    },
+    {
+      "id": "web",
+      "name": "Web & security basics",
+      "pct": 60,
+      "icon": "item:h6"
+    },
+    {
+      "id": "bdd",
+      "name": "BDD",
+      "pct": 50,
+      "icon": "item:wq1"
+    },
+    {
+      "id": "design",
+      "name": "Test design techniques",
+      "pct": 60,
+      "icon": "item:f6"
+    },
+    {
+      "id": "framework",
+      "name": "Framework & design patterns",
+      "pct": 50,
+      "icon": "prop:がっこう"
+    },
+    {
+      "id": "debug",
+      "name": "Debugging & flaky tests",
+      "pct": 42,
+      "icon": "item:r7"
+    },
+    {
+      "id": "assert",
+      "name": "Assertions & parameterization",
+      "pct": 69,
+      "icon": "item:w7"
+    },
+    {
+      "id": "quality",
+      "name": "Code quality & review",
+      "pct": 50,
+      "icon": "item:wq2"
+    },
+    {
+      "id": "mindset",
+      "name": "QA mindset & career talk",
+      "pct": 80,
+      "icon": "prop:めがね"
+    }
+  ],
+  "certificates": [
+    {
+      "id": "cert-mv6z2zgrn1i",
+      "name": "New certificate",
+      "icon": "prop:てがみ"
+    }
+  ],
+  "interests": [
+    {
+      "id": "games",
+      "name": "Video games",
+      "icon": "prop:gamepad",
+      "extra": [
+        "prop:mario",
+        "prop:luigi"
+      ]
+    },
+    {
+      "id": "board",
+      "name": "Board games",
+      "icon": "prop:monopoly-man"
+    },
+    {
+      "id": "japan",
+      "name": "Japanese pop culture",
+      "icon": "prop:じんじゃ"
+    },
+    {
+      "id": "nihongo",
+      "name": "Learning Japanese",
+      "icon": "prop:japan-flag"
+    },
+    {
+      "id": "bike",
+      "name": "Cycling",
+      "icon": "prop:じてんしゃ"
+    }
+  ],
+  "sensei": [
+    {
+      "c": "Rock Lee",
+      "src": "/sensei/rock-lee-8953de883a.jpg"
+    },
+    {
+      "c": "Kakashi",
+      "src": "/sensei/kakashi-a79fb09695.jpg"
+    },
+    {
+      "c": "Might Guy",
+      "src": "/sensei/might-guy-b3c27db6d6.jpg"
+    },
+    {
+      "c": "Jiraiya",
+      "src": "/sensei/jiraiya-121ec11376.jpg"
+    },
+    {
+      "c": "Luffy",
+      "src": "/sensei/luffy-6eeebc4bc2.jpg"
+    },
+    {
+      "c": "Sanji",
+      "src": "/sensei/sanji-0156435c10.jpg"
+    },
+    {
+      "c": "Usopp",
+      "src": "/sensei/usopp-b127652d64.jpg"
+    },
+    {
+      "c": "Zoro",
+      "src": "/sensei/zoro-1bdd42933a.jpg"
+    },
+    {
+      "c": "Nami",
+      "src": "/sensei/nami-644b3d17b0.jpg"
+    },
+    {
+      "c": "Naruto",
+      "src": "/sensei/naruto-d71265b1f6.jpg"
+    },
+    {
+      "c": "Shikamaru",
+      "src": "/sensei/shikamaru-2a6d967ab8.jpg"
+    },
+    {
+      "c": "Brook",
+      "src": "/sensei/brook-045eb64722.jpg"
+    },
+    {
+      "c": "Bon Clay",
+      "src": "/sensei/bon-clay-dfbf146be4.jpg"
+    },
+    {
+      "c": "Ryoma",
+      "src": "/sensei/ryoma-25158a3300.jpg"
+    },
+    {
+      "c": "Tezuka",
+      "src": "/sensei/tezuka-a39a98200e.jpg"
+    },
+    {
+      "c": "Fuji",
+      "src": "/sensei/fuji-80d59f97c9.jpg"
+    },
+    {
+      "c": "Eiji",
+      "src": "/sensei/eiji-b3210ae9bc.jpg"
+    },
+    {
+      "c": "Midorima",
+      "src": "/sensei/midorima-da2c200a8d.jpg"
+    },
+    {
+      "c": "Murasakibara",
+      "src": "/sensei/murasakibara-7017750f66.jpg"
+    },
+    {
+      "c": "Grace",
+      "src": "/sensei/grace-cddb670960.jpg"
+    },
+    {
+      "c": "Frankie",
+      "src": "/sensei/frankie-d676eb23f8.jpg"
+    },
+    {
+      "c": "Mr. Robot",
+      "src": "/sensei/mr-robot-a30fefee8b.jpg"
+    },
+    {
+      "c": "Apollo Creed",
+      "src": "/sensei/apollo-creed-46970d73e7.jpg"
+    },
+    {
+      "c": "Rocky",
+      "src": "/sensei/rocky-bc8fce7406.jpg"
+    }
+  ]
+}

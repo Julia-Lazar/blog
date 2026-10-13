@@ -1,6 +1,8 @@
 ---
 title: "NextPizza Update #2: Storybook, Unit Tests, and more 🍕"
 date: "2026-01-29"
+icon: "prop:ピザ"
+excerpt: "Backend integration, Storybook, unit tests and the day MySQL Workbench woke up my database."
 ---
 
 [**GitHub Repository**](https://github.com/Julia-Lazar/NextPizza)

@@ -1,6 +1,8 @@
 ---
 title: "some notes"
 date: "2025-12-13"
+icon: "prop:ノート"
+excerpt: "Loose notes: Storybook doubts, unit tests with Vitest and the next project idea."
 ---
 
 ## What’s next?

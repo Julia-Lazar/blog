@@ -1,44 +1,40 @@
 import { getSortedPostsData } from "@/../lib/posts";
+import { getProfile } from "@/../lib/profile";
+import { avatarSpec } from "@/../lib/catalog";
 import Layout from "@/../components/Layout";
 import PostsDirectory from "@/../components/PostsDirectory";
-
-function formatDate(dateString: string) {
-  const d = new Date(dateString);
-  if (isNaN(d.getTime())) return dateString;
-  return d.toLocaleDateString("pl-PL", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
+import CharacterCard from "@/../components/CharacterCard";
+import SkillsPanel from "@/../components/SkillsPanel";
+import SenseiCard from "@/../components/SenseiCard";
+import TrainingMontage from "@/../components/TrainingMontage";
+import ProfileTiles from "@/../components/ProfileTiles";
 
 export default function Home() {
   const posts = getSortedPostsData();
-  const newestPost = posts[0];
+  const profile = getProfile();
+  const spec = avatarSpec(profile);
 
   return (
     <Layout>
-      <div className="space-y-8">
-        <section className="rounded-[1.8rem] bg-white/5 px-4 py-3 sm:px-6 sm:py-4">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="jiggly-chip text-sm">Total posts: {posts.length}</span>
-            {newestPost ? (
-              <span className="jiggly-chip text-sm">
-                Latest post: {formatDate(newestPost.date)}
-              </span>
-            ) : null}
+      <div style={{ display: "grid", gap: 18 }}>
+        <div className="hero">
+          <div style={{ display: "grid", gap: 18, alignContent: "start" }}>
+            <CharacterCard profile={profile} />
+            <SkillsPanel profile={profile} />
           </div>
-        </section>
+          <div style={{ display: "grid", gap: 18, alignContent: "start" }}>
+            <SenseiCard images={profile.sensei} />
+            <TrainingMontage spec={spec} />
+            <ProfileTiles profile={profile} />
+          </div>
+        </div>
 
         {posts.length === 0 ? (
-          <div
-            id="posts"
-            className="jiggly-card scroll-mt-6 rounded-[1.8rem] p-6 text-sm text-pink-50/80 sm:scroll-mt-8 sm:p-8 sm:text-base"
-          >
+          <div id="posts" className="panel">
             No posts yet. I still need to stop overthinking and publish one.
           </div>
         ) : (
-          <PostsDirectory posts={posts} />
+          <PostsDirectory posts={posts} spec={spec} />
         )}
       </div>
     </Layout>

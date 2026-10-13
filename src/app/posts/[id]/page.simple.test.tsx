@@ -56,6 +56,7 @@ describe("Post Page", () => {
       title: "My Amazing Post",
       date: "2024-01-15",
       contentHtml: "<p>Post content here</p>",
+      readTime: "1 min read",
     });
 
     const Component = await Post({
@@ -73,6 +74,7 @@ describe("Post Page", () => {
       title: "Test",
       date: "2024-01-01",
       contentHtml: "<p>Content</p>",
+      readTime: "1 min read",
     });
 
     const Component = await Post({
@@ -92,6 +94,7 @@ describe("Post Page", () => {
       title: "Test",
       date: "2024-01-01",
       contentHtml: "<p>Content</p>",
+      readTime: "1 min read",
     });
 
     const Component = await Post({

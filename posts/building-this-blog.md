@@ -1,6 +1,8 @@
 ---
 title: "How I Built This Blog - Next.js, Markdown, and Animated Background"
 date: "2025-12-08"
+icon: "prop:パソコン"
+excerpt: "How this blog came to life: Next.js, Markdown files and an animated background."
 ---
 
 [**GitHub Repository**](https://github.com/Julia-Lazar/blog)
