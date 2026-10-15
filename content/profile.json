@@ -66,7 +66,7 @@
     {
       "id": "js",
       "name": "JavaScript basics",
-      "pct": 90,
+      "pct": 85,
       "icon": "brand:javascript",
       "about": "I feel confident in JavaScript. I've been using it for years, and I understand both the language itself and how it behaves (often in weird ways). I understand the differences between `var`, `let`, and `const`, including scope, hoisting, and the temporal dead zone. I'm also familiar with closures, promises, `async`/`await`, and the event loop, including the call stack, microtasks, and macrotasks. I can also write plain vanilla JavaScript without relying on a framework."
     },
