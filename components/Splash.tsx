@@ -20,12 +20,25 @@ const MSGS = [
 
 const SEEN_KEY = "julka-splash-seen";
 
+// time-of-day hello + "nice to meet you, I'm Julka, please treat me well!"
+const INTRO = {
+  jp: ["はじめまして、", "わたしはユルカです。", "よろしく！"],
+  romaji: "Hajimemashite, watashi wa Julka desu, yoroshiku!",
+  en: "Nice to meet you, I'm Julka!",
+};
+
 function greeting(hour: number) {
-  if (hour >= 5 && hour < 11)
-    return { jp: ["おはよう！", "わたしはユルカです。"], romaji: "Ohayou, watashi wa Julka desu", en: "Good morning, I'm Julka" };
-  if (hour >= 11 && hour < 18)
-    return { jp: ["こんにちは、", "わたしはユルカです。"], romaji: "Konnichiwa, watashi wa Julka desu", en: "Hello, I'm Julka" };
-  return { jp: ["こんばんは、", "わたしはユルカです。"], romaji: "Konbanwa, watashi wa Julka desu", en: "Good evening, I'm Julka" };
+  const hello =
+    hour >= 5 && hour < 11
+      ? { jp: "おはよう！", romaji: "Ohayou!", en: "Good morning!" }
+      : hour >= 11 && hour < 18
+        ? { jp: "こんにちは！", romaji: "Konnichiwa!", en: "Hello!" }
+        : { jp: "こんばんは！", romaji: "Konbanwa!", en: "Good evening!" };
+  return {
+    jp: [hello.jp, ...INTRO.jp],
+    romaji: `${hello.romaji} ${INTRO.romaji}`,
+    en: `${hello.en} ${INTRO.en}`,
+  };
 }
 
 interface Win {
@@ -95,11 +108,11 @@ export default function Splash({ spec }: { spec: Record<string, unknown> }) {
         ]);
       }, i * 75);
     }
+    // no auto-close: the visitor has to press "Fix"
     later(() => setPhase("main"), n * 75 + 250);
-    later(close, n * 75 + 7500);
     const t = timers.current;
     return () => t.forEach(clearTimeout);
-  }, [close]);
+  }, []);
 
   useEffect(() => {
     if (phase === "main") okRef.current?.focus();
@@ -108,17 +121,15 @@ export default function Splash({ spec }: { spec: Record<string, unknown> }) {
     const ids: number[] = [];
     for (let i = 1; i <= total; i++) ids.push(window.setTimeout(() => setGone(i), i * 35));
     ids.push(window.setTimeout(() => setPhase("out"), total * 35 + 250));
-    ids.push(window.setTimeout(() => setPhase("off"), total * 35 + 700));
     return () => ids.forEach(clearTimeout);
   }, [phase, wins.length]);
 
+  // its own effect: switching to "out" re-runs the one above, which would cancel this timer
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape" || e.key === "Enter") close();
-    };
-    if (phase === "popups" || phase === "main") window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [phase, close]);
+    if (phase !== "out") return;
+    const t = window.setTimeout(() => setPhase("off"), 450);
+    return () => window.clearTimeout(t);
+  }, [phase]);
 
   if (phase === "off") return null;
 
@@ -127,7 +138,15 @@ export default function Splash({ spec }: { spec: Record<string, unknown> }) {
   const winGone = (i: number) => gone >= 1 + (wins.length - i);
 
   return (
-    <div id="splash" className={phase === "out" ? "out" : ""} role="dialog" aria-modal="true" aria-label="Welcome">
+    <div
+      id="splash"
+      className={phase === "out" ? "out" : ""}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Welcome"
+      // while fading out it must not catch clicks meant for the page
+      style={phase === "out" ? { pointerEvents: "none" } : undefined}
+    >
       <div aria-hidden="true">
         {wins.map((w, i) => (
           <div key={w.id} className={"sp-win" + (winGone(i) ? " gone" : "")} style={{ left: w.left, top: w.top }}>
@@ -147,7 +166,27 @@ export default function Splash({ spec }: { spec: Record<string, unknown> }) {
         <div className={"sp-win sp-main" + (mainGone ? " gone" : "")}>
           <div className="sp-tb">
             <span>Julka.exe</span>
-            <i>✕</i>
+            {/* the window can be closed like a real one, too */}
+            <button
+              type="button"
+              onClick={close}
+              aria-label="Close"
+              style={{
+                width: 22,
+                height: 22,
+                display: "grid",
+                placeItems: "center",
+                padding: 0,
+                fontSize: 13,
+                color: "#fff",
+                background: "#D9503F",
+                border: "1px solid #fff",
+                borderRadius: 3,
+                cursor: "pointer",
+              }}
+            >
+              ✕
+            </button>
           </div>
           <div className="sp-body">
             <div className="sp-bow">
@@ -161,7 +200,7 @@ export default function Splash({ spec }: { spec: Record<string, unknown> }) {
               />
             </div>
             <div>
-              <p className="sp-jp" lang="ja">
+              <p className="sp-jp" lang="ja" style={{ fontSize: "clamp(16px, 4.2vw, 19px)" }}>
                 {greet.jp.map((part) => (
                   <span key={part} style={{ display: "inline-block" }}>
                     {part}
@@ -172,10 +211,11 @@ export default function Splash({ spec }: { spec: Record<string, unknown> }) {
               <p>
                 <small>({greet.en})</small>
               </p>
+              <p>Click &quot;Fix&quot; to fix error.</p>
             </div>
           </div>
           <button ref={okRef} type="button" className="sp-btn sp-fix" onClick={close}>
-            はい OK
+            Fix
           </button>
         </div>
       ) : null}

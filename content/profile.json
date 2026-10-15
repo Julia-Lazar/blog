@@ -5,7 +5,7 @@
   "hair": "#39FF14",
   "equip": {
     "head": "h1",
-    "face": "f2",
+    "face": "f4",
     "body": "b3",
     "legs": "l3",
     "feet": "sl1",
@@ -53,133 +53,179 @@
       "id": "git",
       "name": "Git",
       "pct": 76,
-      "icon": "brand:git"
+      "icon": "brand:git",
+      "about": "I have been using it for ages, mostly when I work on a project on my own. I know how to create branches and how to get changes from a remote repo with both git fetch and git pull. I run most commands from the command line in bash. I can resolve merge conflicts (although almost always through the GUI in VS Code). I know how to write semantic commit messages, and undoing changes is no problem (I just peek at Stack Overflow to remind myself, or these days ask a good LLM which commands to run and how they differ). I know what a pull/merge request on GitHub/GitLab is and how to give developers the right permissions. I also keep a .gitignore, use git stash when I have to switch tasks mid-work, and git log / git diff to see what actually changed."
     },
     {
       "id": "pom",
       "name": "Page Object Model",
       "pct": 80,
-      "icon": "prop:いえ"
+      "icon": "prop:いえ",
+      "about": "I understand this design pattern and its benefits: one class per page that keeps its locators and actions, readable tests, less duplication, and only one place to fix when the UI changes. I know how to use it in a real project, because I have already used it in several projects during my internship."
     },
     {
       "id": "js",
       "name": "JavaScript basics",
-      "pct": 94,
-      "icon": "brand:javascript"
+      "pct": 90,
+      "icon": "brand:javascript",
+      "about": "I feel confident in JavaScript. I've been using it for years, and I understand both the language itself and how it behaves (often in weird ways). I understand the differences between `var`, `let`, and `const`, including scope, hoisting, and the temporal dead zone. I'm also familiar with closures, promises, `async`/`await`, and the event loop, including the call stack, microtasks, and macrotasks. I can also write plain vanilla JavaScript without relying on a framework."
     },
     {
       "id": "sql",
       "name": "SQL",
       "pct": 42,
-      "icon": "brand:mysql"
+      "icon": "brand:mysql",
+      "about": "The last time I really delved into SQL was at university, a few years ago, so I don't remember all the details. However, I can brush up on it quickly when needed. When working on applications that required a backend (which isn't my area of expertise), I used tools like MySQL Workbench and DBeaver, as well as ORMs (Object-Relational Mappers) like Prisma."
     },
     {
       "id": "closures",
       "name": "JS closures",
       "pct": 69,
-      "icon": "prop:プレゼント"
+      "icon": "prop:プレゼント",
+      "about": "I know what they are and when they are useful."
     },
     {
       "id": "comm",
       "name": "Interview communication",
       "pct": 62,
-      "icon": "item:f3"
+      "icon": "item:f3",
+      "about": "Sometimes I know stuff but have trouble putting it nicely in English, although I try to tackle the question as well as I can. I know I might be a little chaotic (working on it, though), and it's easier for me to write something down or show an example in code. I mean, how do you explain the Factory design pattern just in words?"
     },
     {
       "id": "api",
       "name": "API testing",
       "pct": 50,
-      "icon": "item:rq2"
+      "icon": "item:rq2",
+      "about": "I tested an API and now I have déjà vu, omg. OK, I'm back. I know how to work with REST APIs, for example in Postman, and how to send requests with the Fetch API, Axios or, preferably, Playwright's built-in APIRequestContext. I know how to perform CRUD operations and how methods such as PUT and PATCH differ (PUT replaces the whole resource, PATCH updates only part of it). I know what path parameters (slugs), query parameters, headers and the common status codes are. I know how to validate a response against a schema with a library such as zod. I know what a cookie, a JWT and a Bearer token are, and how session storage differs from local storage.\nWhat I lack is experience with complex real-world APIs: I haven't tested a GraphQL API and I've never worked with SOAP. I practised on public APIs such as restful-booker.herokuapp.com and PunkAPI, and I haven't covered complicated scenarios or non-functional aspects such as response times or hitting the same endpoint 200 times a second."
     },
     {
       "id": "cicd",
       "name": "CI/CD",
       "pct": 42,
-      "icon": "prop:じんじゃ"
+      "icon": "prop:じんじゃ",
+      "about": "I know these concepts in theory and a little in practice: I created a pipeline in Jenkins that runs API and UI tests, but I haven't used all of its options and configurations, so I know its core functionality. I have also used GitHub Actions, although writing the workflow file (YAML) is a bit hard without some help from AI."
     },
     {
       "id": "sdlc",
       "name": "SDLC, Scrum & Kanban",
       "pct": 67,
-      "icon": "prop:とけい"
+      "icon": "prop:とけい",
+      "about": "I know what they are. I know the seven phases of the SDLC, the roles and events in Scrum, and how Scrum differs from Kanban. I don't really try to memorize all 12 principles of the Agile Manifesto, and I honestly struggle to remember the four core values of Agile (maybe I'll remember them if I write them down here xd):\n\n- Individuals and interactions over processes and tools\n- Working software over comprehensive documentation\n- Customer collaboration over contract negotiation\n- Responding to change over following a plan\n\nI'd rather learn what Agile actually feels like by working on a project that uses it."
     },
     {
       "id": "playwright",
       "name": "Playwright",
       "pct": 67,
-      "icon": "brand:playwright"
+      "icon": "brand:playwright",
+      "about": "I know how to write E2E tests in Playwright for both UI and API testing. I understand web-first assertions and their auto-retrying mechanism. I know what browser instances, browser contexts, and pages are in Playwright, and I understand fixtures and how to create them. I also know how to organize test suites using `describe` blocks and define tests using `test` blocks, as well as what `test.step`, `test.only`, and `test.use` do.\n\nI appreciate Playwright's support for cross-browser testing, its resilient locators, and its ability to run tests in parallel. The Trace Viewer is a wonderful GUI for debugging, and the Playwright VS Code extension is great for writing tests."
     },
     {
       "id": "runner",
       "name": "Test runners & hooks",
       "pct": 60,
-      "icon": "anim:run"
+      "icon": "anim:run",
+      "about": "I still need some practice figuring out when to use, for example, a `beforeEach` hook and when to create a fixture instead. But wait, give me a second…\n*Comes back 10 minutes later.*\nI've done some research with the help of a large language model, and the oracle has spoken: use hooks for actions tied to the test lifecycle, and fixtures for reusable dependencies that need setup, injection, and possibly teardown. When you're asking yourself **WHEN** an action should happen, think hooks. When you're asking yourself **WHAT** resource a test needs, think fixtures.\nSee how easy it is with AI these days? You've got your own little professor who can explain concepts to you as if you were 10 years old.\nI just hope this professor won't steal my job, haha, because AI is like the invention of the calculator: it's just a tool. Right? At least, that's what I keep telling myself so I don't go crazy and end up picking strawberries abroad after all those years at uni.\nWait, why am I oversharing here? I guess studying for hours on end takes its toll. I'm a little stressed about tomorrow's technical interview.\nWish me luck!"
     },
     {
       "id": "testing",
       "name": "Testing fundamentals",
       "pct": 69,
-      "icon": "prop:duck"
+      "icon": "prop:duck",
+      "about": "After a nine-month internship in testing and test automation, I'm pretty sure I know the basics of software testing (or at least I really should by now)."
     },
     {
       "id": "ts",
       "name": "TypeScript",
       "pct": 70,
-      "icon": "brand:typescript"
+      "icon": "brand:typescript",
+      "about": "Easy to learn, hard to master. I know how to create interfaces and types and use them to define the type of a variable or object, or what a function takes in and returns. I know the basic difference between an interface and a type (use an interface to define the shape an object or class should follow, and types for the rest, since they're more flexible and can represent unions, primitives, tuples and much more; if both work equally well for an object shape, follow your team's conventions and stay consistent). I know why TypeScript is useful, but I know things like generics only in theory and haven't used them on a real project. I also don't know when I'd need to use infer, instanceof, or some of TypeScript's other more advanced features."
     },
     {
       "id": "web",
       "name": "Web & security basics",
       "pct": 60,
-      "icon": "item:h6"
+      "icon": "item:h6",
+      "about": "Web, URLs, servers, clients, HTTP, network requests and responses, browser engines, web browsers, pages, the must-know trio of HTML, CSS, and JavaScript, and so on: I have a decent understanding of how our little World Wide Web works. I'm no expert, though.\nI also wouldn't set the admin password to `password123`, hard-code it, and push it to a public repo. I know about common threats such as DDoS attacks, brute-force attacks, SQL injection, XSS, and CSRF, but I don't know how to ethically hack a website or protect it against more sophisticated attacks.\n(I even failed EPAM's phishing test 😭 It was the middle of the night, and I was sleepy, okay?? That's a terrible excuse, IKIK.)"
     },
     {
       "id": "bdd",
       "name": "BDD",
       "pct": 50,
-      "icon": "item:wq1"
+      "icon": "item:wq1",
+      "about": "I understand what it is for and what a feature and the User Story template are (As a [role] I want to [function/goal] so that [benefit/value]). I know how to write scenarios in Gherkin (Given/When/Then), what a Scenario Outline is, how to add tags, and how to run those scenarios in Cucumber.js or, preferably, with Playwright-BDD."
     },
     {
       "id": "design",
       "name": "Test design techniques",
       "pct": 60,
-      "icon": "item:f6"
+      "icon": "item:f6",
+      "about": "I know the differences between white-box, grey-box, and black-box testing. I'm also familiar with black-box test techniques such as Equivalence Partitioning, Boundary Value Analysis, Decision Table Testing, State Transition Testing, Use Case Testing, Pairwise (combinatorial) Testing, and Error Guessing, as well as experience-based techniques such as Exploratory Testing."
     },
     {
       "id": "framework",
       "name": "Framework & design patterns",
       "pct": 50,
-      "icon": "prop:がっこう"
+      "icon": "prop:がっこう",
+      "about": "I know, understand and have used in practice the Page Object Model and the Factory design pattern. Facade? Decorator? Singleton? Observer? I remember them from a class at university, but I haven't used most of them in real projects (or I did and didn't realise it)."
     },
     {
       "id": "debug",
       "name": "Debugging & flaky tests",
       "pct": 42,
-      "icon": "item:r7"
+      "icon": "item:r7",
+      "about": "I have designed and run tests, and debugging, especially in Playwright with its Trace Viewer, feels like a breeze. I haven't worked much with flaky tests yet (maybe my code is so great that flakiness doesn't stand a chance; greetings from auto-waiting and good test isolation). I hope I get to fix some flaky tests on a real-deal project."
     },
     {
       "id": "assert",
       "name": "Assertions & parameterization",
       "pct": 69,
-      "icon": "item:w7"
+      "icon": "item:w7",
+      "about": "I write good assertions by validating meaningful, user-facing outcomes, using specific locators and Playwright's web-first assertions. They retry automatically, which makes tests more reliable and less flaky. I avoid hard waits and assertions that depend on implementation details.\nI know how to parametrize tests and what the advantages are: code reusability, less duplication, better test coverage (valid inputs, invalid inputs and edge cases) and easy maintenance."
     },
     {
       "id": "quality",
       "name": "Code quality & review",
       "pct": 50,
-      "icon": "item:wq2"
+      "icon": "item:wq2",
+      "about": "DRY, KISS, SOLID, YAGNI, FIRST, JP, HWDP... and I have never really reviewed someone else's code on a corporate project. I wasn't a senior back then, so only seniors reviewed my code. Now it's time for revenge! (Although I did review my past self's code, looking at my spaghetti code from way back.)"
     },
     {
       "id": "mindset",
       "name": "QA mindset & career talk",
       "pct": 80,
-      "icon": "prop:めがね"
+      "icon": "prop:めがね",
+      "about": "I was thinking of setting this skill to 100%, but then I recalled that there may be errors in my judgement and I can never be 100% sure that there are no bugs in my brain ;)"
     }
   ],
   "certificates": [
     {
+      "id": "cert-mv8bvhr6t3i",
+      "name": "Automated Testing in JavaScript Certificate",
+      "date": "2026-4",
+      "file": "/certificates/certificate-testing-epam-ee6cc89aae.pdf",
+      "icon": "prop:てがみ"
+    },
+    {
+      "id": "cert-mv8bt9dzigc",
+      "name": "JavaScript​: Patterns",
+      "issuer": "LinkedIn Learning",
+      "date": "2026-7",
+      "file": "/certificates/certificateofcompletion-javascript-patte-4e92dababf.pdf",
+      "icon": "prop:てがみ"
+    },
+    {
       "id": "cert-mv6z2zgrn1i",
-      "name": "New certificate",
+      "name": "API Testing Foundations",
+      "issuer": "LinkedIn Learning",
+      "date": "2026-7",
+      "file": "/certificates/certificateofcompletion-api-testing-foun-fe6f0e0529.pdf",
+      "icon": "prop:てがみ"
+    },
+    {
+      "id": "cert-mv8bukte0zv",
+      "name": "Postman Essential Training",
+      "date": "2026-7",
+      "file": "/certificates/certificateofcompletion-postman-essentia-75c69f4d5a.pdf",
       "icon": "prop:てがみ"
     }
   ],
@@ -187,21 +233,17 @@
     {
       "id": "games",
       "name": "Video games",
-      "icon": "prop:gamepad",
-      "extra": [
-        "prop:mario",
-        "prop:luigi"
-      ]
+      "icon": "prop:gamepad"
     },
     {
       "id": "board",
       "name": "Board games",
-      "icon": "prop:monopoly-man"
+      "icon": "prop:monopoly-bust"
     },
     {
       "id": "japan",
       "name": "Japanese pop culture",
-      "icon": "prop:じんじゃ"
+      "icon": "svg:hellokitty"
     },
     {
       "id": "nihongo",

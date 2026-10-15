@@ -49,7 +49,7 @@ export const PROPS = [
   "やきゅう", "スキー", "ギター", "ピアノ", "おんがく", "えいが", "テレビ",
   "じんじゃ", "おてら", "やま", "いえ", "がっこう", "でんしゃ", "しんかんせん",
   "ひこうき", "くるま", "じてんしゃ", "かさ", "ゆき", "はれ", "でんき", "くすり",
-  "おもちゃ", "おみやげ", "たんじょうび", "carcassonne", "boardgames", "monopoly-man", "japan-flag", "gamepad", "mario", "luigi", "cow", "ufo", "tiger", "duck", "baby",
+  "おもちゃ", "おみやげ", "たんじょうび", "carcassonne", "boardgames", "monopoly-man", "japan-flag", "gamepad", "mario", "luigi", "cow", "ufo", "tiger", "duck", "baby", "snorlax", "monopoly-bust", "doge",
 ];
 
 export interface Skill {
@@ -57,6 +57,8 @@ export interface Skill {
   name: string;
   pct: number;
   icon: string;
+  /** shown on hover: what I actually know and how I used it */
+  about?: string;
 }
 
 export interface Certificate {

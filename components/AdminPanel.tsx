@@ -145,6 +145,16 @@ export default function AdminPanel() {
     reader.readAsDataURL(file);
   };
 
+  // the home page shows certificates in this order
+  const moveCert = (i: number, by: -1 | 1) =>
+    edit((p) => {
+      const list = [...p.certificates];
+      const j = i + by;
+      if (j < 0 || j >= list.length) return p;
+      [list[i], list[j]] = [list[j], list[i]];
+      return { ...p, certificates: list };
+    });
+
   const toggleItem = (id: string) =>
     edit((p) => {
       const s = ITEM[id].s;
@@ -340,7 +350,8 @@ export default function AdminPanel() {
             </button>
           </div>
           {profile.skills.map((s, i) => (
-            <div key={s.id} className="edit-row">
+            <div key={s.id} style={{ borderBottom: "1px dashed var(--line)", paddingBottom: 8 }}>
+            <div className="edit-row" style={{ borderBottom: 0 }}>
               <IconPicker
                 value={s.icon}
                 label={s.name}
@@ -368,6 +379,16 @@ export default function AdminPanel() {
                 ✕
               </button>
             </div>
+            <textarea
+              className="inp"
+              aria-label={`What I can do with ${s.name}`}
+              placeholder="Shown when someone hovers this skill: what I know and how I used it (optional)"
+              rows={2}
+              value={s.about || ""}
+              style={{ marginLeft: 52, width: "calc(100% - 52px)", resize: "vertical", fontWeight: 600 }}
+              onChange={(e) => edit((p) => ({ ...p, skills: p.skills.map((x, j) => (j === i ? { ...x, about: e.target.value } : x)) }))}
+            />
+            </div>
           ))}
         </section>
 
@@ -394,9 +415,23 @@ export default function AdminPanel() {
                   <IconPicker value={c.icon} label={c.name} onPick={(icon) => set({ icon })} />
                   <input className="inp" aria-label="Certificate name" value={c.name} onChange={(e) => set({ name: e.target.value })} />
                   <input className="inp" aria-label="Issuer" placeholder="Issuer (e.g. ISTQB)" value={c.issuer || ""} onChange={(e) => set({ issuer: e.target.value })} />
-                  <button type="button" className="btn sm danger" aria-label={`Remove ${c.name}`} onClick={() => edit((p) => ({ ...p, certificates: p.certificates.filter((_, j) => j !== i) }))}>
-                    ✕
-                  </button>
+                  <span style={{ display: "flex", gap: 4 }}>
+                    <button type="button" className="btn sm" aria-label={`Move ${c.name} up`} disabled={i === 0} onClick={() => moveCert(i, -1)}>
+                      ↑
+                    </button>
+                    <button
+                      type="button"
+                      className="btn sm"
+                      aria-label={`Move ${c.name} down`}
+                      disabled={i === profile.certificates.length - 1}
+                      onClick={() => moveCert(i, 1)}
+                    >
+                      ↓
+                    </button>
+                    <button type="button" className="btn sm danger" aria-label={`Remove ${c.name}`} onClick={() => edit((p) => ({ ...p, certificates: p.certificates.filter((_, j) => j !== i) }))}>
+                      ✕
+                    </button>
+                  </span>
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "140px minmax(0, 1fr)", gap: 8, paddingLeft: 52 }}>
                   <input className="inp" aria-label="Date" placeholder="Date (2026-10)" value={c.date || ""} onChange={(e) => set({ date: e.target.value })} />

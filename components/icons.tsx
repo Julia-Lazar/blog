@@ -59,3 +59,43 @@ export function Sakura({ size = 20 }: { size?: number }) {
     </svg>
   );
 }
+
+/** Flat Hello Kitty, waving: white head, pink bow, blue overalls, striped shirt. */
+export function HelloKitty({ size = 48 }: { size?: number }) {
+  const ink = "#3A3A3A";
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 110" aria-hidden="true">
+      {/* body: striped shirt arms, blue overalls, white feet and paws */}
+      <path d="M30 70 Q22 78 24 88 Q28 92 33 88 L36 78 Z" fill="#E8607E" />
+      <path d="M27 76 L33 80 M25 82 L32 85" stroke="#fff" strokeWidth="2.4" />
+      <path d="M70 70 Q78 72 80 62 Q82 56 77 55 L72 66 Z" fill="#E8607E" />
+      <path d="M73 63 L79 65 M74 68 L80 69" stroke="#fff" strokeWidth="2.4" />
+      <rect x="32" y="66" width="36" height="12" rx="4" fill="#E8607E" />
+      <path d="M36 70 H64 M36 75 H64" stroke="#fff" strokeWidth="2.4" />
+      <path d="M33 76 Q33 98 50 98 Q67 98 67 76 Z" fill="#1E5FA8" />
+      <rect x="39" y="70" width="5" height="9" fill="#1E5FA8" />
+      <rect x="56" y="70" width="5" height="9" fill="#1E5FA8" />
+      <circle cx="41.5" cy="80" r="2.4" fill="#fff" />
+      <circle cx="58.5" cy="80" r="2.4" fill="#fff" />
+      <ellipse cx="27" cy="89" rx="6" ry="5.5" fill="#fff" />
+      <ellipse cx="78" cy="52" rx="5.5" ry="6" fill="#fff" />
+      <path d="M77 46 Q80 44 82 47" stroke="#BFD7EA" strokeWidth="1.5" fill="none" />
+      <rect x="37" y="95" width="11" height="12" rx="5" fill="#fff" />
+      <rect x="52" y="95" width="11" height="12" rx="5" fill="#fff" />
+      {/* head with ears */}
+      <path d="M17 22 L22 6 L34 16 Z" fill="#fff" />
+      <path d="M83 22 L78 6 L66 16 Z" fill="#fff" />
+      <ellipse cx="50" cy="40" rx="38" ry="28" fill="#fff" />
+      {/* bow */}
+      <ellipse cx="68" cy="13" rx="11" ry="8" fill="#E8607E" transform="rotate(-25 68 13)" />
+      <ellipse cx="80" cy="25" rx="9" ry="7" fill="#E8607E" transform="rotate(35 80 25)" />
+      <circle cx="73" cy="19" r="6" fill="#E8607E" stroke="#fff" strokeWidth="1.6" />
+      <circle cx="64" cy="11" r="3" fill="none" stroke="#fff" strokeWidth="1.4" />
+      {/* face: eyes, yellow nose, whiskers */}
+      <ellipse cx="34" cy="43" rx="3.4" ry="4.6" fill={ink} />
+      <ellipse cx="66" cy="43" rx="3.4" ry="4.6" fill={ink} />
+      <ellipse cx="50" cy="51" rx="4.2" ry="3" fill="#F5C77E" />
+      <path d="M4 38 L22 41 M3 46 L21 47 M5 54 L22 52 M96 38 L78 41 M97 46 L79 47 M95 54 L78 52" stroke={ink} strokeWidth="2.2" strokeLinecap="round" />
+    </svg>
+  );
+}

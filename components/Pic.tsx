@@ -16,10 +16,12 @@ import {
 import { TbBrandMysql } from "react-icons/tb";
 import Snap3D from "./three/Snap3D";
 import FrameAnim, { type Frame } from "./FrameAnim";
+import { HelloKitty } from "./icons";
 
 /* One naming scheme for every little picture on the blog:
    "brand:<name>"  a technology logo, e.g. brand:playwright
    "anim:<name>"   a short 3D flip-book: anim:run, anim:lift, anim:baby
+   "svg:<name>"    a flat drawing: svg:hellokitty
    anything else   a 3D render (prop:…, item:…, head, pose:…), see Snap3D */
 
 export const BRANDS: Record<string, { Icon: IconType; color: string; label: string }> = {
@@ -60,14 +62,19 @@ const ANIMS: Record<string, Frame[]> = {
   ],
 };
 
+const SVGS: Record<string, (p: { size: number }) => React.ReactNode> = {
+  hellokitty: HelloKitty,
+};
+
 export const PIC_EXTRAS = [
+  ...Object.keys(SVGS).map((k) => "svg:" + k),
   ...Object.keys(BRANDS).map((b) => "brand:" + b),
   ...Object.keys(ANIMS).map((a) => "anim:" + a),
 ];
 
 export function picLabel(icon: string) {
   if (icon.startsWith("brand:")) return BRANDS[icon.slice(6)]?.label ?? icon;
-  return icon.replace(/^(prop|item|anim):/, "");
+  return icon.replace(/^(prop|item|anim|svg):/, "");
 }
 
 export default function Pic({
@@ -90,6 +97,14 @@ export default function Pic({
         </span>
       );
     }
+  }
+  if (icon.startsWith("svg:") && SVGS[icon.slice(4)]) {
+    const Draw = SVGS[icon.slice(4)];
+    return (
+      <span className="pic-brand" style={{ width: size, height: size }} role={alt ? "img" : undefined} aria-label={alt || undefined}>
+        <Draw size={size} />
+      </span>
+    );
   }
   if (icon.startsWith("anim:") && ANIMS[icon.slice(5)]) {
     return <FrameAnim frames={ANIMS[icon.slice(5)]} spec={spec} size={size} />;

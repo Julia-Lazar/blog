@@ -1,7 +1,7 @@
 ---
 title: "PokemonRecognizer — a practical mini‑project to learn PyTorch and data handling"
 date: "2025-12-08"
-icon: "prop:おもちゃ"
+icon: "prop:snorlax"
 excerpt: "A tiny PyTorch classifier that decides whether a plush is Jigglypuff or Bulbasaur."
 ---
 

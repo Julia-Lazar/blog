@@ -1402,14 +1402,31 @@ function pixTex(key, w, h, draw) {
   t.magFilter = T.NearestFilter; t.minFilter = T.NearestFilter; t.generateMipmaps = false; t.anisotropy = 1;
   return t;
 }
-function cow(g0) {
+// blog: a Minecraft red mushroom: cream stem, flat red cap with light dots
+function mcMushroom(parent, x, y, z, s) {
+  const m = new T.Group(); m.position.set(x, y, z); m.scale.setScalar(s || 1); parent.add(m);
+  const cap = pixTex('mc-mushcap', 8, 8, (c) => {
+    c.fillStyle = '#C62828'; c.fillRect(0, 0, 8, 8);
+    c.fillStyle = '#E53935'; c.fillRect(1, 1, 6, 6);
+    c.fillStyle = '#E8E8E8'; [[1, 2], [5, 1], [3, 4], [6, 5], [2, 6]].forEach(([px, py]) => c.fillRect(px, py, 1, 1));
+    c.fillStyle = '#B0BEC5'; [[2, 2], [6, 1], [4, 4]].forEach(([px, py]) => c.fillRect(px, py, 1, 1));
+  });
+  const capM = new T.MeshLambertMaterial({ map: cap });
+  const stem = new T.Mesh(new T.BoxGeometry(0.14, 0.4, 0.14), new T.MeshLambertMaterial({ color: '#D9CDA2' })); stem.position.y = 0.2; m.add(stem);
+  const c1 = new T.Mesh(new T.BoxGeometry(0.5, 0.14, 0.5), capM); c1.position.y = 0.45; m.add(c1);
+  const c2 = new T.Mesh(new T.BoxGeometry(0.32, 0.1, 0.32), capM); c2.position.y = 0.56; m.add(c2);
+  return m;
+}
+
+function cow(g0, red) {
   // Minecraft proportions (1 texture pixel = 0.1): body 12x10x18, legs 4x12x4, head 8x8x6
+  // red = the mooshroom: red hide, lilac-grey patches, mushrooms growing on its back and head
   const g = new T.Group(); g.rotation.y = -0.65; g0.add(g);
-  const BROWN = ['#3A291D', '#3F2D20', '#443123', '#3B2A1E', '#4A3626', '#36261B'];
-  const GREY = ['#A3A3A3', '#ADADAD', '#B8B8B8', '#9A9A9A', '#C2C2C2'];
+  const BROWN = red ? ['#8E1218', '#9C151C', '#A8191F', '#8A1016', '#B01D23', '#7E0E14'] : ['#3A291D', '#3F2D20', '#443123', '#3B2A1E', '#4A3626', '#36261B'];
+  const GREY = red ? ['#A7A9BE', '#B3B5C9', '#9C9EB4', '#C0C2D4', '#A0A2B8'] : ['#A3A3A3', '#ADADAD', '#B8B8B8', '#9A9A9A', '#C2C2C2'];
   const rnd = seed => () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
   // paint a w x h pixel face: noisy brown, then grey patches given as [x, y, w, h] rects
-  const face = (key, w, h, patches, extra) => pixTex('mc-' + key, w, h, (c) => {
+  const face = (key, w, h, patches, extra) => pixTex('mc-' + (red ? 'red-' : '') + key, w, h, (c) => {
     const r = rnd(key.length * 7919 + w * 31 + h);
     for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { c.fillStyle = BROWN[Math.floor(r() * BROWN.length)]; c.fillRect(x, y, 1, 1); }
     (patches || []).forEach(([px, py, pw, ph]) => {
@@ -1433,7 +1450,12 @@ function cow(g0) {
   const legFront = face('legf', 4, 12, [[1, 3, 1, 6]], (c) => { c.fillStyle = '#1D1712'; c.fillRect(0, 11, 4, 1); c.fillStyle = '#2A1F17'; c.fillRect(0, 10, 4, 1); });
   const legSide = face('legs', 4, 12, [], (c) => { c.fillStyle = '#1D1712'; c.fillRect(0, 11, 4, 1); c.fillStyle = '#2A1F17'; c.fillRect(0, 10, 4, 1); });
   const legTop = face('legt', 4, 4, []);
-  [[0.6, 0.35], [0.6, -0.35], [-0.6, 0.35], [-0.6, -0.35]].forEach(([x, z]) => box(0.4, 1.2, 0.4, [M(legFront), M(legSide), M(legTop), M(legTop), M(legSide), M(legSide)], x, 0.6, z));
+  // each leg hangs from a pivot at the hip, so mountProp can swing it
+  [[0.6, 0.35], [0.6, -0.35], [-0.6, 0.35], [-0.6, -0.35]].forEach(([x, z], i) => {
+    const hip = new T.Group(); hip.position.set(x, 1.2, z); hip.userData.leg = i; g.add(hip);
+    const m = new T.Mesh(new T.BoxGeometry(0.4, 1.2, 0.4), [M(legFront), M(legSide), M(legTop), M(legTop), M(legSide), M(legSide)]);
+    m.position.y = -0.6; hip.add(m);
+  });
 
   // head: 6 deep (x), 8 tall, 8 wide; the face is drawn on the +x side
   const head = face('head', 8, 8, [[0, 0, 3, 2], [1, 2, 2, 1], [5, 0, 1, 1]], (c) => {
@@ -1451,6 +1473,11 @@ function cow(g0) {
   // horns: little dark grey 1x2x1 stubs on the top corners of the head
   const hornM = new T.MeshLambertMaterial({ color: '#4A4A4A' });
   [-1, 1].forEach(sz => box(0.1, 0.2, 0.1, hornM, 1.15, 2.5, sz * 0.45));
+
+  if (red) {
+    [[-0.5, 2.2, 0.2], [0.2, 2.2, -0.25], [0.55, 2.2, 0.3]].forEach(([x, y, z]) => mcMushroom(g, x, y, z, 1));
+    mcMushroom(g, 1.2, 2.4, 0, 0.8);
+  }
 }
 
 // blog: a classic flying saucer with a little green pilot
@@ -1513,7 +1540,77 @@ const PROPS = {
   'mario': g => plumber(g, '#E53935', 'M'),
   'luigi': g => plumber(g, '#2E9E3E', 'L'),
   'cow': g => cow(g),
+  'mooshroom': g => cow(g, true),
+  'mc-mushroom': g => mcMushroom(g, 0, 0, 0, 2.2),
   'ufo': g => ufo(g),
+  // blog: Snorlax, flat on its back, fast asleep
+  'snorlax': g => {
+    const B = '#37707E', C = '#F2E6C9', K = '#1B1B1B';
+    PS(1, B, 0, 0.72, 0, g, 1.35, 0.72, 1.05);
+    PS(0.95, C, -0.05, 0.92, 0.02, g, 1.15, 0.58, 0.86);
+    [-1, 1].forEach(s => PS(0.26, B, 0.25, 1.15, s * 0.86, g, 1.5, 0.6, 0.7));
+    PS(0.62, B, 1.28, 0.92, 0, g, 1, 0.88, 1);
+    PS(0.5, C, 1.32, 1.18, 0, g, 1, 0.55, 1.05);
+    [-1, 1].forEach(s => { PB(0.05, 0.03, 0.17, K, 1.42, 1.46, s * 0.2, g); PK(0.14, 0.3, B, 1.6, 1.25, s * 0.36, g, 0, 0, -1.0); });
+    PB(0.05, 0.03, 0.26, '#7A3B2E', 1.18, 1.44, 0, g);
+    [-1, 1].forEach(s => PK(0.03, 0.08, '#FFFFFF', 1.17, 1.48, s * 0.11, g));
+    [-1, 1].forEach(s => {
+      PS(0.32, B, -1.25, 0.95, s * 0.42, g, 0.55, 1, 1);
+      PS(0.27, C, -1.4, 1.0, s * 0.42, g, 0.25, 0.95, 0.9);
+      [-0.12, 0, 0.12].forEach(dz => PK(0.04, 0.1, '#FFFFFF', -1.42, 1.28, s * 0.42 + dz, g));
+    });
+    const zz = tex('zzz', 128, 64, (c, w, h) => { c.fillStyle = '#FFFFFF'; c.font = 'bold 40px Arial'; c.fillText('Z', 6, 52); c.font = 'bold 30px Arial'; c.fillText('z', 46, 40); c.font = 'bold 22px Arial'; c.fillText('z', 78, 26); });
+    const sp = new T.Sprite(new T.SpriteMaterial({ map: zz, transparent: true })); sp.scale.set(1.0, 0.5, 1); sp.position.set(1.55, 2.0, 0); g.add(sp);
+  },
+  // blog: the top half of the Monopoly gentleman, arms out, cane up
+  'monopoly-bust': g0 => {
+    // icons are shown turned 0.55 rad to the side; undo that so he looks straight at the viewer
+    const g = new T.Group(); g.rotation.y = 0.55; g0.add(g);
+    const K = '#151515', W = '#FFFFFF', S = '#F5C9A8';
+    PB(0.8, 0.62, 0.45, K, 0, 0.31, 0, g);
+    PB(0.32, 0.55, 0.02, W, 0, 0.34, 0.23, g);
+    PB(0.26, 0.09, 0.04, '#D32F2F', 0, 0.58, 0.25, g); PS(0.04, '#B71C1C', 0, 0.58, 0.27, g);
+    [0.42, 0.3, 0.18].forEach(y => PS(0.025, K, 0, y, 0.25, g));
+    PB(0.5, 0.2, 0.22, K, -0.6, 0.5, 0.02, g, 0, 0, 0.35);
+    PS(0.13, S, -0.86, 0.62, 0.04, g, 1.2, 0.7, 0.6);
+    PB(0.2, 0.62, 0.22, K, 0.58, 0.78, 0.02, g, 0, 0, -0.55);
+    PS(0.12, S, 0.78, 1.08, 0.04, g);
+    // a short cane, so the gentleman fills the icon
+    PC(0.035, 0.035, 0.75, W, 0.86, 1.32, 0.04, g, 0, 0, -0.3);
+    PB(0.2, 0.06, 0.06, W, 1.0, 1.7, 0.04, g, 0, 0, -0.3);
+    PB(0.06, 0.13, 0.06, W, 1.08, 1.63, 0.04, g, 0, 0, -0.3);
+    PB(0.6, 0.56, 0.52, S, 0, 0.95, 0, g);
+    [-0.12, 0.12].forEach(x => PS(0.04, K, x, 1.05, 0.27, g));
+    PS(0.08, '#E8A0A0', 0, 0.94, 0.29, g);
+    [-1, 1].forEach(s => { PS(0.14, W, s * 0.14, 0.84, 0.27, g, 1.6, 0.65, 0.6); PS(0.07, W, s * 0.33, 0.9, 0.24, g); });
+    PC(0.42, 0.42, 0.05, K, 0, 1.25, 0, g, 0, 0, 0.08);
+    PC(0.27, 0.29, 0.6, K, 0.02, 1.55, 0, g, 0, 0, 0.08);
+    PC(0.295, 0.295, 0.1, '#6A3FA0', 0.005, 1.33, 0, g, 0, 0, 0.08);
+    PC(0.285, 0.285, 0.16, '#22A9C9', 0.03, 1.66, 0, g, 0, 0, 0.08);
+  },
+  // blog: Kabosu, the doge, side-eye and all
+  'doge': g => {
+    const O = '#E3A857', C = '#FBEBD0', K = '#1B1B1B';
+    PS(0.8, O, 0, 1.0, 0, g, 1.1, 0.95, 1);
+    [-1, 1].forEach(s => { PK(0.28, 0.55, O, s * 0.5, 1.78, -0.05, g, 0, 0, -s * 0.3); PK(0.17, 0.36, '#F4C7A1', s * 0.5, 1.74, 0.08, g, 0, 0, -s * 0.3); });
+    PS(0.5, C, 0, 0.78, 0.5, g, 1.25, 0.75, 0.8);
+    [-1, 1].forEach(s => PS(0.32, C, s * 0.5, 0.82, 0.35, g, 0.9, 0.9, 0.9));
+    PS(0.32, C, 0, 0.84, 0.82, g, 1, 0.72, 0.9);
+    PS(0.12, K, 0, 0.98, 1.1, g, 1.25, 0.8, 0.8);
+    PB(0.26, 0.03, 0.04, '#3E2A20', -0.04, 0.7, 1.06, g, 0, 0, 0.18);
+    [-1, 1].forEach(s => { PS(0.13, '#FFFFFF', s * 0.3, 1.2, 0.64, g, 1, 1.05, 0.6); PS(0.075, K, s * 0.3 - 0.06, 1.2, 0.7, g); PS(0.07, C, s * 0.3, 1.4, 0.6, g, 1.2, 0.8, 0.6); });
+  },
+  // blog: a pair of red boxing gloves with white cuffs and laces
+  'boxing-gloves': g => {
+    [[-0.55, 0.15, 0.35], [0.55, -0.1, -0.35]].forEach(([x, rz, ry]) => {
+      const h = new T.Group(); h.position.set(x, 0.9, 0); h.rotation.set(0, ry, rz); g.add(h);
+      P(sph(0.55, 28, 20), mat('#D32F2F', { roughness: 0.35 }), 0, 0.25, 0.05, h, 0, 0, 0, 1, 1.15, 1.05);
+      P(sph(0.22, 20, 14), mat('#C62828', { roughness: 0.35 }), -0.42, 0.05, 0.3, h, 0, 0, 0.6, 1, 1.4, 1);
+      P(cyl(0.36, 0.38, 0.45, 28), mat('#F5F5F5', { roughness: 0.6 }), 0, -0.48, 0, h);
+      P(cyl(0.385, 0.385, 0.08, 28), mat('#D32F2F'), 0, -0.3, 0, h);
+      [-0.2, -0.05, 0.1].forEach(y => PB(0.18, 0.025, 0.04, '#FFFFFF', 0.08, y, 0.56, h, 0, 0, 0.5));
+    });
+  },
   // blog: the Japanese flag on a little pole (hinomaru on both sides)
   'japan-flag': g => {
     PC(0.05, 0.05, 2.4, '#8D6E63', -0.95, 1.2, 0, g);
@@ -1797,7 +1894,49 @@ function animLoop(now) {
   animRaf = ANIMS.length ? requestAnimationFrame(animLoop) : 0;
 }
 
-window.QA3D = { ok: true, props: Object.keys(PROPS), mountAnim: mountAnim, snap: snap, mountLive: mountLive, pick: pick, live: LIVE, has: function (slot, id) { return slot === 'head' ? !!HEAD[id] : slot === 'face' ? !!FACE[id] : slot === 'weapon' ? !!WEAPON[id] : slot === 'relic' ? !!RELIC[id] : true; } };
+/* ===== blog: live props (the cows: they shuffle their legs and can spin while beamed up) ===== */
+function mountProp(el, name, opts) {
+  opts = opts || {};
+  const W = Math.max(40, el.clientWidth || 120), H = Math.max(40, el.clientHeight || 120);
+  const r = new T.WebGLRenderer({ antialias: true, alpha: true });
+  r.setPixelRatio(Math.min(2, window.devicePixelRatio || 1)); r.setClearColor(0x000000, 0); r.setSize(W, H, false);
+  r.domElement.style.width = '100%'; r.domElement.style.height = '100%'; r.domElement.style.display = 'block';
+  const scene = new T.Scene(); lights(scene);
+  const obj = buildProp(name); const yaw0 = -0.55; obj.rotation.y = yaw0; scene.add(obj); obj.updateMatrixWorld(true);
+  const sphere = new T.Box3().setFromObject(obj).getBoundingSphere(new T.Sphere());
+  const cam = new T.PerspectiveCamera(26, W / H, 0.05, 100);
+  frameCamera(cam, sphere.center, sphere.radius * 1.0, 0, 0.32, W / H);
+  const legs = []; obj.traverse(o => { if (o.userData.leg != null) legs.push(o); });
+  el.innerHTML = ''; el.appendChild(r.domElement);
+  const h = { spin: false, speed: 9, spinV: 0, angle: 0, t: (opts.offset || 0), last: performance.now(), raf: 0, obj: obj, legs: legs };
+  const period = opts.period || 6.5, walkFor = 2.2;
+  function frame(now) {
+    if (!el.isConnected) { try { r.dispose(); r.forceContextLoss(); } catch (e) {} return; }
+    const dt = Math.min(0.05, (now - h.last) / 1000); h.last = now; h.t += dt;
+    // every few seconds: a couple of slow steps in place, eased in and out
+    // ... but no walking while spinning: the legs settle and stay still
+    const u = h.t % period, k = h.spin ? 0 : (u < walkFor ? Math.sin(Math.PI * u / walkFor) : 0);
+    h.walk = (h.walk || 0) + (k - (h.walk || 0)) * Math.min(1, dt * 6);
+    h.legs.forEach(l => { const ph = (l.userData.leg === 0 || l.userData.leg === 3) ? 0 : Math.PI; l.rotation.z = Math.sin(h.t * 7 + ph) * 0.38 * h.walk; });
+    // spinning around its own axis, speeding up / slowing down smoothly
+    h.spinV += ((h.spin ? h.speed : 0) - h.spinV) * Math.min(1, dt * 2.5);
+    h.angle += h.spinV * dt; h.obj.rotation.y = yaw0 + h.angle;
+    r.render(scene, cam);
+    h.raf = requestAnimationFrame(frame);
+  }
+  h.raf = requestAnimationFrame(frame);
+  return {
+    setSpin: (on, speed) => { h.spin = !!on; if (speed) h.speed = speed; },
+    // swap the model (the cow turning into a mooshroom), keeping the same camera
+    setProp: next => {
+      scene.remove(h.obj);
+      const o = buildProp(next); o.rotation.y = yaw0 + h.angle; scene.add(o);
+      h.obj = o; h.legs = []; o.traverse(x => { if (x.userData.leg != null) h.legs.push(x); });
+    }
+  };
+}
+
+window.QA3D = { ok: true, props: Object.keys(PROPS), mountAnim: mountAnim, mountProp: mountProp, snap: snap, mountLive: mountLive, pick: pick, live: LIVE, has: function (slot, id) { return slot === 'head' ? !!HEAD[id] : slot === 'face' ? !!FACE[id] : slot === 'weapon' ? !!WEAPON[id] : slot === 'relic' ? !!RELIC[id] : true; } };
 })();
 
 

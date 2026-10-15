@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { ITEM } from "@/../lib/catalog";
 import Snap3D from "./three/Snap3D";
-import { Bug, Tick } from "./icons";
+import { Tick } from "./icons";
 
 /* QA Quest's training montage: the character posed in 3D, two frames flip-booked by CSS. */
 const MONTAGE = [
@@ -47,10 +47,44 @@ function Scene({ k, spec }: { k: (typeof MONTAGE)[number]["k"]; spec: Record<str
       ) : null}
       {k === "tiger" ? (
         <>
-          <span className="tiger">
-            <Snap3D icon="prop:tiger" alt="" size={64} />
+          {/* the tiger is her corner coach: on the floor next to her, cheering */}
+          <span
+            className="tiger"
+            style={{ left: "4%", right: "auto", top: "auto", bottom: 34, width: 112, height: 112, transformOrigin: "50% 100%" }}
+          >
+            <Snap3D icon="prop:tiger" alt="" size={112} />
           </span>
-          <Bug />
+          {/* speech bubble right above the tiger's head, with a little tail pointing at it */}
+          <span
+            style={{
+              position: "absolute",
+              left: "calc(4% + 22px)",
+              bottom: 128,
+              padding: "6px 9px",
+              borderRadius: 8,
+              background: "#FF8F00",
+              color: "#1B1B1B",
+              font: "400 9px/1.5 var(--f-pixel)",
+              whiteSpace: "nowrap",
+              zIndex: 2,
+            }}
+          >
+            RAWR! GO JULKA!
+            <span
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                left: 46,
+                bottom: -7,
+                borderLeft: "7px solid transparent",
+                borderRight: "7px solid transparent",
+                borderTop: "8px solid #FF8F00",
+              }}
+            />
+          </span>
+          {/* the rival: a ladybug, Biedronka-logo style */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/biedronka.png" alt="" className="bug" style={{ width: 42, height: 59, objectFit: "contain" }} />
           <span className="fixed">BUG FIXED</span>
         </>
       ) : null}
@@ -94,7 +128,7 @@ export default function TrainingMontage({ spec }: { spec: Record<string, unknown
     <section className="panel" aria-label="Training montage">
       <div className="panel-head">
         <h2>
-          <Snap3D icon="prop:テレビ" alt="" size={36} /> Training montage
+          <Snap3D icon="prop:boxing-gloves" alt="" size={40} /> Training montage
         </h2>
         <span className="label">cue the 80s synth</span>
       </div>

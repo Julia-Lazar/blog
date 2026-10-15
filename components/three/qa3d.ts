@@ -28,6 +28,12 @@ export interface QA3DApi {
   props: string[];
   snap: (spec: Spec, view: string, yaw?: number) => string;
   mountAnim: (el: HTMLElement, def: AnimDef) => unknown;
+  /** a prop drawn live: cows shuffle their legs now and then, and can spin */
+  mountProp: (
+    el: HTMLElement,
+    name: string,
+    opts?: { offset?: number; period?: number },
+  ) => { setSpin: (on: boolean, speed?: number) => void; setProp: (name: string) => void };
 }
 
 declare global {
@@ -54,7 +60,7 @@ export function loadQA3D(): Promise<QA3DApi | null> {
   if (window.QA3D) return Promise.resolve(window.QA3D.ok ? window.QA3D : null);
   if (!loading) {
     loading = addScript("/vendor/three-r128.min.js")
-      .then(() => addScript("/vendor/qa3d.js?v=16"))
+      .then(() => addScript("/vendor/qa3d.js?v=21"))
       .then(() => (window.QA3D && window.QA3D.ok ? window.QA3D : null))
       .catch(() => null);
   }

@@ -39,6 +39,7 @@ function clean(input: Profile, current: Profile): Profile {
       name: str(s.name),
       pct: Math.max(0, Math.min(100, Math.round(Number(s.pct) || 0))),
       icon: str(s.icon, 60),
+      about: str(s.about, 4000) || undefined,
     })).filter((s) => s.id && s.name),
     certificates: (input.certificates || []).map((c) => ({
       id: str(c.id, 40),
