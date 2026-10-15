@@ -996,13 +996,53 @@ article strong, .markdown strong, .prose strong {
   color: var(--sakura);
 }
 
+/* code blocks look like a little editor window: title bar with the language, then
+   "Neon Sakura" syntax colours (rehype-highlight puts hljs-* classes on the tokens) */
 article pre, .markdown pre, .prose pre {
-  overflow-x: auto;
+  --code-bg: #030a1c;
+  position: relative;
+  overflow: hidden; /* the code inside scrolls, so the title bar stays put */
   max-width: 100%;
-  background-color: #030a1c;
-  color: #ffffff;
-  padding: 1rem;
+  margin: 1.6rem 0;
+  padding: 2.1rem 0 0;
+  background:
+    linear-gradient(var(--bg-2), var(--bg-2)) top / 100% 2.1rem no-repeat,
+    var(--code-bg);
+  color: #d6e4ff;
+  border: 1px solid var(--line);
   border-radius: 1rem;
+  box-shadow: 0 18px 38px -18px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(57, 255, 20, 0.06), 0 0 24px -12px var(--glow);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  tab-size: 2;
+}
+
+/* traffic lights */
+article pre::before, .markdown pre::before, .prose pre::before {
+  content: "";
+  position: absolute;
+  top: 0.8rem;
+  left: 1rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 1rem 0 0 var(--peach), 2rem 0 0 var(--neon);
+}
+
+/* language tab */
+article pre[data-lang]::after, .markdown pre[data-lang]::after, .prose pre[data-lang]::after {
+  content: attr(data-lang);
+  position: absolute;
+  top: 0.45rem;
+  right: 0.9rem;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  background: var(--neon-soft);
+  color: var(--neon);
+  font: 600 0.7rem var(--f-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 article code, .markdown code, .prose code {
@@ -1010,12 +1050,70 @@ article code, .markdown code, .prose code {
   background-color: rgba(57, 255, 20, 0.08);
   padding: 0.15rem 0.4rem;
   border-radius: 0.4rem;
+  font-family: var(--f-mono);
 }
 
 article pre code, .markdown pre code, .prose pre code {
+  display: block;
+  overflow-x: auto;
   background-color: transparent;
-  color: #ffffff;
-  padding: 0;
+  color: inherit;
+  padding: 1rem 1.2rem 1.1rem;
+  border-radius: 0;
+  font-size: inherit;
+  word-break: normal;
+  overflow-wrap: normal;
+  white-space: pre;
+}
+
+.hljs-comment, .hljs-quote { color: #6f86b3; font-style: italic; }
+.hljs-keyword, .hljs-selector-tag, .hljs-doctag, .hljs-meta .hljs-keyword { color: var(--sakura-2); }
+.hljs-built_in, .hljs-literal, .hljs-number, .hljs-symbol, .hljs-bullet { color: var(--peach); }
+.hljs-string, .hljs-regexp, .hljs-addition, .hljs-template-tag, .hljs-meta .hljs-string { color: var(--neon); }
+.hljs-title, .hljs-title.function_, .hljs-section { color: var(--sky); }
+.hljs-title.class_, .hljs-type, .hljs-class .hljs-title { color: var(--lav); }
+.hljs-attr, .hljs-attribute, .hljs-property, .hljs-selector-attr, .hljs-selector-pseudo { color: var(--mint); }
+.hljs-variable, .hljs-template-variable, .hljs-params { color: var(--sakura); }
+.hljs-name, .hljs-tag { color: var(--sakura-2); }
+.hljs-selector-class, .hljs-selector-id { color: var(--peach); }
+.hljs-meta, .hljs-subst { color: #9fb4dd; }
+.hljs-punctuation, .hljs-operator { color: #8ea5cc; }
+.hljs-deletion { color: var(--red); }
+.hljs-link { color: var(--sky); text-decoration: underline; }
+.hljs-emphasis { font-style: italic; }
+.hljs-strong { font-weight: 700; color: var(--sakura); }
+
+article pre code { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+
+/* task lists ("- [x] done") from remark-gfm: neon tick boxes, no bullets */
+.markdown .contains-task-list { list-style: none; padding-left: 0.2rem; }
+.markdown .task-list-item { display: flex; align-items: center; gap: 0.7rem; }
+.markdown .task-list-item::marker { content: ""; }
+.markdown .task-list-item input[type="checkbox"] {
+  appearance: none;
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0;
+  border: 2px solid var(--line);
+  border-radius: 0.35rem;
+  background: var(--sunk);
+  display: grid;
+  place-items: center;
+}
+.markdown .task-list-item input[type="checkbox"]:checked {
+  border-color: var(--neon);
+  background: var(--neon);
+  box-shadow: 0 0 10px var(--glow);
+}
+.markdown .task-list-item input[type="checkbox"]:checked::after {
+  content: "";
+  width: 0.32rem;
+  height: 0.6rem;
+  margin-top: -0.12rem;
+  border: solid var(--on-neon);
+  border-width: 0 0.16rem 0.16rem 0;
+  transform: rotate(45deg);
 }
 
 article .snap3d img,
@@ -1648,6 +1746,26 @@ p, li { text-wrap: pretty; }
   font: 400 13px/1.6 var(--f-pixel);
   text-transform: uppercase;
   color: var(--ink);
+}
+
+/* an aside that slides open only when the card is hovered or focused */
+.quest-note {
+  margin: -10px 0 0; /* cancels the card's row gap while hidden */
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--muted);
+  transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+}
+
+.quest-card:hover .quest-note,
+.quest-card:focus-visible .quest-note {
+  margin-top: 0;
+  max-height: 6em;
+  opacity: 1;
 }
 
 .quest-text {

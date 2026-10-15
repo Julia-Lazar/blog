@@ -1543,24 +1543,35 @@ const PROPS = {
   'mooshroom': g => cow(g, true),
   'mc-mushroom': g => mcMushroom(g, 0, 0, 0, 2.2),
   'ufo': g => ufo(g),
-  // blog: Snorlax, flat on its back, fast asleep
-  'snorlax': g => {
-    const B = '#37707E', C = '#F2E6C9', K = '#1B1B1B';
-    PS(1, B, 0, 0.72, 0, g, 1.35, 0.72, 1.05);
-    PS(0.95, C, -0.05, 0.92, 0.02, g, 1.15, 0.58, 0.86);
-    [-1, 1].forEach(s => PS(0.26, B, 0.25, 1.15, s * 0.86, g, 1.5, 0.6, 0.7));
-    PS(0.62, B, 1.28, 0.92, 0, g, 1, 0.88, 1);
-    PS(0.5, C, 1.32, 1.18, 0, g, 1, 0.55, 1.05);
-    [-1, 1].forEach(s => { PB(0.05, 0.03, 0.17, K, 1.42, 1.46, s * 0.2, g); PK(0.14, 0.3, B, 1.6, 1.25, s * 0.36, g, 0, 0, -1.0); });
-    PB(0.05, 0.03, 0.26, '#7A3B2E', 1.18, 1.44, 0, g);
-    [-1, 1].forEach(s => PK(0.03, 0.08, '#FFFFFF', 1.17, 1.48, s * 0.11, g));
+  // blog: Snorlax sitting down, big round body, sleepy head resting right on top of it
+  'snorlax': g0 => {
+    // icons are shown turned 0.55 rad; turn most of that back so he faces the viewer
+    const g = new T.Group(); g.rotation.y = 0.38; g0.add(g);
+    const B = '#2F7480', C = '#F3E3BF', K = '#1B1B1B', W = '#FFFFFF', P = '#7A4A2A';
+    // body + belly
+    PS(1, B, 0, 1.0, 0, g, 1.25, 1.0, 0.95);
+    PS(1, C, 0, 0.92, 0.33, g, 1.0, 0.86, 0.68);
+    // head, sunk into the shoulders
+    PS(0.78, B, 0, 2.12, 0.05, g, 1.22, 0.78, 0.95);
+    PS(0.66, C, 0, 2.02, 0.4, g, 1.12, 0.7, 0.6);
+    [-1, 1].forEach(s => PK(0.22, 0.38, B, s * 0.6, 2.74, 0, g, 0, 0, -s * 0.32));
+    // fast asleep: closed eyes, a flat mouth with two little fangs
+    [-1, 1].forEach(s => PB(0.28, 0.045, 0.04, K, s * 0.27, 2.17, 0.76, g, 0, 0, s * 0.08));
+    PB(0.5, 0.045, 0.04, K, 0, 1.91, 0.79, g);
+    [-1, 1].forEach(s => PK(0.05, 0.11, W, s * 0.14, 1.98, 0.8, g));
+    // arms hanging at the sides, paws on the ground with three claws
     [-1, 1].forEach(s => {
-      PS(0.32, B, -1.25, 0.95, s * 0.42, g, 0.55, 1, 1);
-      PS(0.27, C, -1.4, 1.0, s * 0.42, g, 0.25, 0.95, 0.9);
-      [-0.12, 0, 0.12].forEach(dz => PK(0.04, 0.1, '#FFFFFF', -1.42, 1.28, s * 0.42 + dz, g));
+      PS(0.36, B, s * 1.18, 0.8, 0.15, g, 0.75, 1.25, 0.75);
+      PS(0.28, B, s * 1.3, 0.32, 0.3, g, 1.1, 0.8, 1.0);
+      [-0.12, 0, 0.12].forEach(dz => PK(0.065, 0.2, W, s * 1.52, 0.5, 0.3 + dz, g, 0, 0, -s * 0.6));
     });
-    const zz = tex('zzz', 128, 64, (c, w, h) => { c.fillStyle = '#FFFFFF'; c.font = 'bold 40px Arial'; c.fillText('Z', 6, 52); c.font = 'bold 30px Arial'; c.fillText('z', 46, 40); c.font = 'bold 22px Arial'; c.fillText('z', 78, 26); });
-    const sp = new T.Sprite(new T.SpriteMaterial({ map: zz, transparent: true })); sp.scale.set(1.0, 0.5, 1); sp.position.set(1.55, 2.0, 0); g.add(sp);
+    // big feet pointing at us: cream soles, brown pads, claws on top
+    [-1, 1].forEach(s => {
+      PS(0.4, B, s * 0.62, 0.42, 0.55, g, 1, 1, 0.8);
+      PS(0.45, C, s * 0.62, 0.42, 0.85, g, 0.95, 1.0, 0.45);
+      PS(0.24, P, s * 0.62, 0.32, 1.03, g, 1, 1.05, 0.3);
+      [-0.16, 0, 0.16].forEach(dx => PK(0.065, 0.2, W, s * 0.62 + dx, 0.92, 0.95, g, 0, 0, -dx * 1.2));
+    });
   },
   // blog: the top half of the Monopoly gentleman, arms out, cane up
   'monopoly-bust': g0 => {

@@ -85,7 +85,7 @@ describe("Post Page", () => {
 
     const backLink = screen.getByText("Back").closest("a");
 
-    expect(backLink).toHaveAttribute("href", "/");
+    expect(backLink).toHaveAttribute("href", "/#posts");
   });
 
   it("shows comments section", async () => {

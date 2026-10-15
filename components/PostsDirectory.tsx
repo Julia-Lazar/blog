@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { PostMeta } from "@/../lib/posts";
 import Snap3D from "./three/Snap3D";
@@ -51,6 +51,19 @@ export default function PostsDirectory({
 }) {
   const [sortOption, setSortOption] = useState<SortOption>("date-desc");
   const [filterOption, setFilterOption] = useState<FilterOption>("all");
+
+  // coming back from a post (Back -> /#posts): jump straight to this list. Done here, after the
+  // page has rendered, because the 3D pictures above it still change the layout while loading.
+  useEffect(() => {
+    if (window.location.hash !== "#posts") return;
+    const go = () => document.getElementById("posts")?.scrollIntoView({ block: "start", behavior: "instant" });
+    const frame = requestAnimationFrame(go);
+    const again = window.setTimeout(go, 500);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.clearTimeout(again);
+    };
+  }, []);
 
   const featuredPostIds = [posts[0]?.id, "boredom"].filter(Boolean);
   const isFeaturedPost = (post: PostMeta) => featuredPostIds.includes(post.id);

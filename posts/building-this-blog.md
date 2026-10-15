@@ -147,11 +147,11 @@ All UI elements (buttons, headers, links) use the same palette for consistency.
 
 I'm planning to add:
 
-- [ ] Post categories
+- [x] Post categories
 - [ ] Search functionality
 - [ ] Dark mode
-- [ ] More animated elements
-- [✅] Comment system
+- [x] More animated elements
+- [x] Comment system
 - [ ] RSS feed
 
 ## Summary

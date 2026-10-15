@@ -2,7 +2,10 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
-import html from "remark-html";
+import remarkGfm from "remark-gfm";
+import remarkRehype from "remark-rehype";
+import rehypeHighlight from "rehype-highlight";
+import rehypeStringify from "rehype-stringify";
 import readingTime from "reading-time";
 
 export interface PostMeta {
@@ -17,6 +20,22 @@ export interface PostMeta {
 }
 
 type FrontMatter = { title?: string; date?: string; icon?: string; excerpt?: string };
+
+type HastNode = { type: string; tagName?: string; properties?: Record<string, unknown>; children?: HastNode[] };
+
+/** Gives every `<pre>` a data-lang ("ts", "bash"…) so the CSS can print it in the editor-style title bar. */
+function labelCodeBlocks() {
+  const walk = (node: HastNode) => {
+    if (node.tagName === "pre") {
+      const code = node.children?.find((child) => child.tagName === "code");
+      const classes = (code?.properties?.className as string[] | undefined) ?? [];
+      const lang = classes.find((name) => name.startsWith("language-"))?.slice("language-".length);
+      node.properties = { ...node.properties, dataLang: lang || "text" };
+    }
+    node.children?.forEach(walk);
+  };
+  return (tree: HastNode) => walk(tree);
+}
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
@@ -68,7 +87,13 @@ export async function getPostData(id: string) {
   const matterResult = matter(fileContents);
   const data = matterResult.data as FrontMatter;
 
-  const processed = await remark().use(html).process(matterResult.content);
+  const processed = await remark()
+    .use(remarkGfm)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeHighlight)
+    .use(labelCodeBlocks)
+    .use(rehypeStringify, { allowDangerousHtml: true })
+    .process(matterResult.content);
   const contentHtml = processed.toString();
 
   return {

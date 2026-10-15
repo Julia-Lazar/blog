@@ -41,7 +41,7 @@ export default async function Post({ params }: Params) {
     <Layout>
       <div style={{ display: "grid", gap: 18 }}>
         <nav>
-          <Link href="/" className="pill-btn">
+          <Link href="/#posts" className="pill-btn">
             Back
           </Link>
         </nav>

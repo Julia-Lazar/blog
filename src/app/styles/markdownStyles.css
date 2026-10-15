@@ -73,16 +73,7 @@
   font-family: var(--font-geist-mono), monospace;
 }
 
-.markdown pre {
-  @apply rounded-[1.25rem] border border-white/10 p-4 text-sm text-pink-50 shadow-xl;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 22%),
-    rgba(9, 2, 14, 0.92);
-}
-
-.markdown pre code {
-  @apply bg-transparent p-0 text-inherit;
-}
+/* code blocks (.markdown pre) are styled in globals.css as an editor window */
 
 .markdown a {
   @apply text-pink-200 underline decoration-pink-300 transition-colors duration-200 hover:text-white;

@@ -71,7 +71,8 @@ const learningPathItems: PathItem[] = [
     date: "2021",
     title: "Clean Code Principles",
     description:
-      "Learning SOLID principles, DRY, and the FIRST principles in testing showed me how much clean code matters.",
+      "Learning the DRY, KISS, YAGNI and SOLID principles showed me how much clean code matters. I also enjoyed my Python and C# classes at uni, where I learned to use design patterns such as Observer and Decorator.",
+    hoverNote: "(I don't remember them that well anymore, but I can easily brush up on them.)",
     icon: "prop:duck",
   },
   {
@@ -100,7 +101,7 @@ const learningPathItems: PathItem[] = [
     date: "2026",
     title: "9-Month Software Testing Internship",
     description:
-      "Nine months of testing real applications: test cases, bug reports, automation, and thinking about what the product feels like when something breaks.",
+      "Nine months of studying testing theory and applying it in projects with frameworks such as WebdriverIO, Cypress and my favourite, Playwright. I wrote E2E tests based on use cases, wrote test cases derived from test scenarios, automated tests based on those test cases, generated reports with reporters such as Allure, and realised that testing is so much more than I thought. I began to think about what the product feels like when something breaks.",
     icon: "anim:lift",
     avatar: "me",
     current: true,
